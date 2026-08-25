@@ -439,6 +439,10 @@ header.scrolled {
 .thumb-4 { background: linear-gradient(135deg, #2b1b4e, #141433); }
 .thumb-5 { background: linear-gradient(135deg, #163a5e, #0d2333); }
 .thumb-6 { background: linear-gradient(135deg, #1b4e4a, #0d2e2e); }
+.thumb-7 { background: linear-gradient(135deg, #1e2a5e, #12142e); }
+.thumb-8 { background: linear-gradient(135deg, #241b4e, #161033); }
+.thumb-9 { background: linear-gradient(135deg, #143a4e, #0d2530); }
+.thumb-10 { background: linear-gradient(135deg, #101b4e, #0d1233); }
 .proyecto-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .proyecto-body h3 { font-size: 1.1rem; }
 .proyecto-body p { font-size: 0.9rem; color: var(--muted); flex: 1; }
