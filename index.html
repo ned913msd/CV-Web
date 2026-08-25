@@ -351,18 +351,18 @@
           <div class="form-row">
             <div class="form-group">
               <label for="nombre">Nombre *</label>
-              <input type="text" id="nombre" placeholder="Tu nombre" required>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
               <span class="error">Por favor ingresa tu nombre</span>
             </div>
             <div class="form-group">
               <label for="email">Email *</label>
-              <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+              <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
               <span class="error">Ingresa un email válido</span>
             </div>
           </div>
           <div class="form-group">
             <label for="tipo">¿Qué necesitas?</label>
-            <select id="tipo">
+            <select id="tipo" name="tipo">
               <option value="landing">Landing Page de alta conversión</option>
               <option value="ecommerce">Tienda E-commerce</option>
               <option value="redisenio">Rediseño / Optimización de mi sitio</option>
@@ -371,7 +371,7 @@
           </div>
           <div class="form-group">
             <label for="mensaje">Cuéntame de tu proyecto *</label>
-            <textarea id="mensaje" placeholder="¿Qué producto vendes? ¿Qué objetivo tienes? Mientras más contexto, mejor propuesta podrás recibir..." required></textarea>
+            <textarea id="mensaje" name="mensaje" placeholder="¿Qué producto vendes? ¿Qué objetivo tienes? Mientras más contexto, mejor propuesta podrás recibir..." required></textarea>
             <span class="error">Cuéntame un poco sobre tu proyecto</span>
           </div>
           <button type="submit" class="btn-form">Enviar mensaje →</button>
