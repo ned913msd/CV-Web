@@ -105,11 +105,9 @@ btnCV.addEventListener('click', (e) => {
   }
 });
 
-/* ============ 10. FORMULARIO DE CONTACTO ============ */
-/* DEMO: validación + toast. En producción, reemplaza el setTimeout
-   del final por un fetch() a tu backend, Formspree o EmailJS. */
+/* ============ 10. FORMULARIO DE CONTACTO (Web3Forms) ============ */
 const form = document.getElementById('formContacto');
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   let valido = true;
 
@@ -132,12 +130,29 @@ form.addEventListener('submit', (e) => {
   btn.textContent = 'Enviando...';
   btn.disabled = true;
 
-  setTimeout(() => {
+  try {
+    const datos = new FormData(form);
+    datos.append('subject', `Nuevo proyecto — ${datos.get('nombre')} (${datos.get('tipo')})`);
+    datos.append('from_name', 'Portafolio David Ned');
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: datos
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      form.reset();
+      mostrarToast('¡Mensaje enviado! Te responderé en menos de 24 horas 🚀');
+    } else {
+      mostrarToast('No se pudo enviar. Escríbeme directo a ned913msd@gmail.com');
+    }
+  } catch {
+    mostrarToast('Sin conexión. Intenta de nuevo o escríbeme por WhatsApp 💬');
+  } finally {
     btn.textContent = textoOriginal;
     btn.disabled = false;
-    form.reset();
-    mostrarToast('¡Mensaje enviado! Te responderé en menos de 24 horas 🚀');
-  }, 1200);
+  }
 });
 
 form.querySelectorAll('input, textarea').forEach(el => {
