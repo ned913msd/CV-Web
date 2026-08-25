@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Ned Bustamante | Desarrollador Front-End & Landing Pages de Alta Conversión</title>
+  <meta name="description" content="Desarrollador Front-End en Medellín, Colombia. Graduado con honores de Digital House. Creo landing pages de alta conversión: interfaces que venden. React, Vue, JavaScript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header id="header">
+    <div class="container nav">
+      <a href="#inicio" class="logo">David<span>.</span>Ned</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="active">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a href="#contacto"><button class="nav-cta">Hablemos 💬</button></a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-disponible">Disponible para nuevos proyectos</span>
+        <h1>Hola, soy <span class="gradiente">David Ned</span> 👋</h1>
+        <div class="rol">Desarrollador Front-End & Landing Pages de Alta Conversión</div>
+        <p class="descripcion">
+          Desarrollador front-end de Medellín, graduado con honores de
+          <strong>Digital House</strong>. Vengo del mundo de las ventas y la
+          atención al cliente, así que no solo escribo código:
+          <strong>construyo interfaces pensadas para convertir visitas en clientes</strong>.
+        </p>
+        <div class="hero-botones">
+          <!-- Tu CV real: guarda el PDF como assets/cv.pdf y funciona solo -->
+          <a href="assets/cv.pdf" download class="btn btn-secundario" id="btnCV">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Descargar CV
+          </a>
+          <a href="#contacto" class="btn btn-primario">
+            Contáctame
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <!-- ⚠️ PERSONALIZAR: enlaces reales de tus redes (GitHub, LinkedIn) -->
+        <div class="redes">
+          <a href="#" aria-label="GitHub" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a href="https://wa.me/573003491413" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="mailto:ned913msd@gmail.com" aria-label="Email" title="Email">
+            <svg viewBox="0 0 24 24"><path d="M0 3v18h24V3H0zm6.623 7.929l-4.12 7.485V7.641l4.12 3.288zm.484-.373L12 14.713l4.893-3.157-4.89-4.075-4.894 4.075zm9.27-.536l4.12-3.288v10.773l-4.12-7.485zm-9.643 9.766l3.556-6.068 2.437 1.864 2.436-1.864 3.556 6.068H6.634z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============ VISUAL DEL HERO — TU FOTO REAL ============ -->
+      <!-- Guarda tu foto como assets/foto.jpg
+           Si la recortaste con remove.bg, agrega la clase "sin-fondo"
+           a .avatar-card para el look flotante -->
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <div class="avatar-card sin-fondo">
+          <img src="assets/foto.jpg" alt="David Ned Bustamante — Desarrollador Front-End" class="foto-hero">
+        </div>
+        <div class="avatar-chip chip-1">⚡ Front-End</div>
+        <div class="avatar-chip chip-2">🎯 UX/UI</div>
+        <div class="avatar-chip chip-3">🇨🇴 Medellín</div>
+      </div>
+
+      <!-- ALTERNATIVA: Ilustración SVG con tu estilo (trenzas + chaqueta azul).
+           Si prefieres la ilustración, borra el bloque de arriba y usa este:
+      <div class="hero-visual">
+        <div class="blob"></div>
+        <div class="avatar-card">
+          <svg viewBox="0 0 320 340" role="img" aria-label="Ilustración de David">
+            <path d="M160 60 C 105 60, 75 105, 78 160 C 80 205, 70 250, 55 285 L 265 285 C 250 250, 240 205, 242 160 C 245 105, 215 60, 160 60 Z" fill="#2f2b3e"/>
+            <rect x="145" y="185" width="30" height="30" rx="10" fill="#e8b08c"/>
+            <ellipse cx="160" cy="145" rx="52" ry="56" fill="#f2c19a"/>
+            <path d="M160 78 C 118 78, 102 112, 106 148 C 112 132, 122 120, 132 116 C 138 130, 150 138, 160 138 C 170 138, 182 130, 188 116 C 198 120, 208 132, 214 148 C 218 112, 202 78, 160 78 Z" fill="#2f2b3e"/>
+            <circle cx="140" cy="150" r="5" fill="#2f2b3e"/>
+            <circle cx="180" cy="150" r="5" fill="#2f2b3e"/>
+            <path d="M148 172 Q 160 182, 172 172" stroke="#c9825e" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="128" cy="165" rx="8" ry="5" fill="#f0a08a" opacity="0.6"/>
+            <ellipse cx="192" cy="165" rx="8" ry="5" fill="#f0a08a" opacity="0.6"/>
+            <path d="M92 140 C 80 170, 78 210, 84 250 C 90 262, 104 262, 108 250 C 112 210, 108 170, 100 145 Z" fill="#2f2b3e"/>
+            <path d="M82 175 Q 96 182, 108 175 M81 200 Q 96 207, 109 200 M82 225 Q 96 232, 108 225" stroke="#211d2e" stroke-width="3" fill="none"/>
+            <circle cx="96" cy="254" r="6" fill="#3b82f6"/>
+            <path d="M228 140 C 240 170, 242 210, 236 250 C 230 262, 216 262, 212 250 C 208 210, 212 170, 220 145 Z" fill="#2f2b3e"/>
+            <path d="M212 175 Q 224 182, 238 175 M211 200 Q 224 207, 239 200 M212 225 Q 224 232, 238 225" stroke="#211d2e" stroke-width="3" fill="none"/>
+            <circle cx="224" cy="254" r="6" fill="#3b82f6"/>
+            <circle cx="124" cy="172" r="4" fill="#f0c75e"/>
+            <circle cx="196" cy="172" r="4" fill="#f0c75e"/>
+            <path d="M160 210 C 120 210, 90 240, 85 285 L 85 300 Q 85 310, 95 310 L 225 310 Q 235 310, 235 300 L 235 285 C 230 240, 200 210, 160 210 Z" fill="#3b82f6"/>
+            <path d="M148 212 L 160 230 L 172 212 Z" fill="#ffffff"/>
+            <line x1="160" y1="230" x2="160" y2="305" stroke="#2563eb" stroke-width="4"/>
+            <path d="M95 280 Q 160 255, 225 280" stroke="#60a5fa" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="avatar-chip chip-1">⚡ Front-End</div>
+        <div class="avatar-chip chip-2">🎯 UX/UI</div>
+        <div class="avatar-chip chip-3">🇨🇴 Medellín</div>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>React</span><span>Vue.js</span><span>Git & GitHub</span><span>Figma</span><span>UX/UI</span><span>Design Thinking</span><span>Responsive Design</span><span>Tailwind CSS</span><span>APIs REST</span>
+    </div>
+  </div>
+
+  <!-- ============ SOBRE MÍ ============ -->
+  <section id="sobre-mi">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-texto reveal">
+          <span class="section-tag">Sobre mí</span>
+          <h2 class="section-title">Ventas + código: <span style="color:var(--accent)">la combinación que convierte</span></h2>
+          <p>
+            Soy <strong>David Ned Bustamante</strong>, desarrollador front-end de Medellín y
+            graduado con honores académicos del programa <strong>Certified Tech Developer</strong>
+            de Digital House. Antes de programar, pasé años en ventas y atención al cliente
+            en entornos de alta demanda — y eso cambió mi forma de desarrollar.
+          </p>
+          <p>
+            Mientras otros devs solo piensan en que el código funcione, yo pienso en
+            <strong>la persona al otro lado de la pantalla</strong>: por eso aplico Design Thinking
+            y principios de UX/UI en cada landing que construyo, con HTML, CSS, JavaScript,
+            React y Vue.js.
+          </p>
+          <p>
+            Soy proactivo, trabajo bien bajo presión y en equipo, y estoy en constante
+            formación — ahora mismo, perfeccionando mi inglés. Total disponibilidad para
+            proyectos que me retengan.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat reveal reveal-delay-1">
+            <div class="numero" data-contador="2" data-sufijo="×">0</div>
+            <div class="etiqueta">Graduado con honores académicos</div>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <div class="numero" data-contador="4" data-sufijo="">0</div>
+            <div class="etiqueta">Años de formación (2020–2024)</div>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <div class="numero" data-contador="15" data-sufijo="+">0</div>
+            <div class="etiqueta">Tecnologías y herramientas</div>
+          </div>
+          <div class="stat reveal reveal-delay-1">
+            <div class="numero" data-contador="100" data-sufijo="%">0</div>
+            <div class="etiqueta">Diseño responsive garantizado</div>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <div class="numero" data-contador="24" data-sufijo="/7">0</div>
+            <div class="etiqueta">Comunicación y disponibilidad</div>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <div class="numero" data-contador="2" data-sufijo="">0</div>
+            <div class="etiqueta">Idiomas (ES · EN en progreso)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HABILIDADES ============ -->
+  <section id="habilidades">
+    <div class="container">
+      <span class="section-tag reveal">Mis habilidades</span>
+      <h2 class="section-title reveal">Técnica con mentalidad comercial</h2>
+      <p class="section-sub reveal">Formación Certified Tech Developer + olfato de ventas: una combinación difícil de encontrar.</p>
+
+      <div class="skills-grid">
+        <div class="skill reveal">
+          <div class="skill-head"><span>🎨 HTML · CSS · JavaScript</span><span class="pct">92%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="92"></div></div>
+        </div>
+        <div class="skill reveal reveal-delay-1">
+          <div class="skill-head"><span>⚛️ React</span><span class="pct">85%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="85"></div></div>
+        </div>
+        <div class="skill reveal">
+          <div class="skill-head"><span>🟢 Vue.js</span><span class="pct">80%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="80"></div></div>
+        </div>
+        <div class="skill reveal reveal-delay-1">
+          <div class="skill-head"><span>🔧 Git & GitHub</span><span class="pct">88%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="88"></div></div>
+        </div>
+        <div class="skill reveal">
+          <div class="skill-head"><span>🧠 UX/UI · Design Thinking · Figma</span><span class="pct">78%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="78"></div></div>
+        </div>
+        <div class="skill reveal reveal-delay-1">
+          <div class="skill-head"><span>🤝 Ventas & Atención al cliente</span><span class="pct">95%</span></div>
+          <div class="barra"><div class="barra-fill" data-nivel="95"></div></div>
+        </div>
+      </div>
+
+      <div class="chips reveal">
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">React</span>
+        <span class="chip">Vue.js</span>
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+        <span class="chip">Figma</span>
+        <span class="chip">Design Thinking</span>
+        <span class="chip">Responsive</span>
+        <span class="chip">APIs REST</span>
+        <span class="chip">Trabajo en equipo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section id="proyectos">
+    <div class="container">
+      <span class="section-tag reveal">Mis proyectos</span>
+      <h2 class="section-title reveal">Lo que sé construir</h2>
+      <p class="section-sub reveal">Proyectos de formación y demos personales. Cada uno me enseñó algo que hoy aplico en landings de conversión.</p>
+
+      <!-- ⚠️ PERSONALIZAR: reemplaza estos 6 ejemplos por TUS proyectos
+           reales de Digital House (proyectos integradores, trabajos grupales)
+           o personales. Incluye enlaces a repos/demos si tienes. -->
+      <div class="proyectos-grid">
+        <article class="proyecto reveal">
+          <div class="proyecto-thumb thumb-1">🛒</div>
+          <div class="proyecto-body">
+            <h3>TiendaFront — E-commerce</h3>
+            <p>Proyecto integrador: catálogo, carrito y checkout responsivos con React.</p>
+            <span class="metrica">⚛️ React + Context API</span>
+            <div class="tags"><span>Proyecto integrador</span><span>Front-End</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto reveal reveal-delay-1">
+          <div class="proyecto-thumb thumb-2">📋</div>
+          <div class="proyecto-body">
+            <h3>TaskFlow — Gestor de tareas</h3>
+            <p>App CRUD con Vue 3, persistencia local y diseño limpio centrado en usabilidad.</p>
+            <span class="metrica">🟢 Vue 3 + Composition API</span>
+            <div class="tags"><span>Personal</span><span>UX</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto reveal reveal-delay-2">
+          <div class="proyecto-thumb thumb-3">🚀</div>
+          <div class="proyecto-body">
+            <h3>LaunchLab — Landing demo</h3>
+            <p>Landing de conversión para producto físico: jerarquía visual, prueba social y CTA único.</p>
+            <span class="metrica">🎯 Foco CRO</span>
+            <div class="tags"><span>Demo</span><span>HTML/CSS/JS</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto reveal">
+          <div class="proyecto-thumb thumb-4">🧠</div>
+          <div class="proyecto-body">
+            <h3>Caso de estudio UX</h3>
+            <p>Rediseño del flujo de un servicio local aplicando Design Thinking: investigación, prototipo y testeo.</p>
+            <span class="metrica">🎨 Figma + Research</span>
+            <div class="tags"><span>UX/UI</span><span>Académico</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto reveal reveal-delay-1">
+          <div class="proyecto-thumb thumb-5">🌦️</div>
+          <div class="proyecto-body">
+            <h3>WeatherApp — Consumo de APIs</h3>
+            <p>App del clima con búsqueda por ciudad, estados de carga y manejo de errores.</p>
+            <span class="metrica">🌐 APIs REST + Fetch</span>
+            <div class="tags"><span>JavaScript</span><span>API</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto reveal reveal-delay-2">
+          <div class="proyecto-thumb thumb-6">👥</div>
+          <div class="proyecto-body">
+            <h3>DevTeam — Proyecto grupal</h3>
+            <p>Desarrollo colaborativo con metodologías ágiles, revisiones de código y control de versiones.</p>
+            <span class="metrica">👥 Scrum + Git Flow</span>
+            <div class="tags"><span>Equipo</span><span>Metodologías ágiles</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto">
+    <div class="container">
+      <span class="section-tag reveal">Contacto</span>
+      <h2 class="section-title reveal">¿Hablamos de tu proyecto? 🚀</h2>
+      <p class="section-sub reveal">Cuéntame qué quieres vender y te responderé en menos de 24 horas con una propuesta clara.</p>
+
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <a href="mailto:ned913msd@gmail.com" class="info-item reveal">
+            <div class="info-icono">✉️</div>
+            <div>
+              <div class="dato">Email</div>
+              <div class="valor">ned913msd@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://wa.me/573003491413" target="_blank" rel="noopener" class="info-item reveal reveal-delay-1">
+            <div class="info-icono">💬</div>
+            <div>
+              <div class="dato">WhatsApp</div>
+              <div class="valor">+57 300 349 1413</div>
+            </div>
+          </a>
+          <div class="info-item reveal reveal-delay-2">
+            <div class="info-icono">📍</div>
+            <div>
+              <div class="dato">Ubicación</div>
+              <div class="valor">Medellín, Colombia · Atiendo toda LATAM</div>
+            </div>
+          </div>
+          <div class="info-item reveal reveal-delay-3">
+            <div class="info-icono">⚡</div>
+            <div>
+              <div class="dato">Tiempo de respuesta</div>
+              <div class="valor">Menos de 24 horas</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="formContacto" novalidate class="reveal">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" placeholder="Tu nombre" required>
+              <span class="error">Por favor ingresa tu nombre</span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+              <span class="error">Ingresa un email válido</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="tipo">¿Qué necesitas?</label>
+            <select id="tipo">
+              <option value="landing">Landing Page de alta conversión</option>
+              <option value="ecommerce">Tienda E-commerce</option>
+              <option value="redisenio">Rediseño / Optimización de mi sitio</option>
+              <option value="otro">Otro tipo de proyecto</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Cuéntame de tu proyecto *</label>
+            <textarea id="mensaje" placeholder="¿Qué producto vendes? ¿Qué objetivo tienes? Mientras más contexto, mejor propuesta podrás recibir..." required></textarea>
+            <span class="error">Cuéntame un poco sobre tu proyecto</span>
+          </div>
+          <button type="submit" class="btn-form">Enviar mensaje →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <p>© <span id="anio"></span> David Ned Bustamante — Hecho con <span class="corazon">♥</span> y mucho café en Medellín 🇨🇴</p>
+    </div>
+  </footer>
+
+  <!-- ============ TOAST ============ -->
+  <div class="toast" id="toast">
+    <span class="icono-toast">✅</span>
+    <span id="toastMensaje">Mensaje enviado</span>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
