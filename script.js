@@ -132,7 +132,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const datos = new FormData(form);
-    datos.append('subject', `Nuevo proyecto — ${datos.get('nombre')} (${datos.get('tipo')})`);
+    datos.append('subject', `Nuevo proyecto — ${datos.get('nombre')}`);
     datos.append('from_name', 'Portafolio David Ned');
 
     const res = await fetch('https://api.web3forms.com/submit', {
