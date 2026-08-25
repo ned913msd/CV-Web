@@ -426,6 +426,11 @@ header.scrolled {
   position: relative;
   overflow: hidden;
 }
+.proyecto-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .proyecto-thumb::before {
   content: '';
   position: absolute;
