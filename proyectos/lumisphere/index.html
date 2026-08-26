@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LumiSphere — Lámpara de Luna Galáctica con Control por App</title>
+  <meta name="description" content="Controla la luz con 16 millones de colores desde tu celular. Proyección galáctica, batería 12h y diseño premium. Reserva con preventa 20%.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Lumi<span>Sphere</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Escenas</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-glow glow-actived" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa abierta — 20% de descuento</span>
+        <h1>Lumi<span>Sphere</span></h1>
+        <p class="hero-sub">La lámpara de luna que se adapta a tu estado de ánimo.</p>
+        <p class="hero-desc">
+          Controla 16 millones de colores desde tu celular con Bluetooth 5.0.
+          Proyección galáctica en tu techo y paredes con efecto nebulosa.
+          Diseño premium de resina translúcida y base de madera de roble.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver demo de escenas</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">16M+</span><span class="stat-label">Colores</span></div>
+          <div class="stat-mini"><span class="stat-valor">12h</span><span class="stat-label">Batería</span></div>
+          <div class="stat-mini"><span class="stat-valor">BT 5.0</span><span class="stat-label">Conexión</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="lumisphere.webp" alt="LumiSphere — Lámpara de Luna Galáctica con Control por App" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge" id="appBadge">
+          <div class="app-badge-icon">📱</div>
+          <span>Control por App</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Diseñada para crear la atmósfera perfecta</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">🎨</div>
+          <h3>Control por App</h3>
+          <p>Selecciona entre 16 millones de colores, ajusta la intensidad y guarda tus escenas favoritas desde tu celular.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🌙</div>
+          <h3>Luz de Luna Realista</h3>
+          <p>Proyección galáctica en techo y paredes con efecto nebulosa. Crea atmósferas que parecen sacadas del espacio.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🔋</div>
+          <h3>Batería 12 horas</h3>
+          <p>Carga por USB-C y dura toda la noche sin conexión. Carga completa en solo 2 horas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🏠</div>
+          <h3>Diseño Premium</h3>
+          <p>Base de madera de roble natural y esfera de resina translúcida con textura lunar auténtica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Configura tu escena</h2>
+      <p class="section-sub">Selecciona una atmósfera y observa cómo LumiSphere transforma tu habitación.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#3b82f6" data-glow="#3b82f6" data-nombre="Noche estrellada">
+            <span class="escena-color" style="background:#3b82f6"></span>
+            <span>Noche estrellada</span>
+          </button>
+          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Aurora boreal">
+            <span class="escena-color" style="background:#06b6d4"></span>
+            <span>Aurora boreal</span>
+          </button>
+          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Atardecer cálido">
+            <span class="escena-color" style="background:#f97316"></span>
+            <span>Atardecer cálido</span>
+          </button>
+          <button class="escena-btn" data-color="#8b5cf6" data-glow="#a78bfa" data-nombre="Neblina profunda">
+            <span class="escena-color" style="background:#8b5cf6"></span>
+            <span>Neblina profunda</span>
+          </button>
+          <button class="escena-btn" data-color="#10b981" data-glow="#34d399" data-nombre="Bosque místico">
+            <span class="escena-color" style="background:#10b981"></span>
+            <span>Bosque místico</span>
+          </button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="lumisphere.webp" alt="Previsualización de escena" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Noche estrellada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Detalles que importan</h2>
+          <p class="section-sub">Cada componente ha sido seleccionado para ofrecer la mejor experiencia de iluminación ambiental.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item">
+            <span class="spec-icono">📶</span>
+            <div><span class="spec-label">Conexión</span><span class="spec-valor">Bluetooth 5.0 — 15m de alcance</span></div>
+          </div>
+          <div class="spec-item">
+            <span class="spec-icono">🔋</span>
+            <div><span class="spec-label">Batería</span><span class="spec-valor">4000mAh — 12 horas de autonomía</span></div>
+          </div>
+          <div class="spec-item">
+            <span class="spec-icono">⚡</span>
+            <div><span class="spec-label">Carga</span><span class="spec-valor">USB-C — Carga completa en 2 horas</span></div>
+          </div>
+          <div class="spec-item">
+            <span class="spec-icono">📏</span>
+            <div><span class="spec-label">Tamaño</span><span class="spec-valor">15cm de diámetro — 380g</span></div>
+          </div>
+          <div class="spec-item">
+            <span class="spec-icono">🪵</span>
+            <div><span class="spec-label">Materiales</span><span class="spec-valor">Resina translúcida + madera de roble</span></div>
+          </div>
+          <div class="spec-item">
+            <span class="spec-icono">📱</span>
+            <div><span class="spec-label">App</span><span class="spec-valor">iOS 14+ / Android 10+ — gratis</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Consigue LumiSphere antes que nadie</h2>
+        <p class="section-sub">Preventa exclusiva con 20% de descuento. Envío gratis a toda Colombia, 30 días de garantía y app gratuita incluida.</p>
+        <div class="precios">
+          <span class="precio-antes">$149.000</span>
+          <span class="precio-ahora">$119.000</span>
+          <span class="precio-ahorra">Ahorras $30.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">📱</span><span>App gratuita incluida</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown">
+          <div class="countdown-item"><span class="countdown-num" id="dias">02</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">14</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">37</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Lumi<span>Sphere</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
