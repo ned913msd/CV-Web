@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SonicPods Ultra — Audífonos con Cancelación de Ruido Adaptativa</title>
+  <meta name="description" content="Silencio que se adapta a tu mundo. ANC -40dB, modo transparencia, audio espacial y 36h de batería total.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#6366f1; --accent-glow:#818cf8; --accent-soft:rgba(99,102,241,0.12); --lamp-color:#6366f1; --lamp-glow:rgba(99,102,241,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(99,102,241,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(139,92,246,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Sonic<span>Pods</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Modos</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Sonic<span>Pods</span> Ultra</h1>
+        <p class="hero-sub">Silencio que se adapta a tu mundo.</p>
+        <p class="hero-desc">
+          Audífonos inalámbricos con cancelación de ruido adaptativa de -40dB.
+          Modo transparencia, audio espacial y 36 horas de batería total con estuche.
+          Se ajustan a tu entorno en tiempo real.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver modos de sonido</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">-40dB</span><span class="stat-label">ANC</span></div>
+          <div class="stat-mini"><span class="stat-valor">36h</span><span class="stat-label">Total</span></div>
+          <div class="stat-mini"><span class="stat-valor">IPX5</span><span class="stat-label">Resistente</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="sonicpods-ultra.webp" alt="SonicPods Ultra — Audífonos ANC" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">🎧</div><span>Audio espacial</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Sonido que se adapta</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">🔇</div>
+          <h3>ANC Adaptativo -40dB</h3>
+          <p>Cancela ruido de fondo automáticamente según tu entorno: oficina, calle o avión.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">👂</div>
+          <h3>Modo Transparencia</h3>
+          <p>Escucha lo que pasa a tu alrededor sin quitarte los audífonos. Ideal para conversar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🌀</div>
+          <h3>Audio Espacial</h3>
+          <p>Sonido envolvente 360° que sigue el movimiento de tu cabeza. Cine y música inmersiva.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🔋</div>
+          <h3>36 horas totales</h3>
+          <p>8h con ANC + 28h en estuche. Carga rápida: 10min = 2h de reproducción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Selecciona tu modo</h2>
+      <p class="section-sub">Cada modo optimiza el audio y la cancelación según tu actividad.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#6366f1" data-glow="#818cf8" data-nombre="ANC Máximo — -40dB"><span class="escena-color" style="background:#6366f1"></span><span>ANC Máximo — silencio total</span></button>
+          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Adaptativo — se ajusta solo"><span class="escena-color" style="background:#06b6d4"></span><span>Adaptativo — inteligente</span></button>
+          <button class="escena-btn" data-color="#10b981" data-glow="#34d399" data-nombre="Transparencia — escucha todo"><span class="escena-color" style="background:#10b981"></span><span>Transparencia — entorno abierto</span></button>
+          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Gaming — latencia ultra baja"><span class="escena-color" style="background:#f97316"></span><span>Gaming — sin delay</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="sonicpods-ultra.webp" alt="Previsualización de modo" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">ANC Máximo — -40dB</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Ingeniería de sonido</h2>
+          <p class="section-sub">Drivers de 11mm con imanes de neodimio y procesamiento de audio avanzado.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">🔊</span><div><span class="spec-label">Drivers</span><span class="spec-valor">11mm — imanes de neodimio</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔇</span><div><span class="spec-label">ANC</span><span class="spec-valor">-40dB — 3 micrófonos</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📶</span><div><span class="spec-label">Conexión</span><span class="spec-valor">Bluetooth 5.3 — multipoint</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IPX5 — sudor y lluvia</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">8h + 28h estuche — USB-C</span></div></div>
+          <div class="spec-item"><span class="spec-icono">⚖️</span><div><span class="spec-label">Peso</span><span class="spec-valor">5.4g por auricular — ultraligeros</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Tu silencio personal</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y estuche incluido.</p>
+        <div class="precios">
+          <span class="precio-antes">$219.000</span>
+          <span class="precio-ahora">$175.000</span>
+          <span class="precio-ahorra">Ahorras $44.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🎧</span><span>Estuche de carga incluido</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="3">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Sonic<span>Pods</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

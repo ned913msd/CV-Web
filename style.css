@@ -412,6 +412,7 @@ header.scrolled {
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   display: flex;
   flex-direction: column;
+  color: var(--text);
 }
 .proyecto:hover {
   transform: translateY(-8px);

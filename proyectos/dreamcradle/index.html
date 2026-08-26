@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamCradle — Cuna Inteligente que se Mece Automáticamente</title>
+  <meta name="description" content="Dulces sueños para tu bebé, tranquilidad para ti. Movimiento automático, machine de sonido y app de seguimiento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#ec4899; --accent-glow:#f472b6; --accent-soft:rgba(236,72,153,0.12); --lamp-color:#ec4899; --lamp-glow:rgba(236,72,153,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(236,72,153,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(168,85,247,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Dream<span>Cradle</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Modos</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Dream<span>Cradle</span></h1>
+        <p class="hero-sub">Dulces sueños para tu bebé, tranquilidad para ti.</p>
+        <p class="hero-desc">
+          Cuna inteligente que mece a tu bebé automáticamente con movimientos naturales.
+          Machine de sonido con 20 melodías, sensor de vibración y app de seguimiento del sueño.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver modos</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">20</span><span class="stat-label">Sonidos</span></div>
+          <div class="stat-mini"><span class="stat-valor">8h</span><span class="stat-label">Batería</span></div>
+          <div class="stat-mini"><span class="stat-valor">0-15</span><span class="stat-label">RPM</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="dreamcradle.webp" alt="DreamCradle — Cuna Inteligente" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">👶</div><span>Seguimiento app</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Tecnología que acuna</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">🤱</div>
+          <h3>Movimiento Automático</h3>
+          <p>Balanceo suave y natural con velocidad ajustable. Imita el mecer de los brazos de mamá.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🎵</div>
+          <h3>Machine de Sonido</h3>
+          <p>20 melodías y sonidos de la naturaleza. Volumen ajustable y temporizador automático.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">📳</div>
+          <h3>Vibración Suave</h3>
+          <p>Nivel de vibración que calma al bebé. Se activa automáticamente cuando detecta llanto.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">📱</div>
+          <h3>App de Seguimiento</h3>
+          <p>Registra horas de sueño, patrones y calidad. Notificaciones en tiempo real en tu celular.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Elige el modo de sueño</h2>
+      <p class="section-sub">Cada modo combina movimiento, sonido y vibración según la edad y necesidad de tu bebé.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#ec4899" data-glow="#f472b6" data-nombre="Balanceo — 8rpm"><span class="escena-color" style="background:#ec4899"></span><span>Balanceo — suave y constante</span></button>
+          <button class="escena-btn" data-color="#8b5cf6" data-glow="#a78bfa" data-nombre="Vibración — calma"><span class="escena-color" style="background:#8b5cf6"></span><span>Vibración — para calm快速</span></button>
+          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Sonido — naturaleza"><span class="escena-color" style="background:#06b6d4"></span><span>Sonido — lluvia y viento</span></button>
+          <button class="escena-btn" data-color="#f59e0b" data-glow="#fbbf24" data-nombre="Combinado — todo junto"><span class="escena-color" style="background:#f59e0b"></span><span>Combinado — movimiento + sonido</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="dreamcradle.webp" alt="Previsualización de modo" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Balanceo — 8rpm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Seguridad certificada</h2>
+          <p class="section-sub">Diseñada con los más altos estándares de seguridad infantil.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">🤱</span><div><span class="spec-label">Movimiento</span><span class="spec-valor">0-15 RPM — balanceo suave</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🎵</span><div><span class="spec-label">Sonidos</span><span class="spec-valor">20 melodías + naturaleza</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">5000mAh — 8 horas</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Capacidad</span><span class="spec-valor">Hasta 12kg — 0-18 meses</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🛡️</span><div><span class="spec-label">Seguridad</span><span class="spec-valor">Certificación ASTM + EN</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">iOS 14+ / Android 10+ — gratis</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Noches más tranquilas</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y app incluida.</p>
+        <div class="precios">
+          <span class="precio-antes">$349.000</span>
+          <span class="precio-ahora">$279.000</span>
+          <span class="precio-ahorra">Ahorras $70.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">👶</span><span>Certificación ASTM + EN</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="5">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Dream<span>Cradle</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

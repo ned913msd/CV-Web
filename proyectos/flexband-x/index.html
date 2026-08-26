@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlexBand X — Banda de Resistencia Inteligente con Sensor</title>
+  <meta name="description" content="Entrena más inteligente con sensor de fuerza en tiempo real, contador de reps y app con rutinas personalizadas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#f97316; --accent-glow:#fb923c; --accent-soft:rgba(249,115,22,0.12); --lamp-color:#f97316; --lamp-glow:rgba(249,115,22,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(249,115,22,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(239,68,68,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Flex<span>Band</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Rutinas</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Flex<span>Band</span> X</h1>
+        <p class="hero-sub">Entrena más inteligente, no más fuerte.</p>
+        <p class="hero-desc">
+          Banda de resistencia con sensor de fuerza en tiempo real. Contador automático de repeticiones,
+          corrección de forma y app con rutinas personalizadas por tu nivel y objetivos.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver rutinas</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">±0.1kg</span><span class="stat-label">Precisión</span></div>
+          <div class="stat-mini"><span class="stat-valor">20h</span><span class="stat-label">Batería</span></div>
+          <div class="stat-mini"><span class="stat-valor">IP67</span><span class="stat-label">Resistente</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="flexband-x.webp" alt="FlexBand X — Banda de Resistencia Inteligente" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">📱</div><span>Rutinas en app</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Tecnología que eleva tu entrenamiento</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">💪</div>
+          <h3>Sensor de Fuerza</h3>
+          <p>Mide la resistencia exacta que aplicas en cada repetición con precisión de ±0.1kg.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">📊</div>
+          <h3>Contador Automático</h3>
+          <p>Reps, series y volumen total calculados automáticamente. Sin cuadernos, sin estimar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🎯</div>
+          <h3>Corrección de Forma</h3>
+          <p>Alertas en tiempo real si tu técnica se desvía. Prevén lesiones y maximiza resultados.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🏋️</div>
+          <h3>5 Niveles de Resistencia</h3>
+          <p>Desde 5kg (rehabilitación) hasta 35kg (fuerza avanzada). Una sola banda para todo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Elige tu rutina</h2>
+      <p class="section-sub">Selecciona tu objetivo y FlexBand X adapta la resistencia y el conteo automáticamente.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#f97316" data-glow="#fb923c" data-nombre="Fuerza — 25-35kg"><span class="escena-color" style="background:#f97316"></span><span>Fuerza — máxima resistencia</span></button>
+          <button class="escena-btn" data-color="#ef4444" data-glow="#f87171" data-nombre="Cardio — 10-15kg"><span class="escena-color" style="background:#ef4444"></span><span>Cardio — ritmo alto</span></button>
+          <button class="escena-btn" data-color="#eab308" data-glow="#facc15" data-nombre="Flexibilidad — 5-10kg"><span class="escena-color" style="background:#eab308"></span><span>Flexibilidad — estiramiento</span></button>
+          <button class="escena-btn" data-color="#22c55e" data-glow="#4ade80" data-nombre="Rehabilitación — 5-8kg"><span class="escena-color" style="background:#22c55e"></span><span>Rehabilitación — recuperación</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="flexband-x.webp" alt="Previsualización de rutina" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Fuerza — 25-35kg</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Construida para durar</h3>
+          <p class="section-sub">Materiales de grado deportivo con electrónica protegida para entrenar en cualquier condición.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">📡</span><div><span class="spec-label">Sensor</span><span class="spec-valor">Celda de carga ±0.1kg</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">3000mAh — 20 horas</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📶</span><div><span class="spec-label">Conexión</span><span class="spec-valor">Bluetooth 5.0 — 15m alcance</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IP67 — lavable bajo agua</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">120cm × 5cm — 180g</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">iOS 14+ / Android 10+ — gratis</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Tu gimnasio inteligente</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 30 días de garantía y app incluida.</p>
+        <div class="precios">
+          <span class="precio-antes">$129.000</span>
+          <span class="precio-ahora">$99.000</span>
+          <span class="precio-ahorra">Ahorras $30.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">📱</span><span>App gratuita incluida</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="4">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Flex<span>Band</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

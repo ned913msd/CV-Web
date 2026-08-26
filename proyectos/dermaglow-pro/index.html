@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DermaGlow Pro — Dispositivo de Microcorriente Facial con App</title>
+  <meta name="description" content="Tratamiento facial profesional en casa con 5 niveles de intensidad. Bluetooth, app gratuita y resultados visibles en 2 semanas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#06b6d4; --accent-glow:#22d3ee; --accent-soft:rgba(6,182,212,0.12); --lamp-color:#06b6d4; --lamp-glow:rgba(6,182,212,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(6,182,212,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(16,185,129,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Derma<span>Glow</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Intensidad</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Derma<span>Glow</span> Pro</h1>
+        <p class="hero-sub">La tecnología profesional que tu piel merece.</p>
+        <p class="hero-desc">
+          Microcorriente facial de grado profesional con 5 niveles de intensidad.
+          Resultados visibles en 2 semanas: firmeza, luminosidad y reducción de líneas de expresión.
+          Control total desde tu celular con app gratuita.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Probar intensidades</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">5</span><span class="stat-label">Niveles</span></div>
+          <div class="stat-mini"><span class="stat-valor">8h</span><span class="stat-label">Batería</span></div>
+          <div class="stat-mini"><span class="stat-valor">IPX5</span><span class="stat-label">Resistente</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="dermaglow-pro.webp" alt="DermaGlow Pro — Dispositivo de Microcorriente Facial" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">📱</div><span>App gratuita</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Skincare de grado profesional en tu casa</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">⚡</div>
+          <h3>5 Niveles de Intensidad</h3>
+          <p>Desde microcorriente suave para principiantes hasta tratamiento intenso para resultados rápidos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">⏱️</div>
+          <h3>Timer Inteligente</h3>
+          <p>Sesiones de 5, 10 o 15 minutos con apagado automático y guía de zonas faciales.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🔬</div>
+          <h3>Tecnología EMS</h3>
+          <p>Microcorriente de 400μA que estimula la producción de colágeno y elastina natural.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🧴</div>
+          <h3>Compatibile con tu rutina</h3>
+          <p>Diseñado para usarse con tu sérum o crema favorita, potenciando su absorción hasta 3x.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Selecciona tu intensidad</h2>
+      <p class="section-sub">Elige el nivel adecuado para tu tipo de piel y objetivos de tratamiento.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Nivel 1 — Suave"><span class="escena-color" style="background:#22d3ee"></span><span>Nivel 1 — Suave (principiantes)</span></button>
+          <button class="escena-btn" data-color="#10b981" data-glow="#34d399" data-nombre="Nivel 2 — Moderado"><span class="escena-color" style="background:#10b981"></span><span>Nivel 2 — Moderado (diario)</span></button>
+          <button class="escena-btn" data-color="#3b82f6" data-glow="#60a5fa" data-nombre="Nivel 3 — Activo"><span class="escena-color" style="background:#3b82f6"></span><span>Nivel 3 — Activo (resultados)</span></button>
+          <button class="escena-btn" data-color="#8b5cf6" data-glow="#a78bfa" data-nombre="Nivel 4 — Intenso"><span class="escena-color" style="background:#8b5cf6"></span><span>Nivel 4 — Intenso (avanzado)</span></button>
+          <button class="escena-btn" data-color="#ec4899" data-glow="#f472b6" data-nombre="Nivel 5 — Máximo"><span class="escena-color" style="background:#ec4899"></span><span>Nivel 5 — Máximo (profesional)</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="dermaglow-pro.webp" alt="Previsualización de intensidad" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Nivel 1 — Suave</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Calidad profesional</h2>
+          <p class="section-sub">Cada componente está diseñado para ofrecer resultados clínicos sin salir de casa.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">⚡</span><div><span class="spec-label">Microcorriente</span><span class="spec-valor">400μA — 5 niveles</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">2000mAh — 8 horas</span></div></div>
+          <div class="spec-item"><span class="spec-icono">⚡</span><div><span class="spec-label">Carga</span><span class="spec-valor">USB-C — 1.5h carga completa</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IPX5 — resistente al agua</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">16cm × 4.5cm — 120g</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">iOS 14+ / Android 10+ — gratis</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Tu piel merece lo mejor</h2>
+        <p class="section-sub">Preventa exclusiva con 20% de descuento. Envío gratis, 30 días de garantía y app gratuita.</p>
+        <div class="precios">
+          <span class="precio-antes">$189.000</span>
+          <span class="precio-ahora">$149.000</span>
+          <span class="precio-ahorra">Ahorras $40.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">📱</span><span>App gratuita incluida</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="3">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Derma<span>Glow</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

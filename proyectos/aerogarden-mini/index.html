@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroGarden Mini — Huerto Inteligente de Interior con LED</title>
+  <meta name="description" content="Hierbas frescas todo el año sin jardín. LED spectrum completo, sensor de agua y 6 copas incluidas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#22c55e; --accent-glow:#4ade80; --accent-soft:rgba(34,197,94,0.12); --lamp-color:#22c55e; --lamp-glow:rgba(34,197,94,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(34,197,94,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(16,185,129,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Aero<span>Garden</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Plantas</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Aero<span>Garden</span> Mini</h1>
+        <p class="hero-sub">Hierbas frescas todo el año, sin jardín.</p>
+        <p class="hero-desc">
+          Huerto inteligente de interior con LED spectrum completo, sensor de agua automático
+          y 6 copas de cultivo incluidas. Hierbas, flores o vegetales frescos en tu cocina todo el año.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver tipos de planta</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">20W</span><span class="stat-label">LED</span></div>
+          <div class="stat-mini"><span class="stat-valor">2L</span><span class="stat-label">Agua</span></div>
+          <div class="stat-mini"><span class="stat-valor">6</span><span class="stat-label">Copas</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="aerogarden-mini.webp" alt="AeroGarden Mini — Huerto Inteligente" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">🌱</div><span>App de guía</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Cultiva sin esfuerzo</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">💡</div>
+          <h3>LED Spectrum Completo</h3>
+          <p>20W de luz LED optimizada para cada fase de crecimiento: germinación, vegetativa y floración.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">💧</div>
+          <h3>Sensor de Agua</h3>
+          <p>Te avisa cuando necesitas recargar. El sistema de riego por mechas mantiene la humedad ideal.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🌿</div>
+          <h3>6 Copas Incluidas</h3>
+          <p>Comienza con las 6 copas de cultivo incluidas. Compatibles con semillas de cualquier marca.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">📱</div>
+          <h3>App de Guía</h3>
+          <p>Te guía paso a paso: cuándo sembrar, regar y cosechar. Historial de crecimiento y consejos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">¿Qué quieres cultivar?</h2>
+      <p class="section-sub">Cada tipo de planta tiene su propio programa de luz y riego optimizado.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#22c55e" data-glow="#4ade80" data-nombre="Hierbas — albahaca, cilantro, menta"><span class="escena-color" style="background:#22c55e"></span><span>Hierbas — cocina fresca</span></button>
+          <button class="escena-btn" data-color="#ec4899" data-glow="#f472b6" data-nombre="Flores — orquídea, violeta"><span class="escena-color" style="background:#ec4899"></span><span>Flores — decoración</span></button>
+          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Vegetales — tomate cherry, pimiento"><span class="escena-color" style="background:#f97316"></span><span>Vegetales — tu huerto</span></button>
+          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Microgreens — brotes nutritivos"><span class="escena-color" style="background:#06b6d4"></span><span>Microgreens — superalimentos</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="aerogarden-mini.webp" alt="Previsualización de planta" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Hierbas — albahaca, cilantro, menta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Tecnología de cultivo</h2>
+          <p class="section-sub">LED de grado agrícola y sistema automático para resultados profesionales en casa.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">💡</span><div><span class="spec-label">LED</span><span class="spec-valor">20W — spectrum completo</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Agua</span><span class="spec-valor">2L — sensor automático</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🌡️</span><div><span class="spec-label">Temperatura</span><span class="spec-valor">15-30°C — operación</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">30cm × 20cm × 35cm</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🌿</span><div><span class="spec-label">Copas</span><span class="spec-valor">6 incluidas — extra disponibles</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">Guía de cultivo + historial</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Tu huerto en la cocina</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y 6 copas incluidas.</p>
+        <div class="precios">
+          <span class="precio-antes">$139.000</span>
+          <span class="precio-ahora">$109.000</span>
+          <span class="precio-ahorra">Ahorras $30.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🌿</span><span>6 copas de cultivo incluidas</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="7">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Aero<span>Garden</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

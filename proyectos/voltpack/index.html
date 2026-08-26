@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoltPack — Mochila Antirrobo con Puerto Solar</title>
+  <meta name="description" content="Protege tus cosas y carga tus dispositivos. Panel solar 10W, cierre antirrobo y impermeable IPX5.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#eab308; --accent-glow:#facc15; --accent-soft:rgba(234,179,8,0.12); --lamp-color:#eab308; --lamp-glow:rgba(234,179,8,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(234,179,8,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(245,158,11,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Volt<span>Pack</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Modos</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Volt<span>Pack</span></h1>
+        <p class="hero-sub">Protege tus cosas y carga tus dispositivos.</p>
+        <p class="hero-desc">
+          Mochila antirrobo con panel solar integrado de 10W, cierre secreto trasero y batería de 20000mAh.
+          Impermeable IPX5, USB-C de carga rápida y 28 litros de capacidad para tu día a día.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver modos</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">10W</span><span class="stat-label">Solar</span></div>
+          <div class="stat-mini"><span class="stat-valor">20K</span><span class="stat-label">mAh</span></div>
+          <div class="stat-mini"><span class="stat-valor">28L</span><span class="stat-label">Capacidad</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="voltpack.webp" alt="VoltPack — Mochila Antirrobo con Solar" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">☀️</div><span>Energía solar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Tu mochila inteligente</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">☀️</div>
+          <h3>Panel Solar 10W</h3>
+          <p>Carga tu celular y dispositivos con energía solar. Hasta 3 cargas completas en un día soleado.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🔒</div>
+          <h3>Cierre Antirrobo</h3>
+          <p>Acceso secreto por la espalda con cierre oculto. Nadie abre tu mochila sin que tú lo notes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">💧</div>
+          <h3>Impermeable IPX5</h3>
+          <p>Resistente a lluvia intensa. Tus dispositivos y documentos siempre están protegidos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">⚡</div>
+          <h3>Carga Rápida USB-C</h3>
+          <p>Batería de 20000mAh con carga rápida 18W. Carga tu celular de 0 a 50% en 30 minutos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Selecciona tu modo de carga</h2>
+      <p class="section-sub">Cada modo optimiza el consumo de energía según tu situación.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#eab308" data-glow="#facc15" data-nombre="Solar — carga con sol"><span class="escena-color" style="background:#eab308"></span><span>Solar — energía del sol</span></button>
+          <button class="escena-btn" data-color="#3b82f6" data-glow="#60a5fa" data-nombre="USB — carga rápida"><span class="escena-color" style="background:#3b82f6"></span><span>USB — carga rápida 18W</span></button>
+          <button class="escena-btn" data-color="#10b981" data-glow="#34d399" data-nombre="Híbrido — ambas fuentes"><span class="escena-color" style="background:#10b981"></span><span>Híbrido — solar + USB</span></button>
+          <button class="escena-btn" data-color="#8b5cf6" data-glow="#a78bfa" data-nombre="Eco — bajo consumo"><span class="escena-color" style="background:#8b5cf6"></span><span>Eco — máxima autonomía</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="voltpack.webp" alt="Previsualización de modo" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Solar — carga con sol</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Construida para proteger</h2>
+          <p class="section-sub">Materiales de grado militar con tecnología de carga solar integrada.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">☀️</span><div><span class="spec-label">Panel Solar</span><span class="spec-valor">10W — monocristalino</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">20000mAh — Li-Po</span></div></div>
+          <div class="spec-item"><span class="spec-icono">⚡</span><div><span class="spec-label">Carga</span><span class="spec-valor">USB-C 18W + USB-A 12W</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IPX5 — impermeable</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🎒</span><div><span class="spec-label">Capacidad</span><span class="spec-valor">28 litros — laptop 15"</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔒</span><div><span class="spec-label">Seguridad</span><span class="spec-valor">Cierre secreto + RFID blocker</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">Tu mochila del futuro</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y panel solar incluido.</p>
+        <div class="precios">
+          <span class="precio-antes">$249.000</span>
+          <span class="precio-ahora">$199.000</span>
+          <span class="precio-ahorra">Ahorras $50.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">☀️</span><span>Panel solar integrado</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="4">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Volt<span>Pack</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>

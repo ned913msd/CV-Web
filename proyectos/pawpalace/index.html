@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawPalace — Cama Ortopédica concalefacción para Perros</title>
+  <meta name="description" content="Cama ortopédica con calefacción thermostatática, espuma viscoelástica y control por app. Donde tu mascota duerme como en el cielo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/base.css">
+  <style>
+    :root { --accent:#f59e0b; --accent-glow:#fbbf24; --accent-soft:rgba(245,158,11,0.12); --lamp-color:#f59e0b; --lamp-glow:rgba(245,158,11,0.25); }
+    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(245,158,11,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(249,115,22,0.06), transparent); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="/" class="logo">Paw<span>Palace</span></a>
+      <nav class="nav-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Temperatura</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#preventa" class="btn-nav">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="container hero-grid">
+      <div class="hero-texto">
+        <span class="badge-preventa">Preventa — 20% de descuento</span>
+        <h1>Paw<span>Palace</span></h1>
+        <p class="hero-sub">Donde tu mascota duerme como en el cielo.</p>
+        <p class="hero-desc">
+          Cama ortopédica con calefacción thermostatática y espuma viscoelástica de alta densidad.
+          Control de temperatura desde tu celular, funda completamente lavable y 4 tamaños disponibles.
+        </p>
+        <div class="hero-botones">
+          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-secundario">Ver temperaturas</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-mini"><span class="stat-valor">20-40°C</span><span class="stat-label">Rango</span></div>
+          <div class="stat-mini"><span class="stat-valor">4</span><span class="stat-label">Tamaños</span></div>
+          <div class="stat-mini"><span class="stat-valor">IPX4</span><span class="stat-label">Lavable</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="lamp-glow" id="lampGlow"></div>
+        <img src="pawpalace.webp" alt="PawPalace — Cama Ortopédica concalefacción" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="app-badge"><div class="app-badge-icon">📱</div><span>Control por app</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <span class="section-tag">Características</span>
+      <h2 class="section-title">Comodidad premium para tu mejor amigo</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icono">🌡️</div>
+          <h3>Calefacción Thermostatática</h3>
+          <p>Temperatura constante entre 20°C y 40°C. Tu mascota nunca pasa frío ni calor excesivo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🛏️</div>
+          <h3>Espuma Viscoelástica</h3>
+          <p>Capa de 3cm de espuma de memoria que se adapta al cuerpo y alivia articulaciones.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🧼</div>
+          <h3>Funda Lavable</h3>
+          <p>Desmontable con cierre oculto. Lavable a máquina en ciclo suave. Tela Oxford 600D resistente.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icono">🐕</div>
+          <h3>4 Tamaños</h3>
+          <p>Small (hasta 8kg), Medium (8-15kg), Large (15-25kg), XL (25-40kg). Para cada raza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurador" id="configurador">
+    <div class="container">
+      <span class="section-tag">Configurador</span>
+      <h2 class="section-title">Selecciona la temperatura</h2>
+      <p class="section-sub">Ajusta la temperatura según la comodidad de tu mascota y la temperatura ambiente.</p>
+      <div class="config-grid">
+        <div class="escenas">
+          <button class="escena-btn activa" data-color="#3b82f6" data-glow="#60a5fa" data-nombre="Fresca — 22°C (verano)"><span class="escena-color" style="background:#3b82f6"></span><span>Fresca — 22°C (días calurosos)</span></button>
+          <button class="escena-btn" data-color="#f59e0b" data-glow="#fbbf24" data-nombre="Tibia — 30°C (todo el año)"><span class="escena-color" style="background:#f59e0b"></span><span>Tibia — 30°C (uso diario)</span></button>
+          <button class="escena-btn" data-color="#ef4444" data-glow="#f87171" data-nombre="Cálida — 37°C (invierno)"><span class="escena-color" style="background:#ef4444"></span><span>Cálida — 37°C (noches frías)</span></button>
+        </div>
+        <div class="config-preview">
+          <div class="preview-glow" id="previewGlow"></div>
+          <img src="pawpalace.webp" alt="Previsualización de temperatura" class="preview-img" id="previewImg">
+          <div class="escena-nombre" id="escenaNombre">Fresca — 22°C (verano)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="specs-texto">
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Calidad que se nota</h2>
+          <p class="section-sub">Materiales premium y seguridad certificada para tu mascota.</p>
+        </div>
+        <div class="specs-lista">
+          <div class="spec-item"><span class="spec-icono">🌡️</span><div><span class="spec-label">Temperatura</span><span class="spec-valor">20-40°C — control thermostatático</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Consumo</span><span class="spec-valor">12W máximo — eficiente</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🪵</span><div><span class="spec-label">Material</span><span class="spec-valor">Espuma visco 3cm + Oxford 600D</span></div></div>
+          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IPX4 — funda lavable a máquina</span></div></div>
+          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaños</span><span class="spec-valor">S / M / L / XL — hasta 40kg</span></div></div>
+          <div class="spec-item"><span class="spec-icono">🛡️</span><div><span class="spec-label">Seguridad</span><span class="spec-valor">Apagado automático + termostato</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="preventa" id="preventa">
+    <div class="container preventa-grid">
+      <div class="preventa-info">
+        <span class="section-tag">Oferta de preventa</span>
+        <h2 class="section-title">El regalo que tu mascota merece</h2>
+        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 30 días de garantía y 1 año de soporte.</p>
+        <div class="precios">
+          <span class="precio-antes">$199.000</span>
+          <span class="precio-ahora">$159.000</span>
+          <span class="precio-ahorra">Ahorras $40.000</span>
+        </div>
+        <div class="beneficios">
+          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
+          <div class="beneficio"><span class="beneficio-icon">🐕</span><span>Guía de tamaños incluida</span></div>
+        </div>
+      </div>
+      <div class="preventa-cta">
+        <div class="countdown" id="countdown" data-days="5">
+          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        </div>
+        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
+        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">Paw<span>Palace</span></div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+    </div>
+  </footer>
+  <script src="../shared/app.js" defer></script>
+</body>
+</html>
