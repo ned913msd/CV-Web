@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SonicPods Ultra — Audífonos con Cancelación de Ruido Adaptativa</title>
-  <meta name="description" content="Silencio que se adapta a tu mundo. ANC -40dB, modo transparencia, audio espacial y 36h de batería total.">
+  <title>SonicPods Ultra — Audífonos Premium con Cancelación de Ruido</title>
+  <meta name="description" content="Silencio que se adapta a tu mundo. ANC -40dB, audio espacial 360°, 36h de batería total y modo gaming sin lag.">
+  <meta property="og:title" content="SonicPods Ultra — Audio Premium">
+  <meta property="og:description" content="Enfócate en tu sonido. Cancelación de ruido adaptativa de -40dB.">
+  <meta property="og:image" content="sonicpods-ultra.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Particles -->
+  <div class="particles"></div>
+  <!-- Scroll Progress -->
   <div class="scroll-progress"></div>
 
+  <!-- Header -->
   <header>
     <div class="container header-inner">
-      <a href="/" class="logo">Sonic<span>Pods</span></a>
+      <a href="/" class="logo">Sonic<span>Pods</span> Ultra</a>
       <nav class="nav-links">
+        <a href="#showcase">Diseño</a>
+        <a href="#anc">Detalles</a>
         <a href="#features">Características</a>
-        <a href="#modos">Modos</a>
-        <a href="#specs">Especificaciones</a>
-        <a href="#faq">FAQ</a>
-        <a href="#oferta" class="btn-header">Reservar</a>
+        <a href="#reviews">Opiniones</a>
+        <a href="#pricing" class="btn-nav">Comprar →</a>
       </nav>
       <button class="hamburger" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -29,490 +37,436 @@
     </div>
   </header>
 
+  <!-- Mobile Menu -->
   <div class="mobile-menu">
     <button class="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#showcase">Diseño</a>
+    <a href="#anc">Detalles</a>
     <a href="#features">Características</a>
-    <a href="#modos">Modos</a>
-    <a href="#specs">Especificaciones</a>
-    <a href="#faq">FAQ</a>
-    <a href="#oferta" class="btn-header">Reservar</a>
+    <a href="#reviews">Opiniones</a>
+    <a href="#pricing">Comprar →</a>
   </div>
 
+  <!-- ============ 01. HERO ============ -->
   <section class="hero">
     <div class="hero-glow"></div>
     <div class="container hero-grid">
-      <div class="hero-text">
-        <span class="hero-label">Preventa — 20% de descuento</span>
-        <h1>Sonic<span>Pods</span> Ultra</h1>
-        <p class="hero-sub">Silencio que se adapta a tu mundo.</p>
-        <p class="hero-desc">Audífonos inalámbricos con cancelación de ruido adaptativa de -40dB. Modo transparencia, audio espacial y 36 horas de batería total con estuche. Se ajustan a tu entorno en tiempo real.</p>
+      <div class="hero-text reveal">
+        <h1>ENFÓCATE EN TU<br><span class="silver">SONIDO</span></h1>
+        <p class="hero-sub">Audífonos inalámbricos con cancelación de ruido adaptativa de -40dB. Silencio que se adapta a tu mundo en tiempo real.</p>
         <div class="hero-cta">
-          <a href="#oferta" class="btn btn-indigo">Reservar con preventa —20%</a>
-          <a href="#modos" class="btn btn-outline">Ver modos de sonido</a>
-        </div>
-        <div class="hero-badges">
-          <span class="hero-badge"><span class="hero-badge-dot"></span>-40dB ANC</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>36h Total</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>IPX5</span>
+          <a href="#pricing" class="btn btn-white">Comprar ahora →</a>
+          <a href="#anc" class="btn btn-outline">▶ Ver video</a>
         </div>
       </div>
-      <div class="hero-visual">
+      <div class="hero-visual reveal delay-2">
         <div class="hero-glow-img"></div>
-        <img src="sonicpods-ultra.webp" alt="SonicPods Ultra — Audífonos ANC" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <img src="sonicpods-ultra.webp" alt="SonicPods Ultra — Audífonos Premium" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+        <div class="floating-badge-hero">
+          Cancelación de Ruido Activa <span>-40dB</span>
+        </div>
       </div>
     </div>
     <div class="scroll-indicator">
-      <span>Descubre más</span>
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      <span>Desplaza para explorar</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <section class="features" id="features">
-    <div class="container">
-      <span class="section-num">02</span>
-      <span class="section-tag">Características</span>
-      <h2 class="section-title">Sonido que se adapta</h2>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          </div>
-          <h4>ANC Adaptativo -40dB</h4>
-          <p>Cancela ruido de fondo automáticamente según tu entorno: oficina, calle o avión.</p>
-        </div>
-        <div class="feature-card reveal delay-1">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          </div>
-          <h4>Modo Transparencia</h4>
-          <p>Escucha lo que pasa a tu alrededor sin quitarte los audífonos. Ideal para conversar.</p>
-        </div>
-        <div class="feature-card reveal delay-2">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          </div>
-          <h4>Audio Espacial</h4>
-          <p>Sonido envolvente 360° que sigue el movimiento de tu cabeza. Cine y música inmersiva.</p>
-        </div>
-        <div class="feature-card reveal delay-3">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
-          </div>
-          <h4>36 horas totales</h4>
-          <p>8h con ANC + 28h en estuche. Carga rápida: 10min = 2h de reproducción.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="showcase" id="specs">
+  <!-- ============ 02. PRODUCT SHOWCASE ============ -->
+  <section class="showcase" id="showcase">
     <div class="container">
       <div class="showcase-layout">
-        <div class="showcase-visual">
-          <img src="sonicpods-ultra.webp" alt="SonicPods Ultra en uso">
-          <div class="floating-spec floating-spec-1">-40dB ANC</div>
-          <div class="floating-spec floating-spec-2">5.4g</div>
+        <div class="showcase-visual reveal">
+          <div class="showcase-glow"></div>
+          <img src="sonicpods-ultra.webp" alt="SonicPods Ultra vista lateral">
         </div>
-        <div class="showcase-text">
-          <span class="section-num">03</span>
-          <span class="section-tag">Ingeniería</span>
-          <h2 class="section-title">Ingeniería de sonido</h2>
-          <p class="section-sub">Drivers de 11mm con imanes de neodimio y procesamiento de audio avanzado.</p>
-          <div class="specs-list">
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Drivers</span>
-                <span class="spec-value">11mm — imanes de neodimio</span>
-              </div>
+        <div class="reveal delay-1">
+          <div class="section-tag">MoonFly — Audífonos ANC Premium</div>
+          <h2 class="section-title">Cancelación de Ruido Activa</h2>
+          <div class="showcase-price">$109.000 COP</div>
+          <p class="showcase-desc">¿Buscas unos audífonos que te liberen de los cables molestos y te dejen disfrutar tus listas de reproducción favoritas en calidad estéreo HD? Descubre por qué este es el audífono de audio perfecto que no te costará una fortuna.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Modo cancelación de ruido activa
             </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">ANC</span>
-                <span class="spec-value">-40dB — 3 micrófonos</span>
-              </div>
+            <div class="showcase-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Orejeras giratorias 90°
             </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Conexión</span>
-                <span class="spec-value">Bluetooth 5.3 — multipoint</span>
-              </div>
+            <div class="showcase-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Más de 70 horas — llamadas y música inalámbricas
             </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Resistencia</span>
-                <span class="spec-value">IPX5 — sudor y lluvia</span>
-              </div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Batería</span>
-                <span class="spec-value">8h + 28h estuche — USB-C</span>
-              </div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Peso</span>
-                <span class="spec-value">5.4g por auricular — ultraligeros</span>
-              </div>
-            </div>
+          </div>
+          <div class="color-variants">
+            <div class="color-dot black active" title="Negro"></div>
+            <div class="color-dot white" title="Blanco"></div>
+            <div class="color-dot blue" title="Azul"></div>
+            <div class="color-dot gold" title="Dorado"></div>
+          </div>
+          <div class="qty-selector">
+            <button class="qty-btn qty-minus">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn qty-plus">+</button>
+          </div>
+          <div style="margin-top:16px">
+            <a href="#pricing" class="btn btn-white">Comprar ahora →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurator" id="modos">
+  <!-- ============ 03. COMPATIBILITY ============ -->
+  <section class="compatibility" id="compatibility">
     <div class="container">
-      <span class="section-num">04</span>
-      <span class="section-tag">Modos</span>
-      <h2 class="section-title">Selecciona tu modo</h2>
-      <p class="section-sub">Cada modo optimiza el audio y la cancelación según tu actividad.</p>
-      <div class="config-grid">
-        <div class="mode-tabs">
-          <button class="mode-tab active" data-mode="anc">
-            <span class="mode-tab-dot" style="background: #6366f1"></span>
-            <span>ANC Máximo — silencio total</span>
-          </button>
-          <button class="mode-tab" data-mode="adaptativo">
-            <span class="mode-tab-dot" style="background: #06b6d4"></span>
-            <span>Adaptativo — inteligente</span>
-          </button>
-          <button class="mode-tab" data-mode="transparencia">
-            <span class="mode-tab-dot" style="background: #10b981"></span>
-            <span>Transparencia — entorno abierto</span>
-          </button>
-          <button class="mode-tab" data-mode="gaming">
-            <span class="mode-tab-dot" style="background: #f97316"></span>
-            <span>Gaming — sin delay</span>
-          </button>
+      <div class="section-tag">Compatibilidad</div>
+      <h2 class="section-title">Compatibles con todo</h2>
+      <p class="section-sub" style="margin:0 auto">Emparejamiento fácil con un solo clic y conectividad Bluetooth 5.3 definitiva con todos tus dispositivos.</p>
+      <div class="compat-grid">
+        <div class="compat-card reveal">
+          <div class="compat-icon">🪟</div>
+          <div class="compat-name">Windows</div>
         </div>
-        <div class="mode-visual">
-          <div class="mode-glow"></div>
-          <img src="sonicpods-ultra.webp" alt="Previsualización de modo">
-          <div class="mode-info">
-            <h3 class="mode-name">ANC Máximo</h3>
-            <p class="mode-desc">Cancelación de ruido máxima de -40dB. Silencio total para concentración profunda.</p>
-            <div class="mode-params">
-              <div class="mode-param">
-                <span class="mode-param-val mode-db">-40dB</span>
-                <span class="mode-param-label">Cancelación</span>
-              </div>
-              <div class="mode-param">
-                <span class="mode-param-val mode-latency">Normal</span>
-                <span class="mode-param-label">Latencia</span>
-              </div>
-            </div>
-          </div>
+        <div class="compat-card reveal delay-1">
+          <div class="compat-icon">🍎</div>
+          <div class="compat-name">Apple</div>
+        </div>
+        <div class="compat-card reveal delay-2">
+          <div class="compat-icon">📱</div>
+          <div class="compat-name">iOS</div>
+        </div>
+        <div class="compat-card reveal delay-3">
+          <div class="compat-icon">🤖</div>
+          <div class="compat-name">Android</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="nc-visual">
+  <!-- ============ 04. ANC TECHNOLOGY ============ -->
+  <section class="anc" id="anc">
     <div class="container">
-      <span class="section-num">05</span>
-      <span class="section-tag">Cancelación de Ruido</span>
-      <h2 class="section-title">Silencio absoluto</h2>
-      <div class="nc-circle">
-        <div>
-          <div class="nc-value">-40dB</div>
-          <div class="nc-label">Cancelación máxima</div>
+      <div class="anc-layout">
+        <div class="reveal">
+          <div class="section-tag">Tecnología</div>
+          <h2 class="section-title">Cancelación Adaptativa de Ruido</h2>
+          <p class="section-sub">Cancela ruido de fondo automáticamente según tu entorno. Tres micrófonos analizan el sonido ambiental 50,000 veces por segundo.</p>
+          <div class="anc-stats">
+            <div>
+              <div class="anc-stat-val">-40dB</div>
+              <div class="anc-stat-label">Cancelación máxima</div>
+            </div>
+            <div>
+              <div class="anc-stat-val">3 mics</div>
+              <div class="anc-stat-label">Micrófonos HD</div>
+            </div>
+            <div>
+              <div class="anc-stat-val">50K Hz</div>
+              <div class="anc-stat-label">Muestreo por segundo</div>
+            </div>
+          </div>
+        </div>
+        <div class="anc-visual reveal delay-2">
+          <div class="wave-container">
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+            <div class="wave-ring"></div>
+            <div class="anc-center-text">
+              <div class="anc-center-val">-40dB</div>
+              <div class="anc-center-label">Silencio absoluto</div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="section-sub" style="margin: 0 auto;">3 micrófonos trabajan juntos para cancelar el ruido externo. Desde el motor de un avión hasta el ruido de una oficina.</p>
     </div>
   </section>
 
-  <section class="testimonials" id="testimonios">
+  <!-- ============ 05. BATTERY LIFE ============ -->
+  <section class="battery" id="battery">
     <div class="container">
-      <span class="section-num">06</span>
-      <span class="section-tag">Testimonios</span>
-      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">DM</div>
-            <div class="testimonial-info">
-              <h5>Daniel Moreno</h5>
-              <p>Product Designer</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"El ANC es brutal. En la oficina no escucho nada. La calidad de sonido es impresionante para su tamaño."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
+      <div class="section-tag">Batería</div>
+      <h2 class="section-title">Energía para todo el día</h2>
+      <div class="battery-visual">
+        <div class="battery-bar"><div class="battery-fill"></div></div>
+        <div class="battery-hours">36h</div>
+        <div class="battery-label">Vida total de la batería</div>
+      </div>
+      <div class="battery-stats">
+        <div class="reveal">
+          <div class="battery-stat-icon">🔋</div>
+          <div class="battery-stat-val">8h</div>
+          <div class="battery-stat-label">Con ANC activado</div>
         </div>
-        <div class="testimonial-card reveal delay-1">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">SG</div>
-            <div class="testimonial-info">
-              <h5>Sofía García</h5>
-              <p>Freelancer</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"La batería me dura toda la semana. El modo transparencia es perfecto para cuando necesito escuchar."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
+        <div class="reveal delay-1">
+          <div class="battery-stat-icon">📦</div>
+          <div class="battery-stat-val">28h</div>
+          <div class="battery-stat-label">En estuche de carga</div>
         </div>
-        <div class="testimonial-card reveal delay-2">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">ML</div>
-            <div class="testimonial-info">
-              <h5>Miguel López</h5>
-              <p>Gamer</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"El modo gaming es lo que buscaba. Sin delay, audio preciso. Los pasos se escuchan perfecto."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
+        <div class="reveal delay-2">
+          <div class="battery-stat-icon">⚡</div>
+          <div class="battery-stat-val">2h</div>
+          <div class="battery-stat-label">Con solo 10 min de carga</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ 06. SPATIAL AUDIO ============ -->
+  <section class="spatial" id="spatial">
+    <div class="container">
+      <div class="spatial-layout">
+        <div class="reveal">
+          <div class="section-tag">Audio Espacial</div>
+          <h2 class="section-title">Audio Espacial 360°</h2>
+          <p class="section-sub">Sonido envolvente que sigue el movimiento de tu cabeza. Tecnología de head tracking para una experiencia cinematográfica inmersiva.</p>
+          <div class="spatial-features">
+            <div class="spatial-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Head tracking dinámico
+            </div>
+            <div class="spatial-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Dolby Atmos compatible
+            </div>
+            <div class="spatial-feature">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Sonido direccional preciso
+            </div>
+          </div>
+        </div>
+        <div class="spatial-visual reveal delay-2">
+          <div class="spatial-rings">
+            <div class="spatial-ring"></div>
+            <div class="spatial-ring"></div>
+            <div class="spatial-ring"></div>
+            <div class="spatial-ring"></div>
+            <div class="spatial-center">
+              <div class="spatial-center-icon">🎧</div>
+              <div class="spatial-center-text">360° Sonido</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07. GAMING MODE ============ -->
+  <section class="gaming" id="gaming">
+    <div class="container">
+      <div class="section-tag">Gaming</div>
+      <h2 class="section-title">Modo Gaming — Cero Lag</h2>
+      <div class="gaming-visual">
+        <div class="gaming-circle">
+          <div class="gaming-circle-inner">🎮</div>
+        </div>
+      </div>
+      <div class="gaming-badge">60ms Latencia Ultra Baja</div>
+      <div class="gaming-features">
+        <div class="reveal">
+          <div class="gaming-feature-val">60ms</div>
+          <div class="gaming-feature-label">Latencia ultra baja</div>
+        </div>
+        <div class="reveal delay-1">
+          <div class="gaming-feature-val">Audio Sync</div>
+          <div class="gaming-feature-label">Sin delay</div>
+        </div>
+        <div class="reveal delay-2">
+          <div class="gaming-feature-val">Ventaja</div>
+          <div class="gaming-feature-label">Competitiva</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08. BUILD QUALITY ============ -->
+  <section class="build" id="features">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-tag">Construcción</div>
+        <h2 class="section-title">Calidad Premium, Pluma Ligera</h2>
+      </div>
+      <div class="build-grid">
+        <div class="build-card reveal">
+          <div class="build-icon">🪶</div>
+          <div class="build-val">5.4g</div>
+          <div class="build-label">Por auricular — ultraligero</div>
+        </div>
+        <div class="build-card reveal delay-1">
+          <div class="build-icon">💧</div>
+          <div class="build-val blue">IPX5</div>
+          <div class="build-label">Resistente al sudor y agua</div>
+        </div>
+        <div class="build-card reveal delay-2">
+          <div class="build-icon">🔊</div>
+          <div class="build-val purple">11mm</div>
+          <div class="build-label">Drivers de neodimio</div>
+        </div>
+        <div class="build-card reveal delay-3">
+          <div class="build-icon">📡</div>
+          <div class="build-val green">5.3</div>
+          <div class="build-label">Bluetooth multipoint</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09. COLOR OPTIONS ============ -->
+  <section class="colors" id="colors">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-tag">Colores</div>
+        <h2 class="section-title">Elige tu Estilo</h2>
+      </div>
+      <div class="colors-grid">
+        <div class="color-card midnight active reveal">
+          <img src="sonicpods-ultra.webp" alt="Midnight Black">
+          <div class="color-card-label">Midnight Black</div>
+        </div>
+        <div class="color-card stardust reveal delay-1">
+          <img src="sonicpods-ultra.webp" alt="Stardust White">
+          <div class="color-card-label">Stardust White</div>
+        </div>
+        <div class="color-card cosmic reveal delay-2">
+          <img src="sonicpods-ultra.webp" alt="Cosmic Blue">
+          <div class="color-card-label">Cosmic Blue</div>
+        </div>
+        <div class="color-card lunar reveal delay-3">
+          <img src="sonicpods-ultra.webp" alt="Lunar Gold">
+          <div class="color-card-label">Lunar Gold</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. UNBOXING ============ -->
   <section class="unboxing" id="unboxing">
-    <div class="container unboxing-layout">
-      <div class="unboxing-visual">
-        <img src="sonicpods-ultra.webp" alt="SonicPods Ultra packaging">
-      </div>
-      <div class="unboxing-text">
-        <span class="section-num">07</span>
-        <span class="section-tag">Unboxing</span>
-        <h2 class="section-title">Qué incluye la caja</h2>
-        <p class="section-sub">Todo lo que necesitas para audio premium.</p>
-        <ul class="unboxing-list">
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>SonicPods Ultra (par)</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Estuche de carga magnético</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>3 tamaños de almohadillas</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Cable USB-C de carga</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Manual de usuario</span>
-          </li>
-        </ul>
-        <span class="unboxing-badge">🚚 Envío gratis en Colombia</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="offer" id="oferta">
-    <div class="container offer-layout">
-      <div class="offer-info">
-        <span class="section-num">08</span>
-        <span class="offer-tag">Preventa limitada</span>
-        <h2 class="offer-title">Tu silencio personal.</h2>
-        <div class="offer-price">
-          <span class="offer-old">$219.000</span>
-          <span class="offer-new">$175.000</span>
-          <span class="offer-save">Ahorras $44.000</span>
-        </div>
-        <ul class="offer-benefits">
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Envío gratis a toda Colombia</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>1 año de garantía</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Estuche de carga incluido</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Soporte técnico 24/7</span>
-          </li>
-        </ul>
-      </div>
-      <div class="offer-cta-card">
-        <h3 class="offer-card-title">Reserva tus SonicPods Ultra</h3>
-        <div class="offer-card-price">$175.000 COP</div>
-        <a href="#" class="btn btn-indigo btn-block">Reservar ahora →</a>
-        <p class="offer-card-note">Reembolso completo si no estás satisfecho</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="countdown-section" id="countdown">
     <div class="container">
-      <h3 class="countdown-heading">La preventa termina en</h3>
-      <div class="countdown-row" data-days="3">
-        <div class="countdown-unit">
-          <span class="countdown-num" id="dias">00</span>
-          <span class="countdown-label">Días</span>
+      <div class="unboxing-layout">
+        <div class="reveal">
+          <div class="section-tag">Contenido</div>
+          <h2 class="section-title">Qué incluye la caja</h2>
+          <div class="unboxing-list">
+            <div class="unboxing-item"><span class="unboxing-num">1</span> SonicPods Ultra (par)</div>
+            <div class="unboxing-item"><span class="unboxing-num">2</span> Estuche de carga magnético</div>
+            <div class="unboxing-item"><span class="unboxing-num">3</span> 3 tamaños de almohadillas (S, M, L)</div>
+            <div class="unboxing-item"><span class="unboxing-num">4</span> Cable USB-C de carga</div>
+            <div class="unboxing-item"><span class="unboxing-num">5</span> Manual de usuario</div>
+          </div>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="horas">00</span>
-          <span class="countdown-label">Horas</span>
-        </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="minutos">00</span>
-          <span class="countdown-label">Min</span>
-        </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="segundos">00</span>
-          <span class="countdown-label">Seg</span>
+        <div class="unboxing-visual reveal delay-2">
+          <div class="unboxing-glow"></div>
+          <img src="sonicpods-ultra.webp" alt="SonicPods Ultra unboxing">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="faq" id="faq">
+  <!-- ============ 11. PRICING ============ -->
+  <section class="pricing" id="pricing">
     <div class="container">
-      <span class="section-num">09</span>
-      <span class="section-tag">Preguntas frecuentes</span>
-      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <span class="pricing-badge">⚡ OFERTA LIMITADA</span>
+      <h2 class="section-title">Audio Premium, Precio Accesible</h2>
+      <div class="pricing-price reveal">
+        <span class="pricing-old">$139.000</span>
+        <span class="pricing-new">$109.000 COP</span>
+        <span class="pricing-save">Ahorras $30.000</span>
+      </div>
+      <div class="pricing-benefits reveal delay-1">
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Envío gratis a toda Colombia
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          1 año de garantía completa
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Devoluciones en 30 días
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Soporte técnico 24/7
+        </div>
+      </div>
+      <div class="reveal delay-2" style="margin-top:32px">
+        <a href="#" class="btn btn-white" style="font-size:1.1rem;padding:18px 56px;border-radius:12px">Ordenar ahora →</a>
+      </div>
+      <div class="trust-badges reveal delay-3">
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Reembolso completo
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Pago seguro encriptado
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Rastreo en tiempo real
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12. FAQ ============ -->
+  <section class="faq" id="reviews">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-tag">Preguntas</div>
+        <h2 class="section-title">Todo lo que necesitas saber</h2>
+      </div>
       <div class="faq-grid">
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Cuánto dura la batería?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">8 horas con ANC activado + 28 horas adicionales en el estuche. Carga rápida: 10 minutos = 2 horas de reproducción.</div>
-          </div>
+          <button class="faq-question">¿Cuánto dura la batería?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">8 horas con ANC activado + 28 horas adicionales en el estuche de carga. Carga rápida: 10 minutos = 2 horas de reproducción.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Son resistentes al agua?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, tienen certificación IPX5. Resistentes al sudor y lluvia ligera. Ideales para deporte y uso diario.</div>
-          </div>
+          <button class="faq-question">¿Son resistentes al agua?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí, certificación IPX5. Resistentes al sudor y lluvia ligera.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Se pueden conectar a 2 dispositivos?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, Bluetooth 5.3 con multipoint. Conecta tu celular y computadora simultáneamente y cambia entre ellos automáticamente.</div>
-          </div>
+          <button class="faq-question">¿Puedo conectarlos a 2 dispositivos?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí, Bluetooth 5.3 con conectividad multipoint. Conecta tu celular y computador al mismo tiempo.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Tienen latency para gaming?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, el modo gaming ofrece latencia ultra baja de 60ms. Audio sincronizado sin delay para gaming competitivo.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Qué tan pesados son?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Solo 5.4g por auricular. Ultraligeros para uso prolongado sin cansancio. Incluyen 3 tamaños de almohadillas.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿El ANC funciona en avión?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, el ANC de -40dB cancela eficientemente el ruido de motores de avión. Vuelos más tranquilos y descansados.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Incluye estuche de carga?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, estuche magnético de carga incluido. Carga por USB-C y almacena 28 horas adicionales de batería.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Qué garantía tienen?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">1 año de garantía contra defectos de fabricación. Además, 30 días de garantía de satisfacción completa con reembolso.</div>
-          </div>
+          <button class="faq-question">¿Cuál es la latencia para gaming?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">60ms en modo gaming — latencia ultra baja para gaming competitivo.</div></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container footer-inner">
-      <div class="footer-brand">Sonic<span>Pods</span></div>
+      <div class="footer-brand">Sonic<span>Pods</span> Ultra</div>
       <div class="footer-links">
+        <a href="#showcase">Diseño</a>
+        <a href="#anc">Tecnología</a>
         <a href="#features">Características</a>
-        <a href="#modos">Modos</a>
-        <a href="#specs">Especificaciones</a>
-        <a href="#faq">FAQ</a>
+        <a href="#reviews">Opiniones</a>
+        <a href="#pricing">Comprar</a>
       </div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a></p>
     </div>
   </footer>
 
+  <!-- Mobile Sticky CTA -->
   <div class="mobile-sticky">
     <div class="mobile-sticky-inner">
       <div class="mobile-sticky-price">
-        <span class="mobile-sticky-old">$219.000</span>
-        <span class="mobile-sticky-new">$175.000 COP</span>
+        <span class="mobile-sticky-old">$139.000</span>
+        <span class="mobile-sticky-new">$109.000 COP</span>
       </div>
-      <a href="#oferta" class="mobile-sticky-btn">Reservar →</a>
+      <a href="#pricing" class="mobile-sticky-btn">Comprar</a>
     </div>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
