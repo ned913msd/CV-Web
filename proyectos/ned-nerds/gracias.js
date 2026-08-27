@@ -16,8 +16,8 @@
     LANDING_URL: 'index.html',
     BRIEFING_URL: '#',                  // Reemplazar por URL del formulario real
     CALENDLY_URL: '#',                 // Reemplazar por URL de Calendly real
-    SUPPORT_EMAIL: 'info@ned.co',
-    SUPPORT_WHATSAPP: '573001234567'
+    SUPPORT_EMAIL: 'contacto.nedbustamante@gmail.com',
+    SUPPORT_WHATSAPP: '573003491413'
   };
 
   /* ---------- HELPERS ---------- */
