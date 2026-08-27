@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Seguro | NED</title>
+    <meta name="description" content="Checkout seguro y sin fricción. Completa tu compra en menos de 2 minutos.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0A'/><text y='.9em' x='50%' text-anchor='middle' font-size='60' font-family='Arial' font-weight='bold' fill='%2310B981'>N</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="co-header">
+    <div class="co-container co-header-inner">
+        <a href="index.html" class="co-logo">NED<span class="co-logo-dot">.</span></a>
+        <div class="co-secure-badge"><span class="co-badge-icon">🔒</span> Pago Seguro</div>
+    </div>
+</header>
+
+<main class="co-main">
+    <div class="co-container">
+
+        <!-- ============ GRID: FORM + SUMMARY ============ -->
+        <div class="checkout-grid">
+
+            <!-- ============ LEFT COLUMN: FORM ============ -->
+            <div class="checkout-form-col">
+
+                <h1 class="co-title">Finaliza tu Compra</h1>
+                <p class="co-subtitle">Todos tus datos están protegidos y encriptados. Menos de 2 minutos.</p>
+
+                <!-- Contacto -->
+                <section class="form-section" id="sec-contacto">
+                    <h2 class="section-title"><span class="section-num">1</span> Contacto</h2>
+                    <div class="field">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com"
+                               autocomplete="email" inputmode="email" data-req>
+                        <span class="field-error" role="alert"></span>
+                    </div>
+                    <label class="newsletter-check">
+                        <input type="checkbox" id="newsletter" checked>
+                        <span>Quiero recibir novedades y ofertas (puedes darte de baja cuando quieras)</span>
+                    </label>
+                </section>
+
+                <!-- Envío -->
+                <section class="form-section" id="sec-envio">
+                    <h2 class="section-title"><span class="section-num">2</span> Datos de Envío</h2>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Juan"
+                                   autocomplete="given-name" data-req>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                        <div class="field">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" placeholder="Pérez"
+                                   autocomplete="family-name" data-req>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="300 123 4567"
+                               autocomplete="tel" inputmode="tel" data-req>
+                        <span class="field-error" role="alert"></span>
+                    </div>
+                    <div class="field">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Calle 123 #45-67, Apto 101"
+                               autocomplete="street-address" data-req>
+                        <span class="field-error" role="alert"></span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" id="ciudad" name="ciudad" placeholder="Bogotá"
+                                   autocomplete="address-level2" data-req>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                        <div class="field field-sm">
+                            <label for="cp">Código Postal</label>
+                            <input type="text" id="cp" name="cp" placeholder="110111"
+                                   autocomplete="postal-code" inputmode="numeric" data-req>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="pais">País</label>
+                        <select id="pais" name="pais" autocomplete="country" data-req>
+                            <option value="">Selecciona tu país</option>
+                            <option value="CO">Colombia</option>
+                            <option value="MX">México</option>
+                            <option value="US">Estados Unidos</option>
+                            <option value="ES">España</option>
+                            <option value="PE">Perú</option>
+                            <option value="CL">Chile</option>
+                            <option value="AR">Argentina</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="VE">Venezuela</option>
+                            <option value="BR">Brasil</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <span class="field-error" role="alert"></span>
+                    </div>
+                </section>
+
+                <!-- Método de envío -->
+                <section class="form-section" id="sec-metodo-envio">
+                    <h2 class="section-title"><span class="section-num">3</span> Método de Envío</h2>
+                    <div class="ship-options">
+                        <label class="ship-option selected">
+                            <input type="radio" name="ship" value="std" checked>
+                            <span class="ship-radio"></span>
+                            <span class="ship-info">
+                                <strong>Estándar</strong>
+                                <span class="ship-time">5-7 días hábiles</span>
+                            </span>
+                            <span class="ship-price ship-free">GRATIS</span>
+                        </label>
+                        <label class="ship-option">
+                            <input type="radio" name="ship" value="exp">
+                            <span class="ship-radio"></span>
+                            <span class="ship-info">
+                                <strong>Express</strong>
+                                <span class="ship-time">2-3 días hábiles</span>
+                            </span>
+                            <span class="ship-price" id="express-fee">+$15.000</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Pago -->
+                <section class="form-section" id="sec-pago">
+                    <h2 class="section-title"><span class="section-num">4</span> Método de Pago</h2>
+
+                    <div class="pay-tabs" role="tablist">
+                        <button class="pay-tab active" data-tab="card" role="tab" aria-selected="true">💳 Tarjeta</button>
+                        <button class="pay-tab" data-tab="paypal" role="tab" aria-selected="false">PayPal</button>
+                        <button class="pay-tab" data-tab="pse" role="tab" aria-selected="false">PSE</button>
+                    </div>
+
+                    <div class="pay-panel" id="panel-card">
+                        <div class="field">
+                            <label for="cc-number">Número de tarjeta</label>
+                            <div class="card-input-wrap">
+                                <input type="text" id="cc-number" name="cc-number" placeholder="1234 5678 9012 3456"
+                                       autocomplete="cc-number" inputmode="numeric" maxlength="23" data-card>
+                                <div class="card-brand-icons" aria-hidden="true">
+                                    <span class="brand-icon brand-visa" data-brand="visa">VISA</span>
+                                    <span class="brand-icon brand-mc" data-brand="mc"><span class="mc-dot mc-dot-1"></span><span class="mc-dot mc-dot-2"></span></span>
+                                    <span class="brand-icon brand-amex" data-brand="amex">AMEX</span>
+                                </div>
+                            </div>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="cc-exp">Fecha de expiración</label>
+                                <input type="text" id="cc-exp" placeholder="MM/AA" maxlength="5"
+                                       autocomplete="cc-exp" inputmode="numeric" data-card>
+                                <span class="field-error" role="alert"></span>
+                            </div>
+                            <div class="field field-sm">
+                                <label for="cc-cvv">CVV</label>
+                                <input type="password" id="cc-cvv" placeholder="123" maxlength="4"
+                                       autocomplete="cc-csc" inputmode="numeric" data-card>
+                                <span class="field-error" role="alert"></span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="cc-name">Nombre del titular</label>
+                            <input type="text" id="cc-name" placeholder="Como aparece en la tarjeta"
+                                   autocomplete="cc-name" data-req>
+                            <span class="field-error" role="alert"></span>
+                        </div>
+                        <p class="secure-note">🔒 Tus datos de pago se procesan de forma segura con cifrado 256-bit.</p>
+                    </div>
+
+                    <div class="pay-panel hidden" id="panel-paypal" data-altpay>
+                        <div class="altpay-box">
+                            <div class="altpay-icon">🅿️</div>
+                            <p>Serás redirigido a <strong>PayPal</strong> para completar tu pago de forma segura.</p>
+                            <p class="altpay-msg">Asegúrate de que el correo que ingresaste sea el de tu cuenta PayPal.</p>
+                        </div>
+                    </div>
+
+                    <div class="pay-panel hidden" id="panel-pse" data-altpay>
+                        <div class="altpay-box">
+                            <div class="altpay-icon">🏦</div>
+                            <p>Serás redirigido a <strong>PSE</strong> para seleccionar tu banco y completar la transacción.</p>
+                            <p class="altpay-msg">Funciona con tus cuentas de ahorro o corriente en Colombia.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ============ RIGHT COLUMN: SUMMARY ============ -->
+            <div class="checkout-summary-col">
+                <aside class="summary-card" id="summary">
+
+                    <button type="button" class="summary-toggle" id="summary-toggle" aria-expanded="true">
+                        <span class="summary-toggle-label">Resumen del pedido</span>
+                        <span class="summary-toggle-total" id="summary-toggle-total">$0</span>
+                        <span class="summary-toggle-icon">▾</span>
+                    </button>
+
+                    <div class="summary-body" id="summary-body">
+
+                        <!-- PRODUCT (dinámico vía URL/localStorage) -->
+                        <div class="order-product" id="order-product"></div>
+
+                        <!-- ORDER BUMP -->
+                        <div class="order-bump" id="order-bump">
+                            <label class="bump-check">
+                                <input type="checkbox" id="bump-check">
+                                <span class="bump-checkbox"></span>
+                                <span class="bump-text">
+                                    <strong>¿Proteger tu compra?</strong>
+                                    <span>Agrega <strong>Garantía Extendida +30 días</strong> por solo <strong class="bump-price" id="bump-price">$15.000</strong></span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- CÓDIGO DE DESCUENTO -->
+                        <div class="discount-box">
+                            <input type="text" id="discount-input" placeholder="Código de descuento" autocomplete="off">
+                            <button type="button" class="discount-btn" id="discount-btn">Aplicar</button>
+                        </div>
+                        <p class="discount-msg" id="discount-msg" role="status"></p>
+
+                        <!-- TOTALS -->
+                        <div class="totals">
+                            <div class="total-row"><span>Subtotal</span><span class="total-money" id="t-subtotal">$0</span></div>
+                            <div class="total-row total-bump-row hidden" id="row-bump"><span>Garantía extendida</span><span class="total-money" id="t-bump">$0</span></div>
+                            <div class="total-row"><span>Envío</span><span class="total-money" id="t-ship">GRATIS</span></div>
+                            <div class="total-row total-discount-row hidden" id="row-discount"><span>Descuento</span><span class="total-money total-discount" id="t-discount">−$0</span></div>
+                            <div class="total-final">
+                                <span>TOTAL</span>
+                                <span class="total-big" id="t-total">$0</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA FINAL -->
+                        <button type="button" class="btn-buy" id="buy-btn">
+                            <span class="btn-buy-text">COMPRAR AHORA →</span>
+                            <span class="btn-buy-loading hidden"><span class="spinner"></span> Procesando...</span>
+                        </button>
+
+                        <!-- TRUST BADGES -->
+                        <div class="trust-badges">
+                            <div class="trust-item"><span>🔒</span><small>Pago Seguro</small></div>
+                            <div class="trust-item"><span>🛡️</span><small>Garantía</small></div>
+                            <div class="trust-item"><span>🚚</span><small>Envío</small></div>
+                            <div class="trust-item"><span>🎧</span><small>Soporte 24/7</small></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="co-footer">
+    <div class="co-container co-footer-inner">
+        <div class="co-footer-links">
+            <a href="#footer" id="legal-terms">Términos y Condiciones</a>
+            <a href="#footer" id="legal-privacy">Política de Privacidad</a>
+        </div>
+        <p class="co-footer-ssl">🔒<span class="co-footer-ssl-text">Conexión encriptada SSL 256-bit</span></p>
+    </div>
+</footer>
+
+<!-- ============ MOBILE STICKY BUY BAR ============ -->
+<div class="mobile-buy-bar" id="mobile-buy-bar">
+    <div class="mobile-buy-total">
+        <span class="mbt-label">Total</span>
+        <span class="mbt-value" id="mobile-total">$0</span>
+    </div>
+    <button type="button" class="btn-buy btn-buy-sticky" id="buy-sticky">
+        <span class="btn-buy-text">COMPRAR AHORA →</span>
+        <span class="btn-buy-loading hidden"><span class="spinner"></span> Procesando...</span>
+    </button>
+</div>
+
+<!-- ============ SUCCESS MODAL ============ -->
+<div class="modal-overlay hidden" id="success-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+        <div class="modal-check">✓</div>
+        <h2>¡Compra Exitosa!</h2>
+        <p>Gracias por tu compra. Te enviamos la confirmación y los detalles de seguimiento a tu correo.</p>
+        <div class="modal-order">
+            <span>N° de pedido</span>
+            <strong id="modal-order-num">#000000</strong>
+        </div>
+        <button type="button" class="modal-btn" id="modal-close">VOLVER A LA TIENDA</button>
+    </div>
+</div>
+
+<script src="checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'>
+  <rect width='400' height='400' fill='#1A1A1A'/>
+  <defs>
+    <linearGradient id='box' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0' stop-color='#262626'/><stop offset='1' stop-color='#1A1A1A'/>
+    </linearGradient>
+  </defs>
+  <rect x='50' y='60' width='300' height='280' rx='16' fill='url(#box)' stroke='#374151' stroke-width='2'/>
+  <path d='M200 120 v70 M170 170 h60' stroke='#10B981' stroke-width='4' stroke-linecap='round' opacity='0.4'/>
+  <circle cx='200' cy='210' r='48' fill='none' stroke='#374151' stroke-width='3'/>
+  <circle cx='200' cy='210' r='26' fill='none' stroke='#F97316' stroke-width='3' opacity='0.8'/>
+  <circle cx='200' cy='210' r='9' fill='#10B981'/>
+  <text x='200' y='290' text-anchor='middle' fill='#9CA3AF' font-family='Inter, sans-serif' font-size='15'>Producto personalizado</text>
+</svg>

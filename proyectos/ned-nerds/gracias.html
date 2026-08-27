@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Proyecto Confirmado! | NED</title>
+    <meta name="description" content="Gracias por confiar en NED. Tu proyecto de landing page de alta conversión está confirmado. Sigue los próximos pasos para iniciar.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A0A0A'/><text y='.9em' x='50%' text-anchor='middle' font-size='60' font-family='Arial' font-weight='bold' fill='%2310B981'>N</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="gracias.css">
+</head>
+<body>
+
+<main class="ty-main">
+
+    <!-- ============ SECCIÓN 1: CONFIRMACIÓN ============ -->
+    <section class="confirm">
+        <div class="check-icon" aria-hidden="true">
+            <svg viewBox="0 0 52 52"><circle class="check-ring" cx="26" cy="26" r="24" fill="none"/><path class="check-mark" fill="none" d="M14 27 l8 8 l16 -16"/></svg>
+        </div>
+        <h1>¡Proyecto Confirmado! 🚀</h1>
+        <p class="confirm-sub">Tu solicitud para la Landing Page de Alta Conversión ha sido recibida.</p>
+        <p class="confirm-msg">En breve recibirás un correo con tu factura y los próximos pasos para iniciar el diseño.</p>
+        <div class="project-id">ID de Proyecto: <span id="project-id">#LP-00000</span></div>
+    </section>
+
+    <!-- ============ SECCIÓN 2: RESUMEN DEL SERVICIO ============ -->
+    <section class="summary">
+        <div class="service-card">
+            <div class="service-icon" aria-hidden="true">🚀</div>
+            <div class="service-body">
+                <span class="service-label">SERVICIO CONTRATADO</span>
+                <h2 class="service-name" id="plan-name">Plan Professional</h2>
+                <p class="service-details" id="plan-details">Landing page completa de 8 secciones · Copywriting · SEO técnico</p>
+            </div>
+            <div class="service-total">
+                <span class="total-label">Total pagado</span>
+                <span class="total-value" id="plan-price">$597 USD</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECCIÓN 3: ONE-CLICK UPSELL ============ -->
+    <section class="upsell" id="upsell" aria-label="Oferta exclusiva de onboarding">
+        <div class="upsell-card">
+            <div class="upsell-badge">
+                <span>⚡ OFERTA EXCLUSIVA DE ONBOARDING</span>
+                <span class="countdown-wrap"><span class="countdown" id="countdown">15:00</span> ⏰</span>
+            </div>
+
+            <div class="upsell-body" id="upsell-body">
+                <h2>¡Espera! Maximiza los resultados de tu nueva Landing…</h2>
+                <p class="upsell-intro">Agrega ahora un <strong>Setup Completo de Google Analytics 4 + Pixel de Facebook + A/B Testing Inicial</strong> para que tu landing funcione a máximo rendimiento desde el día 1.</p>
+
+                <ul class="upsell-benefits">
+                    <li><span class="benefit-check">✓</span> Medición exacta de ROI en tiempo real</li>
+                    <li><span class="benefit-check">✓</span> Optimización de tus Ads desde el día 1</li>
+                    <li><span class="benefit-check">✓</span> Datos reales para escalar con confianza</li>
+                </ul>
+
+                <div class="upsell-prices">
+                    <span class="upsell-regular">$150 USD</span>
+                    <span class="upsell-special" id="upsell-price">Solo $49 USD</span>
+                    <span class="upsell-save">DESCUENTO ONBOARDING</span>
+                </div>
+
+                <button type="button" class="btn-upsell" id="upsell-btn">
+                    <span class="btn-text">SÍ, AGREGAR A MI PROYECTO →</span>
+                    <span class="btn-loading hidden"><span class="spinner"></span> Agregando a tu proyecto…</span>
+                </button>
+
+                <div class="upsell-added hidden" id="upsell-added" role="status">
+                    <div class="added-check">✓</div>
+                    <div>
+                        <strong>¡Garantía de Tracking agregada con éxito!</strong>
+                        <span id="upsell-added-line">+$49 USD serán agregados a tu factura pendiente.</span>
+                    </div>
+                </div>
+
+                <button type="button" class="upsell-decline" id="upsell-decline">No gracias, prefiero configurar el tracking yo mismo más tarde</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECCIÓN 4: PRÓXIMOS PASOS ============ -->
+    <section class="steps">
+        <h2>¿Qué sigue ahora para iniciar tu proyecto?</h2>
+        <ol class="timeline">
+            <li class="timeline-item done">
+                <div class="timeline-ico">✓</div>
+                <div class="timeline-body">
+                    <h3>Proyecto Confirmado</h3>
+                    <p>Tu pedido fue registrado y ya está en cola de diseño. Estado: <span class="status-chip">ACTIVO</span></p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-ico">📝</div>
+                <div class="timeline-body">
+                    <h3>Completa tu Briefing</h3>
+                    <p>Revisa tu correo y llena el cuestionario de 5 minutos sobre tu producto.</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-ico">🎨</div>
+                <div class="timeline-body">
+                    <h3>Recibe tu Primera Propuesta</h3>
+                    <p>Te enviaremos el diseño inicial en 5-7 días hábiles.</p>
+                </div>
+            </li>
+        </ol>
+        <a href="#" id="briefing-btn" class="btn-outline">Ir al Formulario de Briefing →</a>
+    </section>
+
+    <!-- ============ SECCIÓN 5: VALOR AGREGADO ============ -->
+    <section class="value">
+        <h2>Mientras preparamos tu brief, aprovecha esto:</h2>
+        <div class="value-grid">
+            <article class="value-card">
+                <div class="value-ico">📄</div>
+                <h3>Recurso Exclusivo</h3>
+                <p>Descarga nuestra <strong>Checklist de 10 puntos para campañas de Ads exitosas</strong>.</p>
+                <button type="button" class="btn-download" id="download-checklist">Descargar Checklist (PDF)</button>
+            </article>
+            <article class="value-card">
+                <div class="value-ico">📅</div>
+                <h3>Agenda tu Llamada</h3>
+                <p>¿Prefieres hablar directamente? Agenda tu llamada de <strong>Kick-off de 15 minutos</strong> aquí.</p>
+                <a href="#" id="calendly-link" class="btn-download btn-calendly" target="_blank" rel="noopener">Agendar Llamada →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============ SECCIÓN 6: SOPORTE ============ -->
+    <section class="support">
+        <h2>¿Tienes dudas sobre tu proyecto?</h2>
+        <p class="support-msg">Como cliente activo, tienes acceso prioritario a nuestro soporte.</p>
+        <div class="support-grid">
+            <a id="support-email" class="support-card" href="mailto:info@ned.co">
+                <div class="support-ico">✉️</div>
+                <div>
+                    <strong>Email de Soporte</strong>
+                    <span>info@ned.co</span>
+                </div>
+            </a>
+            <a id="support-whatsapp" class="support-card" href="https://wa.me/573001234567" target="_blank" rel="noopener">
+                <div class="support-ico">💬</div>
+                <div>
+                    <strong>WhatsApp Directo</strong>
+                    <span>+57 300 123 4567</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<!-- ============ SECCIÓN 7: FOOTER ============ -->
+<footer class="ty-footer">
+    <a href="index.html" class="ty-logo">NED<span>.</span></a>
+    <nav class="ty-links">
+        <a href="index.html">Landing Page</a>
+        <a href="#footer">Términos</a>
+        <a href="#footer">Privacidad</a>
+    </nav>
+    <p class="ty-copy">© 2024 NED. Todos los derechos reservados.</p>
+</footer>
+
+<script src="gracias.js"></script>
+</body>
+</html>
