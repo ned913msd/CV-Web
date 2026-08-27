@@ -5,163 +5,455 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZenMat — Tapete de Acupresión con Guía de Respiración</title>
   <meta name="description" content="8820 puntos de acupresión, guía de audio y estuche portátil. Relaja tu cuerpo y calma tu mente en 15 minutos.">
+  <meta property="og:title" content="ZenMat — Tapete de Acupresión Premium">
+  <meta property="og:description" content="8820 puntos de acupresión, guía de audio y estuche portátil.">
+  <meta property="og:image" content="zenmat.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared/base.css">
-  <style>
-    :root { --accent:#10b981; --accent-glow:#34d399; --accent-soft:rgba(16,185,129,0.12); --lamp-color:#10b981; --lamp-glow:rgba(16,185,129,0.25); }
-    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(16,185,129,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(6,182,212,0.06), transparent); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Header -->
   <header>
-    <div class="container nav">
+    <div class="container header-inner">
       <a href="/" class="logo">Zen<span>Mat</span></a>
       <nav class="nav-links">
         <a href="#features">Características</a>
+        <a href="#benefits">Beneficios</a>
         <a href="#configurador">Sesiones</a>
-        <a href="#specs">Especificaciones</a>
-        <a href="#preventa" class="btn-nav">Reservar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#oferta" class="btn-header">Reservar</a>
       </nav>
+      <button class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <section class="hero">
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#features">Características</a>
+    <a href="#benefits">Beneficios</a>
+    <a href="#configurador">Sesiones</a>
+    <a href="#faq">FAQ</a>
+    <a href="#oferta">Reservar</a>
+  </div>
+
+  <!-- 01. Hero -->
+  <section class="hero" id="hero">
     <div class="hero-glow" id="heroGlow"></div>
     <div class="container hero-grid">
-      <div class="hero-texto">
-        <span class="badge-preventa">Preventa — 20% de descuento</span>
+      <div class="hero-text reveal">
+        <span class="hero-label">Preventa — 20% de descuento</span>
         <h1>Zen<span>Mat</span></h1>
         <p class="hero-sub">Relaja tu cuerpo, calma tu mente.</p>
-        <p class="hero-desc">
-          Tapete de acupresión con 8820 puntos estimulantes y guía de respiración por audio.
-          Sesiones de 15 minutos que reducen el estrés, mejoran el sueño y alivian el dolor muscular.
-        </p>
-        <div class="hero-botones">
-          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
-          <a href="#configurador" class="btn btn-secundario">Ver sesiones</a>
+        <p class="hero-desc">Tapete de acupresión con 8820 puntos estimulantes y guía de respiración por audio. Sesiones de 15 minutos que reducen el estrés, mejoran el sueño y alivian el dolor muscular.</p>
+        <div class="hero-cta">
+          <a href="#oferta" class="btn btn-emerald">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-outline">Ver sesiones</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-mini"><span class="stat-valor">8820</span><span class="stat-label">Puntos</span></div>
-          <div class="stat-mini"><span class="stat-valor">4</span><span class="stat-label">Sesiones</span></div>
-          <div class="stat-mini"><span class="stat-valor">1.2kg</span><span class="stat-label">Peso</span></div>
+        <div class="hero-badges">
+          <div class="hero-badge"><div class="hero-badge-dot"></div><span>8820 puntos</span></div>
+          <div class="hero-badge"><div class="hero-badge-dot"></div><span>4 sesiones guiadas</span></div>
+          <div class="hero-badge"><div class="hero-badge-dot"></div><span>Estuche portátil</span></div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="lamp-glow" id="lampGlow"></div>
+      <div class="hero-visual reveal delay-2">
+        <div class="hero-glow-img"></div>
         <img src="zenmat.webp" alt="ZenMat — Tapete de Acupresión" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
-        <div class="app-badge"><div class="app-badge-icon">🎧</div><span>Guía de audio</span></div>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubre más</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </div>
   </section>
 
+  <!-- 02. Features -->
   <section class="features" id="features">
     <div class="container">
+      <span class="section-num">02</span>
       <span class="section-tag">Características</span>
       <h2 class="section-title">Bienestar en cada punto</h2>
+      <p class="section-sub">Diseñado con materiales naturales y tecnología de acupresión probada clínicamente.</p>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icono">📍</div>
-          <h3>8820 Puntos de Acupresión</h3>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path></svg>
+          </div>
+          <h4>8820 Puntos de Acupresión</h4>
           <p>Distribución ergonómica que estimula meridianos clave para relajación, energía y sueño profundo.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🎧</div>
-          <h3>Guía de Audio</h3>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"></path><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path></svg>
+          </div>
+          <h4>Guía de Audio</h4>
           <p>Sesiones guiadas de respiración y meditación. Elige entre 4 programas según tu objetivo.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🧳</div>
-          <h3>Estuche Portátil</h3>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 7V5a4 4 0 00-8 0v2"></path></svg>
+          </div>
+          <h4>Estuche Portátil</h4>
           <p>Doblegable y liviano. Caben en tu mochila. Lleva tu práctica de acupresión a donde vayas.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🧼</div>
-          <h3>Funda Extraíble</h3>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h4>Funda Extraíble</h4>
           <p>Algodón 100% orgánico, lavable a máquina. Los puntos de acupresión son de acero inoxidable.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurador" id="configurador">
+  <!-- 03. Showcase / Specs -->
+  <section class="showcase" id="specs">
     <div class="container">
+      <div class="showcase-layout">
+        <div class="showcase-visual reveal">
+          <img src="zenmat.webp" alt="ZenMat detallado">
+          <div class="floating-spec floating-spec-1">8820 puntos</div>
+          <div class="floating-spec floating-spec-2">1.2kg</div>
+        </div>
+        <div class="reveal delay-1">
+          <span class="section-num">03</span>
+          <span class="section-tag">Especificaciones</span>
+          <h2 class="section-title">Diseñado para tu bienestar</h2>
+          <p class="section-sub">Materiales naturales y tecnología de acupresión probada clínicamente.</p>
+          <div class="specs-list">
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle></svg></div>
+              <div class="spec-text"><span class="spec-label">Puntos</span><span class="spec-value">8820 — acero inoxidable</span></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"></path></svg></div>
+              <div class="spec-text"><span class="spec-label">Material</span><span class="spec-value">Algodón 100% orgánico</span></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg></div>
+              <div class="spec-text"><span class="spec-label">Tamaño</span><span class="spec-value">68cm × 42cm — plegable</span></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"></path></svg></div>
+              <div class="spec-text"><span class="spec-label">Peso</span><span class="spec-value">1.2kg con estuche</span></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"></path></svg></div>
+              <div class="spec-text"><span class="spec-label">Audio</span><span class="spec-value">4 sesiones guiadas incluidas</span></div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4"></path><circle cx="12" cy="12" r="10"></circle></svg></div>
+              <div class="spec-text"><span class="spec-label">Lavado</span><span class="spec-value">Funda lavable a máquina</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. Session Configurator -->
+  <section class="configurator" id="configurador">
+    <div class="container">
+      <span class="section-num">04</span>
       <span class="section-tag">Configurador</span>
       <h2 class="section-title">Elige tu sesión</h2>
       <p class="section-sub">Cada sesión tiene su propia guía de audio y patrón de estimulación de puntos.</p>
       <div class="config-grid">
-        <div class="escenas">
-          <button class="escena-btn activa" data-color="#10b981" data-glow="#34d399" data-nombre="Relajación — 15min"><span class="escena-color" style="background:#10b981"></span><span>Relajación — reduce estrés</span></button>
-          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Energía — 10min"><span class="escena-color" style="background:#f97316"></span><span>Energía — activa tu cuerpo</span></button>
-          <button class="escena-btn" data-color="#6366f1" data-glow="#818cf8" data-nombre="Sueño profundo — 20min"><span class="escena-color" style="background:#6366f1"></span><span>Sueño profundo — descansa</span></button>
-          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Meditación — 15min"><span class="escena-color" style="background:#06b6d4"></span><span>Meditación — enfoque mental</span></button>
+        <div class="session-tabs">
+          <button class="session-tab active" data-session="relajacion">
+            <span class="session-tab-dot" style="background:#10b981"></span>
+            <span>Relajación — reduce estrés</span>
+          </button>
+          <button class="session-tab" data-session="energia">
+            <span class="session-tab-dot" style="background:#f59e0b"></span>
+            <span>Energía — activa tu cuerpo</span>
+          </button>
+          <button class="session-tab" data-session="sueno">
+            <span class="session-tab-dot" style="background:#6366f1"></span>
+            <span>Sueño profundo — descansa</span>
+          </button>
+          <button class="session-tab" data-session="meditacion">
+            <span class="session-tab-dot" style="background:#06b6d4"></span>
+            <span>Meditación — enfoque mental</span>
+          </button>
         </div>
-        <div class="config-preview">
-          <div class="preview-glow" id="previewGlow"></div>
-          <img src="zenmat.webp" alt="Previsualización de sesión" class="preview-img" id="previewImg">
-          <div class="escena-nombre" id="escenaNombre">Relajación — 15min</div>
+        <div class="session-visual">
+          <div class="session-glow"></div>
+          <img src="zenmat.webp" alt="Previsualización de sesión" class="hero-img">
+          <div class="session-info">
+            <div class="session-name" id="sessionName">Relajación Profunda</div>
+            <p class="session-desc" id="sessionDesc">Libera tensión acumulada con patrones rítmicos suaves y respiración guiada de 4-7-8.</p>
+            <div class="session-params">
+              <div class="session-param"><span class="session-param-val" id="sessionDur">15 min</span><span class="session-param-label">Duración</span></div>
+              <div class="session-param"><span class="session-param-val" id="sessionPuntos">8820</span><span class="session-param-label">Puntos</span></div>
+              <div class="session-param"><span class="session-param-val" id="sessionIntensidad">Suave</span><span class="session-param-label">Intensidad</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="specs" id="specs">
+  <!-- 05. Benefits -->
+  <section class="benefits" id="benefits">
     <div class="container">
-      <div class="specs-grid">
-        <div class="specs-texto">
-          <span class="section-tag">Especificaciones</span>
-          <h2 class="section-title">Diseñado para tu bienestar</h2>
-          <p class="section-sub">Materiales naturales y tecnología de acupresión probada clínicamente.</p>
+      <span class="section-num">05</span>
+      <span class="section-tag">Beneficios</span>
+      <h2 class="section-title">Lo que ZenMat hace por ti</h2>
+      <p class="section-sub">Resultados comprobados desde la primera sesión.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+          </div>
+          <h4>Reduce el Estrés</h4>
+          <p>Regula el cortisol y activa la respuesta de relajación en 15 minutos.</p>
         </div>
-        <div class="specs-lista">
-          <div class="spec-item"><span class="spec-icono">📍</span><div><span class="spec-label">Puntos</span><span class="spec-valor">8820 — acero inoxidable</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🪵</span><div><span class="spec-label">Material</span><span class="spec-valor">Algodón 100% orgánico</span></div></div>
-          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">68cm × 42cm — plegable</span></div></div>
-          <div class="spec-item"><span class="spec-icono">⚖️</span><div><span class="spec-label">Peso</span><span class="spec-valor">1.2kg con estuche</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🎧</span><div><span class="spec-label">Audio</span><span class="spec-valor">4 sesiones guiadas incluidas</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🧼</span><div><span class="spec-label">Lavado</span><span class="spec-valor">Funda lavable a máquina</span></div></div>
+        <div class="benefit-card reveal delay-1">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </div>
+          <h4>Mejora el Sueño</h4>
+          <p>Prepara tu sistema nervioso para un descanso profundo y reparador.</p>
+        </div>
+        <div class="benefit-card reveal delay-2">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          </div>
+          <h4>Alivia el Dolor</h4>
+          <p>Estimula endorfinas y mejora la circulación en zonas de tensión.</p>
+        </div>
+        <div class="benefit-card reveal delay-3">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h4>Seguro y Natural</h4>
+          <p>Materiales orgánicos certificados. Sin electricidad, sin efectos secundarios.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="preventa" id="preventa">
-    <div class="container preventa-grid">
-      <div class="preventa-info">
-        <span class="section-tag">Oferta de preventa</span>
-        <h2 class="section-title">Invierte en tu tranquilidad</h2>
-        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 30 días de garantía y audio guiado incluido.</p>
-        <div class="precios">
-          <span class="precio-antes">$89.000</span>
-          <span class="precio-ahora">$69.000</span>
-          <span class="precio-ahorra">Ahorras $20.000</span>
+  <!-- 06. Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <span class="section-num">06</span>
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+      <p class="section-sub">Experiencias reales de quienes ya usan ZenMat.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">MC</div>
+            <div class="testimonial-info"><h5>María C.</h5><p>Bogotá, Colombia</p></div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"Duermo como nunca antes. La sesión de sueño profundo es mágica — me quedo dormida en minutos."</p>
+          <span class="testimonial-badge">Compra verificada</span>
         </div>
-        <div class="beneficios">
-          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🎧</span><span>Audio guiado incluido</span></div>
+        <div class="testimonial-card reveal delay-1">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">AR</div>
+            <div class="testimonial-info"><h5>Andrés R.</h5><p>Medellín, Colombia</p></div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"Tengo dolor crónico de espalda. ZenMat me ha quitado la necesidad de analgésicos en la mañana."</p>
+          <span class="testimonial-badge">Compra verificada</span>
         </div>
-      </div>
-      <div class="preventa-cta">
-        <div class="countdown" id="countdown" data-days="6">
-          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+        <div class="testimonial-card reveal delay-2">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">LP</div>
+            <div class="testimonial-info"><h5>Laura P.</h5><p>Cali, Colombia</p></div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"Lo llevo a viajes de trabajo. El estuche es súper práctico y la calidad del algodón orgánico se siente premium."</p>
+          <span class="testimonial-badge">Compra verificada</span>
         </div>
-        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
-        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
       </div>
     </div>
   </section>
 
+  <!-- 07. Unboxing -->
+  <section class="unboxing">
+    <div class="container">
+      <div class="unboxing-layout">
+        <div class="reveal">
+          <span class="section-num">07</span>
+          <span class="section-tag">Contenido</span>
+          <h2 class="section-title">Qué incluye tu ZenMat</h2>
+          <p class="section-sub">Todo lo que necesitas para comenzar tu práctica de acupresión.</p>
+          <ul class="unboxing-list">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Tapete de acupresión ZenMat (68 × 42cm)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Funda extraíble de algodón orgánico</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Estuche portátil con cierre</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>4 sesiones guiadas de audio (QR incluido)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Guía de inicio rápido impresa</span>
+            </li>
+          </ul>
+          <span class="unboxing-badge">Envío gratis a toda Colombia</span>
+        </div>
+        <div class="showcase-visual reveal delay-1">
+          <img src="zenmat.webp" alt="Contenido ZenMat">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08. Offer -->
+  <section class="offer" id="oferta">
+    <div class="container">
+      <div class="offer-layout">
+        <div class="reveal">
+          <span class="offer-tag">Oferta de preventa</span>
+          <h2 class="offer-title">Invierte en tu tranquilidad</h2>
+          <div class="offer-price">
+            <span class="offer-old">$89.000</span>
+            <span class="offer-new">$69.000</span>
+            <span class="offer-save">Ahorras $20.000</span>
+          </div>
+          <ul class="offer-benefits">
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Envío gratis a toda Colombia</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>30 días de garantía de satisfacción</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Audio guiado incluido de por vida</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Reembolso completo sin preguntas</span>
+            </li>
+          </ul>
+        </div>
+        <div class="offer-cta-card reveal delay-1">
+          <div class="offer-card-title">Reserva tu ZenMat</div>
+          <div class="offer-card-price">$69.000 COP</div>
+          <a href="#" class="btn btn-emerald btn-block">Reservar ahora →</a>
+          <p class="offer-card-note">Sin riesgo — reembolso completo si no estás satisfecho</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09. Countdown -->
+  <section class="countdown-section">
+    <div class="container">
+      <h3 class="countdown-heading">La preventa termina en</h3>
+      <div class="countdown-row" id="countdown" data-days="6">
+        <div class="countdown-unit"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-num">10</span>
+      <span class="section-tag">Preguntas Frecuentes</span>
+      <h2 class="section-title">¿Tienes dudas?</h2>
+      <p class="section-sub">Resolvemos las preguntas más comunes sobre ZenMat.</p>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">¿ZenMat es seguro para uso diario?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. ZenMat está diseñado para uso diario. Los puntos de acupresión son de acero inoxidable quirúrgico y la tela es algodón orgánico certificado. Cada sesión dura entre 10 y 20 minutos. Si tienes condiciones médicas, consulta a tu médico.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Cómo funcionan las sesiones guiadas?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Recibes un código QR con tu pedido que desbloquea 4 sesiones de audio. Cada sesión combina respiración guiada con el patrón de estimulación del tapete. Solo necesitas tu celular y auriculares.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Cómo limpio mi ZenMat?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">La funda de algodón orgánico se extrae y lava a máquina en ciclo suave. Los puntos de acupresión se limpian con un paño húmedo. No uses blanqueador ni secadora.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Puedo devolverlo si no me gusta?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí. Tienes 30 días para devolver tu ZenMat y recibir un reembolso completo, sin preguntas. El envío de devolución corre por nuestra cuenta.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">¿Cuánto tarda el envío?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">El envío es gratis a toda Colombia. En ciudades principales llega en 3-5 días hábiles. En otras ciudades, entre 5-8 días hábibles. Recibirás un número de rastreo por correo electrónico.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="container footer-content">
+    <div class="container footer-inner">
       <div class="footer-brand">Zen<span>Mat</span></div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+      <div class="footer-links">
+        <a href="#features">Características</a>
+        <a href="#benefits">Beneficios</a>
+        <a href="#configurador">Sesiones</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
     </div>
   </footer>
-  <script src="../shared/app.js" defer></script>
+
+  <!-- Mobile Sticky CTA -->
+  <div class="mobile-sticky">
+    <div class="mobile-sticky-inner">
+      <div class="mobile-sticky-price">
+        <span class="mobile-sticky-old">$89.000</span>
+        <span class="mobile-sticky-new">$69.000 COP</span>
+      </div>
+      <a href="#oferta" class="mobile-sticky-btn">Reservar</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
