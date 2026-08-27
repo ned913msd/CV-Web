@@ -7,161 +7,581 @@
   <meta name="description" content="Hierbas frescas todo el año sin jardín. LED spectrum completo, sensor de agua y 6 copas incluidas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared/base.css">
-  <style>
-    :root { --accent:#22c55e; --accent-glow:#4ade80; --accent-soft:rgba(34,197,94,0.12); --lamp-color:#22c55e; --lamp-glow:rgba(34,197,94,0.25); }
-    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(34,197,94,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(16,185,129,0.06), transparent); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scroll-progress"></div>
+
   <header>
-    <div class="container nav">
+    <div class="container header-inner">
       <a href="/" class="logo">Aero<span>Garden</span></a>
       <nav class="nav-links">
         <a href="#features">Características</a>
         <a href="#configurador">Plantas</a>
         <a href="#specs">Especificaciones</a>
-        <a href="#preventa" class="btn-nav">Reservar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#oferta" class="btn-header">Reservar</a>
       </nav>
+      <button class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <div class="mobile-menu">
+    <button class="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#features">Características</a>
+    <a href="#configurador">Plantas</a>
+    <a href="#specs">Especificaciones</a>
+    <a href="#faq">FAQ</a>
+    <a href="#oferta" class="btn-header">Reservar</a>
+  </div>
+
   <section class="hero">
-    <div class="hero-glow" id="heroGlow"></div>
+    <div class="hero-glow"></div>
     <div class="container hero-grid">
-      <div class="hero-texto">
-        <span class="badge-preventa">Preventa — 20% de descuento</span>
+      <div class="hero-text">
+        <span class="hero-label">Preventa — 20% de descuento</span>
         <h1>Aero<span>Garden</span> Mini</h1>
         <p class="hero-sub">Hierbas frescas todo el año, sin jardín.</p>
-        <p class="hero-desc">
-          Huerto inteligente de interior con LED spectrum completo, sensor de agua automático
-          y 6 copas de cultivo incluidas. Hierbas, flores o vegetales frescos en tu cocina todo el año.
-        </p>
-        <div class="hero-botones">
-          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
-          <a href="#configurador" class="btn btn-secundario">Ver tipos de planta</a>
+        <p class="hero-desc">Huerto inteligente de interior con LED spectrum completo, sensor de agua automático y 6 copas de cultivo incluidas. Hierbas, flores o vegetales frescos en tu cocina todo el año.</p>
+        <div class="hero-cta">
+          <a href="#oferta" class="btn btn-green">Reservar con preventa —20%</a>
+          <a href="#configurador" class="btn btn-outline">Ver tipos de planta</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-mini"><span class="stat-valor">20W</span><span class="stat-label">LED</span></div>
-          <div class="stat-mini"><span class="stat-valor">2L</span><span class="stat-label">Agua</span></div>
-          <div class="stat-mini"><span class="stat-valor">6</span><span class="stat-label">Copas</span></div>
+        <div class="hero-badges">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>20W LED</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>2L Agua</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>6 Copas</span>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="lamp-glow" id="lampGlow"></div>
+        <div class="hero-glow-img"></div>
         <img src="aerogarden-mini.webp" alt="AeroGarden Mini — Huerto Inteligente" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
-        <div class="app-badge"><div class="app-badge-icon">🌱</div><span>App de guía</span></div>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubre más</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="container">
+      <span class="section-num">02</span>
       <span class="section-tag">Características</span>
       <h2 class="section-title">Cultiva sin esfuerzo</h2>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icono">💡</div>
-          <h3>LED Spectrum Completo</h3>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h4>LED Spectrum Completo</h4>
           <p>20W de luz LED optimizada para cada fase de crecimiento: germinación, vegetativa y floración.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">💧</div>
-          <h3>Sensor de Agua</h3>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <h4>Sensor de Agua</h4>
           <p>Te avisa cuando necesitas recargar. El sistema de riego por mechas mantiene la humedad ideal.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🌿</div>
-          <h3>6 Copas Incluidas</h3>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-8.5 8-13-2.5 1-5 0-6.5-2-1.5-2-4-2.5-6.5-1.5-2.5 1-4 4-3.5 7 1 4.5 3 8 6.5 9.5"/></svg>
+          </div>
+          <h4>6 Copas Incluidas</h4>
           <p>Comienza con las 6 copas de cultivo incluidas. Compatibles con semillas de cualquier marca.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">📱</div>
-          <h3>App de Guía</h3>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h4>App de Guía</h4>
           <p>Te guía paso a paso: cuándo sembrar, regar y cosechar. Historial de crecimiento y consejos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurador" id="configurador">
+  <section class="showcase" id="specs">
     <div class="container">
+      <div class="showcase-layout">
+        <div class="showcase-visual">
+          <img src="aerogarden-mini.webp" alt="AeroGarden Mini en uso">
+          <div class="floating-spec floating-spec-1">20W LED</div>
+          <div class="floating-spec floating-spec-2">2L Agua</div>
+        </div>
+        <div class="showcase-text">
+          <span class="section-num">03</span>
+          <span class="section-tag">Ingeniería</span>
+          <h2 class="section-title">Tecnología de cultivo en casa</h2>
+          <p class="section-sub">LED de grado agrícola y sistema automático para resultados profesionales.</p>
+          <div class="specs-list">
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">LED</span>
+                <span class="spec-value">20W — spectrum completo</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Agua</span>
+                <span class="spec-value">2L — sensor automático</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Temperatura</span>
+                <span class="spec-value">15-30°C — operación</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Tamaño</span>
+                <span class="spec-value">30cm × 20cm × 35cm</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-8.5 8-13-2.5 1-5 0-6.5-2-1.5-2-4-2.5-6.5-1.5-2.5 1-4 4-3.5 7 1 4.5 3 8 6.5 9.5"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Copas</span>
+                <span class="spec-value">6 incluidas — extra disponibles</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">App</span>
+                <span class="spec-value">Guía de cultivo + historial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurator" id="configurador">
+    <div class="container">
+      <span class="section-num">04</span>
       <span class="section-tag">Configurador</span>
       <h2 class="section-title">¿Qué quieres cultivar?</h2>
       <p class="section-sub">Cada tipo de planta tiene su propio programa de luz y riego optimizado.</p>
       <div class="config-grid">
-        <div class="escenas">
-          <button class="escena-btn activa" data-color="#22c55e" data-glow="#4ade80" data-nombre="Hierbas — albahaca, cilantro, menta"><span class="escena-color" style="background:#22c55e"></span><span>Hierbas — cocina fresca</span></button>
-          <button class="escena-btn" data-color="#ec4899" data-glow="#f472b6" data-nombre="Flores — orquídea, violeta"><span class="escena-color" style="background:#ec4899"></span><span>Flores — decoración</span></button>
-          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Vegetales — tomate cherry, pimiento"><span class="escena-color" style="background:#f97316"></span><span>Vegetales — tu huerto</span></button>
-          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Microgreens — brotes nutritivos"><span class="escena-color" style="background:#06b6d4"></span><span>Microgreens — superalimentos</span></button>
+        <div class="plant-tabs">
+          <button class="plant-tab active" data-plant="hierbas">
+            <span class="plant-tab-dot" style="background: #22c55e"></span>
+            <span>Hierbas — cocina fresca</span>
+          </button>
+          <button class="plant-tab" data-plant="flores">
+            <span class="plant-tab-dot" style="background: #ec4899"></span>
+            <span>Flores — decoración</span>
+          </button>
+          <button class="plant-tab" data-plant="vegetales">
+            <span class="plant-tab-dot" style="background: #f97316"></span>
+            <span>Vegetales — tu huerto</span>
+          </button>
+          <button class="plant-tab" data-plant="microgreens">
+            <span class="plant-tab-dot" style="background: #06b6d4"></span>
+            <span>Microgreens — superalimentos</span>
+          </button>
         </div>
-        <div class="config-preview">
-          <div class="preview-glow" id="previewGlow"></div>
-          <img src="aerogarden-mini.webp" alt="Previsualización de planta" class="preview-img" id="previewImg">
-          <div class="escena-nombre" id="escenaNombre">Hierbas — albahaca, cilantro, menta</div>
+        <div class="plant-visual">
+          <div class="plant-glow"></div>
+          <img src="aerogarden-mini.webp" alt="Previsualización de planta">
+          <div class="plant-info">
+            <h3 class="plant-name">Hierbas Frescas</h3>
+            <p class="plant-desc">Albahaca, cilantro, menta y perejil. Ideales para cocinar todos los días con sabor fresco.</p>
+            <div class="plant-params">
+              <div class="plant-param">
+                <span class="plant-param-val plant-light">16h/día</span>
+                <span class="plant-param-label">Luz LED</span>
+              </div>
+              <div class="plant-param">
+                <span class="plant-param-val plant-growth">21-28 días</span>
+                <span class="plant-param-label">Cosecha</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="specs" id="specs">
+  <section class="process" id="proceso">
     <div class="container">
-      <div class="specs-grid">
-        <div class="specs-texto">
-          <span class="section-tag">Especificaciones</span>
-          <h2 class="section-title">Tecnología de cultivo</h2>
-          <p class="section-sub">LED de grado agrícola y sistema automático para resultados profesionales en casa.</p>
+      <span class="section-num">05</span>
+      <span class="section-tag">Proceso</span>
+      <h2 class="section-title">De semilla a tu mesa en semanas</h2>
+      <p class="section-sub">La guía paso a paso se encarga de todo. Tú solo disfruta.</p>
+      <div class="process-timeline">
+        <div class="process-step reveal">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Sembrar</h4>
+          <p>Coloca las copas y siembra las semillas. La app te guía.</p>
         </div>
-        <div class="specs-lista">
-          <div class="spec-item"><span class="spec-icono">💡</span><div><span class="spec-label">LED</span><span class="spec-valor">20W — spectrum completo</span></div></div>
-          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Agua</span><span class="spec-valor">2L — sensor automático</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🌡️</span><div><span class="spec-label">Temperatura</span><span class="spec-valor">15-30°C — operación</span></div></div>
-          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">30cm × 20cm × 35cm</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🌿</span><div><span class="spec-label">Copas</span><span class="spec-valor">6 incluidas — extra disponibles</span></div></div>
-          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">Guía de cultivo + historial</span></div></div>
+        <div class="process-step reveal delay-1">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+          </div>
+          <h4>Crecer</h4>
+          <p>El LED y el riego automático hacen el trabajo. Sin esfuerzo.</p>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5 8-8.5 8-13-2.5 1-5 0-6.5-2-1.5-2-4-2.5-6.5-1.5-2.5 1-4 4-3.5 7 1 4.5 3 8 6.5 9.5"/></svg>
+          </div>
+          <h4>Cosechar</h4>
+          <p>Cosecha tus hierbas frescas directamente de la fuente.</p>
+        </div>
+        <div class="process-step reveal delay-3">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+          </div>
+          <h4>Cocinar</h4>
+          <p>Cocina con ingredientes frescos y sin pesticidas.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="preventa" id="preventa">
-    <div class="container preventa-grid">
-      <div class="preventa-info">
-        <span class="section-tag">Oferta de preventa</span>
-        <h2 class="section-title">Tu huerto en la cocina</h2>
-        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y 6 copas incluidas.</p>
-        <div class="precios">
-          <span class="precio-antes">$139.000</span>
-          <span class="precio-ahora">$109.000</span>
-          <span class="precio-ahorra">Ahorras $30.000</span>
+  <section class="comparison" id="comparacion">
+    <div class="container">
+      <span class="section-num">06</span>
+      <span class="section-tag">Comparativa</span>
+      <h2 class="section-title">Jardín tradicional vs AeroGarden Mini</h2>
+      <div class="comparison-table">
+        <div class="comp-row header">
+          <div class="comp-cell feature">Característica</div>
+          <div class="comp-cell check">AeroGarden Mini</div>
+          <div class="comp-cell cross">Jardín tradicional</div>
         </div>
-        <div class="beneficios">
-          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🌿</span><span>6 copas de cultivo incluidas</span></div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Interior</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">LED spectrum completo</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Riego automático</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">Manual</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">App de guía</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Sin tierra</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Cosecha en semanas</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">Meses</div>
         </div>
       </div>
-      <div class="preventa-cta">
-        <div class="countdown" id="countdown" data-days="7">
-          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <span class="section-num">07</span>
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">MG</div>
+            <div class="testimonial-info">
+              <h5>María García</h5>
+              <p>Chef casera</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Las albahacas salen mejor que las del mercado. Frescas, aromáticas y sin pesticidas. ¡Mi cocina cambió!"</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
         </div>
-        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
-        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+        <div class="testimonial-card reveal delay-1">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">CL</div>
+            <div class="testimonial-info">
+              <h5>Carlos López</h5>
+              <p>Amante de plantas</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Perfecta para mi apartamento. Sin tierra, sin desorden. Las flores de violeta están hermosas."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
+        </div>
+        <div class="testimonial-card reveal delay-2">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">AR</div>
+            <div class="testimonial-info">
+              <h5>Andrea Rodríguez</h5>
+              <p>Mamá de familia</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Mis hijos aprendieron a cultivar sus propias hierbas. Es educativo y delicioso."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="unboxing" id="unboxing">
+    <div class="container unboxing-layout">
+      <div class="unboxing-visual">
+        <img src="aerogarden-mini.webp" alt="AeroGarden Mini packaging">
+      </div>
+      <div class="unboxing-text">
+        <span class="section-num">08</span>
+        <span class="section-tag">Unboxing</span>
+        <h2 class="section-title">Qué incluye la caja</h2>
+        <p class="section-sub">Todo lo que necesitas para empezar a cultivar en casa.</p>
+        <ul class="unboxing-list">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>AeroGarden Mini</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>6 copas de cultivo</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kit de nutrientes</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Manual de usuario</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Guía de cultivo por tipo de planta</span>
+          </li>
+        </ul>
+        <span class="unboxing-badge">🚚 Envío gratis en Colombia</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer" id="oferta">
+    <div class="container offer-layout">
+      <div class="offer-info">
+        <span class="section-num">09</span>
+        <span class="offer-tag">Preventa limitada</span>
+        <h2 class="offer-title">Tu huerto en la cocina.</h2>
+        <div class="offer-price">
+          <span class="offer-old">$139.000</span>
+          <span class="offer-new">$109.000</span>
+          <span class="offer-save">Ahorras $30.000</span>
+        </div>
+        <ul class="offer-benefits">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Envío gratis a toda Colombia</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 año de garantía</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>6 copas de cultivo incluidas</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Soporte técnico 24/7</span>
+          </li>
+        </ul>
+      </div>
+      <div class="offer-cta-card">
+        <h3 class="offer-card-title">Reserva tu AeroGarden Mini</h3>
+        <div class="offer-card-price">$109.000 COP</div>
+        <a href="#" class="btn btn-green btn-block">Reservar ahora →</a>
+        <p class="offer-card-note">Reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <h3 class="countdown-heading">La preventa termina en</h3>
+      <div class="countdown-row" data-days="7">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="dias">00</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="horas">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="minutos">00</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="segundos">00</span>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-num">10</span>
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto espacio necesita?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">El AeroGarden Mini mide 30cm × 20cm × 35cm. Caben perfectamente en una encimera, mesa o estante. No necesita mucho espacio.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto consume de luz?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Solo 20W de consumo. Con 16 horas diarias de uso, el costo eléctrico es menos de $5.000 mensuales.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Necesito tierra?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. Usa un sistema de hidropónicos con mechas. Sin tierra, sin suciedad, sin plagas. Las plantas crecen en agua con nutrientes.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tarda en crecer?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Depende de la planta: microgreens en 7-14 días, hierbas en 21-28 días, flores en 30-45 días, vegetales en 45-60 días.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué tan fácil es limpiarlo?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Muy fácil. El depósito de agua se retira fácilmente para limpiar cada 2-3 meses. Sin tierra, no hay desorden.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Puedo usar semillas de cualquier marca?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí, las copas son universales. Puedes usar semillas de cualquier marca o incluso recoger semillas de tu cocina.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿La app es gratuita?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí, la app es gratuita para iOS y Android. Incluye guía paso a paso, historial de crecimiento y consejos personalizados.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué garantía tiene?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">1 año de garantía contra defectos de fabricación. Además, 30 días de garantía de satisfacción completa con reembolso.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footer-content">
+    <div class="container footer-inner">
       <div class="footer-brand">Aero<span>Garden</span></div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+      <div class="footer-links">
+        <a href="#features">Características</a>
+        <a href="#configurador">Plantas</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
     </div>
   </footer>
-  <script src="../shared/app.js" defer></script>
+
+  <div class="mobile-sticky">
+    <div class="mobile-sticky-inner">
+      <div class="mobile-sticky-price">
+        <span class="mobile-sticky-old">$139.000</span>
+        <span class="mobile-sticky-new">$109.000 COP</span>
+      </div>
+      <a href="#oferta" class="mobile-sticky-btn">Reservar →</a>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
