@@ -7,161 +7,535 @@
   <meta name="description" content="Protege tus cosas y carga tus dispositivos. Panel solar 10W, cierre antirrobo y impermeable IPX5.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared/base.css">
-  <style>
-    :root { --accent:#eab308; --accent-glow:#facc15; --accent-soft:rgba(234,179,8,0.12); --lamp-color:#eab308; --lamp-glow:rgba(234,179,8,0.25); }
-    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(234,179,8,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(245,158,11,0.06), transparent); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scroll-progress"></div>
+
   <header>
-    <div class="container nav">
+    <div class="container header-inner">
       <a href="/" class="logo">Volt<span>Pack</span></a>
       <nav class="nav-links">
         <a href="#features">Características</a>
-        <a href="#configurador">Modos</a>
+        <a href="#modos">Modos</a>
         <a href="#specs">Especificaciones</a>
-        <a href="#preventa" class="btn-nav">Reservar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#oferta" class="btn-header">Reservar</a>
       </nav>
+      <button class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <div class="mobile-menu">
+    <button class="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#features">Características</a>
+    <a href="#modos">Modos</a>
+    <a href="#specs">Especificaciones</a>
+    <a href="#faq">FAQ</a>
+    <a href="#oferta" class="btn-header">Reservar</a>
+  </div>
+
   <section class="hero">
-    <div class="hero-glow" id="heroGlow"></div>
+    <div class="hero-glow"></div>
     <div class="container hero-grid">
-      <div class="hero-texto">
-        <span class="badge-preventa">Preventa — 20% de descuento</span>
+      <div class="hero-text">
+        <span class="hero-label">Preventa — 20% de descuento</span>
         <h1>Volt<span>Pack</span></h1>
         <p class="hero-sub">Protege tus cosas y carga tus dispositivos.</p>
-        <p class="hero-desc">
-          Mochila antirrobo con panel solar integrado de 10W, cierre secreto trasero y batería de 20000mAh.
-          Impermeable IPX5, USB-C de carga rápida y 28 litros de capacidad para tu día a día.
-        </p>
-        <div class="hero-botones">
-          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
-          <a href="#configurador" class="btn btn-secundario">Ver modos</a>
+        <p class="hero-desc">Mochila antirrobo con panel solar integrado de 10W, cierre secreto trasero y batería de 20000mAh. Impermeable IPX5, USB-C de carga rápida y 28 litros de capacidad para tu día a día.</p>
+        <div class="hero-cta">
+          <a href="#oferta" class="btn btn-amber">Reservar con preventa —20%</a>
+          <a href="#modos" class="btn btn-outline">Ver modos</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-mini"><span class="stat-valor">10W</span><span class="stat-label">Solar</span></div>
-          <div class="stat-mini"><span class="stat-valor">20K</span><span class="stat-label">mAh</span></div>
-          <div class="stat-mini"><span class="stat-valor">28L</span><span class="stat-label">Capacidad</span></div>
+        <div class="hero-badges">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>10W Solar</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>20K mAh</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>28L Capacidad</span>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="lamp-glow" id="lampGlow"></div>
+        <div class="hero-glow-img"></div>
         <img src="voltpack.webp" alt="VoltPack — Mochila Antirrobo con Solar" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
-        <div class="app-badge"><div class="app-badge-icon">☀️</div><span>Energía solar</span></div>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubre más</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="container">
+      <span class="section-num">02</span>
       <span class="section-tag">Características</span>
       <h2 class="section-title">Tu mochila inteligente</h2>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icono">☀️</div>
-          <h3>Panel Solar 10W</h3>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h4>Panel Solar 10W</h4>
           <p>Carga tu celular y dispositivos con energía solar. Hasta 3 cargas completas en un día soleado.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🔒</div>
-          <h3>Cierre Antirrobo</h3>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h4>Cierre Antirrobo</h4>
           <p>Acceso secreto por la espalda con cierre oculto. Nadie abre tu mochila sin que tú lo notes.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">💧</div>
-          <h3>Impermeable IPX5</h3>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <h4>Impermeable IPX5</h4>
           <p>Resistente a lluvia intensa. Tus dispositivos y documentos siempre están protegidos.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">⚡</div>
-          <h3>Carga Rápida USB-C</h3>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Carga Rápida USB-C</h4>
           <p>Batería de 20000mAh con carga rápida 18W. Carga tu celular de 0 a 50% en 30 minutos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurador" id="configurador">
+  <section class="showcase" id="specs">
     <div class="container">
-      <span class="section-tag">Configurador</span>
+      <div class="showcase-layout">
+        <div class="showcase-visual">
+          <img src="voltpack.webp" alt="VoltPack en uso">
+          <div class="floating-spec floating-spec-1">10W Solar</div>
+          <div class="floating-spec floating-spec-2">IPX5</div>
+        </div>
+        <div class="showcase-text">
+          <span class="section-num">03</span>
+          <span class="section-tag">Ingeniería</span>
+          <h2 class="section-title">Construida para proteger</h2>
+          <p class="section-sub">Materiales de grado militar con tecnología de carga solar integrada.</p>
+          <div class="specs-list">
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Panel Solar</span>
+                <span class="spec-value">10W — monocristalino</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Batería</span>
+                <span class="spec-value">20000mAh — Li-Po</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Carga</span>
+                <span class="spec-value">USB-C 18W + USB-A 12W</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Resistencia</span>
+                <span class="spec-value">IPX5 — impermeable</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Capacidad</span>
+                <span class="spec-value">28 litros — laptop 15"</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Seguridad</span>
+                <span class="spec-value">Cierre secreto + RFID blocker</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="configurator" id="modos">
+    <div class="container">
+      <span class="section-num">04</span>
+      <span class="section-tag">Modos</span>
       <h2 class="section-title">Selecciona tu modo de carga</h2>
       <p class="section-sub">Cada modo optimiza el consumo de energía según tu situación.</p>
       <div class="config-grid">
-        <div class="escenas">
-          <button class="escena-btn activa" data-color="#eab308" data-glow="#facc15" data-nombre="Solar — carga con sol"><span class="escena-color" style="background:#eab308"></span><span>Solar — energía del sol</span></button>
-          <button class="escena-btn" data-color="#3b82f6" data-glow="#60a5fa" data-nombre="USB — carga rápida"><span class="escena-color" style="background:#3b82f6"></span><span>USB — carga rápida 18W</span></button>
-          <button class="escena-btn" data-color="#10b981" data-glow="#34d399" data-nombre="Híbrido — ambas fuentes"><span class="escena-color" style="background:#10b981"></span><span>Híbrido — solar + USB</span></button>
-          <button class="escena-btn" data-color="#8b5cf6" data-glow="#a78bfa" data-nombre="Eco — bajo consumo"><span class="escena-color" style="background:#8b5cf6"></span><span>Eco — máxima autonomía</span></button>
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="solar">
+            <span class="mode-tab-dot" style="background: #d97706"></span>
+            <span>Solar — energía del sol</span>
+          </button>
+          <button class="mode-tab" data-mode="usb">
+            <span class="mode-tab-dot" style="background: #3b82f6"></span>
+            <span>USB — carga rápida 18W</span>
+          </button>
+          <button class="mode-tab" data-mode="hibrido">
+            <span class="mode-tab-dot" style="background: #10b981"></span>
+            <span>Híbrido — solar + USB</span>
+          </button>
+          <button class="mode-tab" data-mode="eco">
+            <span class="mode-tab-dot" style="background: #8b5cf6"></span>
+            <span>Eco — máxima autonomía</span>
+          </button>
         </div>
-        <div class="config-preview">
-          <div class="preview-glow" id="previewGlow"></div>
-          <img src="voltpack.webp" alt="Previsualización de modo" class="preview-img" id="previewImg">
-          <div class="escena-nombre" id="escenaNombre">Solar — carga con sol</div>
+        <div class="mode-visual">
+          <div class="mode-glow"></div>
+          <img src="voltpack.webp" alt="Previsualización de modo">
+          <div class="mode-info">
+            <h3 class="mode-name">Solar</h3>
+            <p class="mode-desc">Carga con energía del sol. Ideal para actividades al aire libre sin enchufes.</p>
+            <div class="mode-params">
+              <div class="mode-param">
+                <span class="mode-param-val mode-power">10W</span>
+                <span class="mode-param-label">Potencia</span>
+              </div>
+              <div class="mode-param">
+                <span class="mode-param-val mode-speed">6-8h</span>
+                <span class="mode-param-label">Carga completa</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="specs" id="specs">
+  <section class="security" id="seguridad">
     <div class="container">
-      <div class="specs-grid">
-        <div class="specs-texto">
-          <span class="section-tag">Especificaciones</span>
-          <h2 class="section-title">Construida para proteger</h2>
-          <p class="section-sub">Materiales de grado militar con tecnología de carga solar integrada.</p>
+      <span class="section-num">05</span>
+      <span class="section-tag">Seguridad</span>
+      <h2 class="section-title">Protección total</h2>
+      <div class="security-grid">
+        <div class="security-card reveal">
+          <div class="security-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h4>Cierre Secreto</h4>
+          <p>Acceso por la espalda con cierre oculto. Nadie abre tu mochila sin que notes.</p>
         </div>
-        <div class="specs-lista">
-          <div class="spec-item"><span class="spec-icono">☀️</span><div><span class="spec-label">Panel Solar</span><span class="spec-valor">10W — monocristalino</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">20000mAh — Li-Po</span></div></div>
-          <div class="spec-item"><span class="spec-icono">⚡</span><div><span class="spec-label">Carga</span><span class="spec-valor">USB-C 18W + USB-A 12W</span></div></div>
-          <div class="spec-item"><span class="spec-icono">💧</span><div><span class="spec-label">Resistencia</span><span class="spec-valor">IPX5 — impermeable</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🎒</span><div><span class="spec-label">Capacidad</span><span class="spec-valor">28 litros — laptop 15"</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🔒</span><div><span class="spec-label">Seguridad</span><span class="spec-valor">Cierre secreto + RFID blocker</span></div></div>
+        <div class="security-card reveal delay-1">
+          <div class="security-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>RFID Blocker</h4>
+          <p>Bloquea señales RFID para proteger tus tarjetas y documentos digitales.</p>
+        </div>
+        <div class="security-card reveal delay-2">
+          <div class="security-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <h4>Impermeable</h4>
+          <p>IPX5 resistente a lluvia intensa. Tus dispositivos siempre están protegidos.</p>
+        </div>
+        <div class="security-card reveal delay-3">
+          <div class="security-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h4>28L Capacidad</h4>
+          <p>Espacio para laptop 15", documentos y todo lo que necesitas para el día.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="preventa" id="preventa">
-    <div class="container preventa-grid">
-      <div class="preventa-info">
-        <span class="section-tag">Oferta de preventa</span>
-        <h2 class="section-title">Tu mochila del futuro</h2>
-        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 1 año de garantía y panel solar incluido.</p>
-        <div class="precios">
-          <span class="precio-antes">$249.000</span>
-          <span class="precio-ahora">$199.000</span>
-          <span class="precio-ahorra">Ahorras $50.000</span>
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <span class="section-num">06</span>
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">JR</div>
+            <div class="testimonial-info">
+              <h5>Juan Rodríguez</h5>
+              <p>Viajero frecuente</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"La batería me dura todo el viaje. En el aeropuerto cargo mis dispositivos con el sol. ¡Increíble!"</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
         </div>
-        <div class="beneficios">
-          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>1 año de garantía</span></div>
-          <div class="beneficio"><span class="beneficio-icon">☀️</span><span>Panel solar integrado</span></div>
+        <div class="testimonial-card reveal delay-1">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">MG</div>
+            <div class="testimonial-info">
+              <h5>María García</h5>
+              <p>Estudiante universitaria</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"El cierre secreto me da mucha paz mental. En elmetro nunca me preocupo por mis cosas."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
+        </div>
+        <div class="testimonial-card reveal delay-2">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">CL</div>
+            <div class="testimonial-info">
+              <h5>Carlos López</h5>
+              <p>Ciclista urbano</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"En la lluvia no me preocupo. La mochila es impermeable y el panel solar funciona perfecto."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
         </div>
       </div>
-      <div class="preventa-cta">
-        <div class="countdown" id="countdown" data-days="4">
-          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+    </div>
+  </section>
+
+  <section class="unboxing" id="unboxing">
+    <div class="container unboxing-layout">
+      <div class="unboxing-visual">
+        <img src="voltpack.webp" alt="VoltPack packaging">
+      </div>
+      <div class="unboxing-text">
+        <span class="section-num">07</span>
+        <span class="section-tag">Unboxing</span>
+        <h2 class="section-title">Qué incluye la caja</h2>
+        <p class="section-sub">Todo lo que necesitas para proteger y cargar.</p>
+        <ul class="unboxing-list">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>VoltPack Mochila</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Cable USB-C de carga</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Manual de usuario</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Guía de modos de carga</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Almohadillas extras para hombros</span>
+          </li>
+        </ul>
+        <span class="unboxing-badge">🚚 Envío gratis en Colombia</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer" id="oferta">
+    <div class="container offer-layout">
+      <div class="offer-info">
+        <span class="section-num">08</span>
+        <span class="offer-tag">Preventa limitada</span>
+        <h2 class="offer-title">Tu mochila del futuro.</h2>
+        <div class="offer-price">
+          <span class="offer-old">$249.000</span>
+          <span class="offer-new">$199.000</span>
+          <span class="offer-save">Ahorras $50.000</span>
         </div>
-        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
-        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+        <ul class="offer-benefits">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Envío gratis a toda Colombia</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 año de garantía</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Panel solar integrado</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Soporte técnico 24/7</span>
+          </li>
+        </ul>
+      </div>
+      <div class="offer-cta-card">
+        <h3 class="offer-card-title">Reserva tu VoltPack</h3>
+        <div class="offer-card-price">$199.000 COP</div>
+        <a href="#" class="btn btn-amber btn-block">Reservar ahora →</a>
+        <p class="offer-card-note">Reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <h3 class="countdown-heading">La preventa termina en</h3>
+      <div class="countdown-row" data-days="4">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="dias">00</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="horas">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="minutos">00</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="segundos">00</span>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-num">09</span>
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tarda en cargar con el sol?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Con sol directo, el panel de 10W carga la batería completa en 6-8 horas. En un día soleado puedes cargar hasta 3 veces tu celular.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto espacio tiene?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">28 litros de capacidad. Espacio para laptop de 15", libros, ropa y accesorios. Compartimentos organizadores incluidos.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Es realmente impermeable?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí, certificación IPX5. Resistente a lluvia intensa y salpicaduras. Tus dispositivos y documentos siempre están protegidos.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cómo funciona el cierre antirrobo?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">El cierre está ubicado en la parte trasera, contra tu espalda. Nadie puede abrir la mochila sin que tú lo notes.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto pesa?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Solo 1.2kg. Ultraligera para su capacidad. El panel solar es delgado y no agrega peso significativo.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Carga por USB-C también?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí, USB-C de 18W para carga rápida. De 0 a 50% en 30 minutos. También incluye USB-A de 12W para otros dispositivos.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué es el RFID blocker?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Una capa interna que bloquea señales RFID. Protege tus tarjetas de crédito y documentos de escaneo no autorizado.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué garantía tiene?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">1 año de garantía contra defectos de fabricación. Además, 30 días de garantía de satisfacción completa con reembolso.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footer-content">
+    <div class="container footer-inner">
       <div class="footer-brand">Volt<span>Pack</span></div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+      <div class="footer-links">
+        <a href="#features">Características</a>
+        <a href="#modos">Modos</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
     </div>
   </footer>
-  <script src="../shared/app.js" defer></script>
+
+  <div class="mobile-sticky">
+    <div class="mobile-sticky-inner">
+      <div class="mobile-sticky-price">
+        <span class="mobile-sticky-old">$249.000</span>
+        <span class="mobile-sticky-new">$199.000 COP</span>
+      </div>
+      <a href="#oferta" class="mobile-sticky-btn">Reservar →</a>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
