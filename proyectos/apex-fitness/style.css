@@ -75,9 +75,9 @@ header.scrolled {
   color: var(--text); letter-spacing: -0.5px;
 }
 .logo span { color: var(--accent); }
-.nav-links { display: flex; align-items: center; gap: 32px; }
-.nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--text-muted); transition: color 0.3s; }
-.nav-links a:hover { color: var(--text); }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav-link { font-size: 0.88rem; font-weight: 500; color: var(--text-muted); transition: color 0.3s; }
+.nav-link:hover { color: var(--text); }
 .btn-nav {
   border: 1px solid var(--accent) !important; color: var(--accent) !important;
   padding: 10px 24px !important; border-radius: 8px; font-weight: 600 !important;
@@ -104,6 +104,8 @@ header.scrolled {
 .mobile-menu a:hover { color: var(--text); }
 
 /* ============ SHARED STYLES ============ */
+.centered { text-align: center; }
+.centered .section-sub { margin-left: auto; margin-right: auto; }
 .section-tag {
   display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 2.5px; color: var(--accent); margin-bottom: 12px;
@@ -218,7 +220,7 @@ header.scrolled {
 
 /* ============ 02. ABOUT ============ */
 .about { padding: 140px 0; background: var(--bg); }
-.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-values { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
 .about-value {
   display: flex; gap: 16px; padding: 20px; border-radius: 12px;
@@ -244,7 +246,7 @@ header.scrolled {
 
 /* ============ 03. AMENITIES ============ */
 .amenities { padding: 140px 0; background: var(--bg-card); }
-.amenities-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.amenity-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
 .amenity-card {
   background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
   padding: 36px 28px; text-align: center; transition: all 0.4s; position: relative; overflow: hidden;
@@ -267,7 +269,7 @@ header.scrolled {
 
 /* ============ 04. EQUIPMENT ============ */
 .equipment { padding: 140px 0; background: var(--bg); }
-.equip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
+.equip-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
 .equip-item {
   position: relative; border-radius: 16px; overflow: hidden;
   aspect-ratio: 1; cursor: pointer; group: true;
@@ -333,7 +335,7 @@ header.scrolled {
 
 /* ============ 06. TRAINERS ============ */
 .trainers { padding: 140px 0; background: var(--bg); }
-.trainers-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 48px; }
+.trainer-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 48px; }
 .trainer-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
   padding: 32px 24px; text-align: center; transition: all 0.3s;
@@ -361,39 +363,39 @@ header.scrolled {
   color: var(--text-dim); transition: all 0.3s;
 }
 .pricing-toggle-btn.active { background: var(--accent); color: #FFFFFF; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
-.price-card {
+.price-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+.plan-card {
   background: var(--bg); border: 1px solid var(--border); border-radius: 20px;
   padding: 40px 32px; text-align: left; transition: all 0.3s; position: relative;
 }
-.price-card.popular { border-color: var(--accent); }
-.price-card.popular::before {
+.plan-card.popular { border-color: var(--accent); }
+.plan-card.popular::before {
   content: 'POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
   background: var(--accent); color: #FFFFFF; padding: 4px 20px; border-radius: 100px;
   font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
 }
-.price-card:hover { transform: translateY(-4px); }
-.price-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-.price-card-desc { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 24px; }
-.price-amount {
+.plan-card:hover { transform: translateY(-4px); }
+.plan-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.plan-desc { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 24px; }
+.plan-price-block {
   display: flex; align-items: baseline; gap: 4px; margin-bottom: 24px;
 }
-.price-currency { font-size: 1rem; color: var(--text-dim); font-weight: 500; }
-.price-value {
+.plan-currency { font-size: 1rem; color: var(--text-dim); font-weight: 500; }
+.plan-amount {
   font-size: 3rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif;
   color: var(--text); line-height: 1;
 }
-.price-period { font-size: 0.88rem; color: var(--text-dim); }
-.price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-.price-features li {
+.plan-period { font-size: 0.88rem; color: var(--text-dim); }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.plan-features li {
   display: flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--text-muted);
 }
-.price-features li svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2.5; flex-shrink: 0; }
-.price-card .btn { width: 100%; justify-content: center; }
+.plan-features li svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+.plan-card .btn { width: 100%; justify-content: center; }
 
 /* ============ 08. TRANSFORMATIONS ============ */
 .transformations { padding: 140px 0; background: var(--bg); }
-.transform-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 48px; }
+.transform-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 48px; }
 .transform-card { border-radius: 16px; overflow: hidden; position: relative; }
 .transform-slider {
   position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; cursor: col-resize;
@@ -441,8 +443,8 @@ header.scrolled {
   border: 2px solid var(--border); display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem;
 }
-.testimonial-name { font-size: 1rem; font-weight: 600; color: var(--text); }
-.testimonial-role { font-size: 0.82rem; color: var(--text-dim); }
+.testimonial-author strong { display: block; font-size: 1rem; font-weight: 600; color: var(--text); }
+.testimonial-author span { font-size: 0.82rem; color: var(--text-dim); }
 .testimonial-dots { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
 .testimonial-dot {
   width: 8px; height: 8px; border-radius: 50%; background: var(--border-light);
@@ -480,23 +482,27 @@ header.scrolled {
   max-width: 640px; margin: 0 auto; background: var(--bg);
   border: 1px solid var(--border); border-radius: 20px; padding: 48px 40px;
 }
-.form-steps-indicator {
+.form-steps {
   display: flex; justify-content: center; gap: 0; margin-bottom: 40px;
 }
-.form-step-dot {
+.step {
   display: flex; align-items: center; gap: 0;
 }
-.form-step-circle {
+.step-num {
   width: 36px; height: 36px; border-radius: 50%;
   background: var(--surface); border: 2px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-size: 0.82rem; font-weight: 700; color: var(--text-dim); transition: all 0.3s;
 }
-.form-step-dot.active .form-step-circle { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
-.form-step-dot.done .form-step-circle { background: #10B981; border-color: #10B981; color: #FFFFFF; }
-.form-step-line { width: 40px; height: 2px; background: var(--border); margin: 0 8px; }
-.form-step-dot.done .form-step-line { background: #10B981; }
-.form-step-dot.active .form-step-line { background: var(--accent); }
+.step.active .step-num { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+.step.done .step-num { background: #10B981; border-color: #10B981; color: #FFFFFF; }
+.step-label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text-dim); margin-left: 8px;
+}
+.step.active .step-label { color: var(--text); }
+.step-line { width: 40px; height: 2px; background: var(--border); margin: 0 8px; }
+.step.done .step-line { background: #10B981; }
+.step.active .step-line { background: var(--accent); }
 .form-step { display: none; }
 .form-step.active { display: block; animation: fadeIn 0.4s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -567,15 +573,15 @@ header.scrolled {
   text-align: center; color: var(--text-dim);
 }
 .location-map-placeholder svg { width: 48px; height: 48px; stroke: var(--accent); opacity: 0.4; margin-bottom: 12px; }
-.location-info { display: flex; flex-direction: column; gap: 24px; }
-.location-info-item { display: flex; gap: 16px; }
-.location-info-icon {
+.location-details { display: flex; flex-direction: column; gap: 24px; }
+.location-detail { display: flex; gap: 16px; }
+.location-detail-icon {
   width: 44px; height: 44px; border-radius: 10px;
   background: rgba(220,38,38,0.08); display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; font-size: 1.2rem;
 }
-.location-info-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.location-info-item p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; }
+.location-detail h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.location-detail p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.5; }
 .location-hours { margin-top: 8px; }
 .location-hours-row {
   display: flex; justify-content: space-between; padding: 10px 0;
@@ -590,7 +596,7 @@ header.scrolled {
 /* ============ 13. FAQ ============ */
 .faq { padding: 140px 0; background: var(--bg-card); }
 .faq-header { text-align: center; margin-bottom: 40px; }
-.faq-grid { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
 .faq-item {
   background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
   overflow: hidden; transition: border-color 0.3s;
@@ -675,27 +681,27 @@ footer {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
-  .hero-grid, .about-layout, .location-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-grid, .about-grid, .location-grid { grid-template-columns: 1fr; gap: 48px; }
   .hero-visual { order: -1; }
   .hero { text-align: center; }
   .hero-cta { justify-content: center; }
   .hero-sub { margin: 0 auto; }
   .hero-stats { justify-content: center; }
-  .amenities-grid, .equip-grid, .social-grid { grid-template-columns: repeat(2,1fr); }
-  .trainers-grid { grid-template-columns: repeat(2,1fr); }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .amenity-cards, .equip-items, .social-grid { grid-template-columns: repeat(2,1fr); }
+  .trainer-cards { grid-template-columns: repeat(2,1fr); }
+  .price-cards { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .transform-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .transform-cards { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .nav { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
   .hero { padding: 100px 0 60px; }
   .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
   .hero-cta { flex-direction: column; }
-  .amenities-grid, .equip-grid, .social-grid { grid-template-columns: 1fr; }
-  .trainers-grid { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
+  .amenity-cards, .equip-items, .social-grid { grid-template-columns: 1fr; }
+  .trainer-cards { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
   .form-container { padding: 32px 24px; }
   .form-plan-cards { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -708,7 +714,7 @@ footer {
   .container { padding: 0 16px; }
   .hero h1 { font-size: 2rem; }
   .hero-stats { flex-direction: column; gap: 20px; align-items: center; }
-  .price-value { font-size: 2.2rem; }
+  .plan-amount { font-size: 2.2rem; }
 }
 
 /* ============ REAL IMAGE STYLES ============ */
