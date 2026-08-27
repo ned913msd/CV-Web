@@ -3,25 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DreamCradle — Cuna Inteligente que se Mece Automáticamente</title>
-  <meta name="description" content="Dulces sueños para tu bebé, tranquilidad para ti. Movimiento automático, machine de sonido y app de seguimiento.">
+  <title>DreamCradle — Cuna Inteligente para Bebés</title>
+  <meta name="description" content="Cuna inteligente que mece a tu bebé automáticamente. Machine de sonido, sensor de vibración y app de seguimiento.">
+  <meta property="og:title" content="DreamCradle — Smart Baby Cradle">
+  <meta property="og:description" content="Dulces sueños para tu bebé, tranquilidad para ti.">
+  <meta property="og:image" content="dreamcradle.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <!-- Scroll Progress -->
   <div class="scroll-progress"></div>
 
+  <!-- Header -->
   <header>
     <div class="container header-inner">
       <a href="/" class="logo">Dream<span>Cradle</span></a>
       <nav class="nav-links">
         <a href="#features">Características</a>
-        <a href="#modos">Modos</a>
-        <a href="#specs">Especificaciones</a>
+        <a href="#modes">Modos</a>
+        <a href="#safety">Seguridad</a>
         <a href="#faq">FAQ</a>
-        <a href="#oferta" class="btn-header">Reservar</a>
+        <a href="#pricing" class="btn-nav">Reservar</a>
       </nav>
       <button class="hamburger" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -29,513 +41,552 @@
     </div>
   </header>
 
+  <!-- Mobile Menu -->
   <div class="mobile-menu">
     <button class="mobile-close" aria-label="Cerrar menú">✕</button>
     <a href="#features">Características</a>
-    <a href="#modos">Modos</a>
-    <a href="#specs">Especificaciones</a>
+    <a href="#modes">Modos de Sueño</a>
+    <a href="#safety">Seguridad</a>
+    <a href="#app">App</a>
     <a href="#faq">FAQ</a>
-    <a href="#oferta" class="btn-header">Reservar</a>
+    <a href="#pricing">Reservar</a>
   </div>
 
-  <section class="hero">
-    <div class="hero-glow"></div>
+  <!-- ============ 01. HERO ============ -->
+  <section class="hero" id="hero">
     <div class="container hero-grid">
-      <div class="hero-text">
-        <span class="hero-label">Preventa — 20% de descuento</span>
-        <h1>Dream<span>Cradle</span></h1>
+      <div class="hero-text reveal">
+        <span class="hero-badge">🌙 NEW — Smart Baby Cradle</span>
+        <h1>DreamCradle</h1>
         <p class="hero-sub">Dulces sueños para tu bebé, tranquilidad para ti.</p>
-        <p class="hero-desc">Cuna inteligente que mece a tu bebé automáticamente con movimientos naturales. Machine de sonido con 20 melodías, sensor de vibración y app de seguimiento del sueño.</p>
+        <p class="hero-desc">Cuna inteligente que mece a tu bebé automáticamente con movimientos naturales. Machine de sonido, sensor de vibración y app de seguimiento.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-icon lavender">👶</div>
+            <div class="hero-stat-text">
+              <span class="hero-stat-val">0-18 MESES</span>
+              <span class="hero-stat-label">Hasta 12kg</span>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon pink">🔋</div>
+            <div class="hero-stat-text">
+              <span class="hero-stat-val">8 HORAS</span>
+              <span class="hero-stat-label">Batería larga duración</span>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon blue">🎵</div>
+            <div class="hero-stat-text">
+              <span class="hero-stat-val">20 SONIDOS</span>
+              <span class="hero-stat-label">Melodías + naturaleza</span>
+            </div>
+          </div>
+        </div>
         <div class="hero-cta">
-          <a href="#oferta" class="btn btn-rose">Reservar con preventa —20%</a>
-          <a href="#modos" class="btn btn-outline">Ver modos</a>
-        </div>
-        <div class="hero-badges">
-          <span class="hero-badge"><span class="hero-badge-dot"></span>20 Sonidos</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>8h Batería</span>
-          <span class="hero-badge"><span class="hero-badge-dot"></span>0-15 RPM</span>
+          <a href="#pricing" class="btn btn-violet">Reservar con preventa —20%</a>
+          <a href="#modes" class="btn btn-outline">Ver modos de sueño →</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-glow-img"></div>
-        <img src="dreamcradle.webp" alt="DreamCradle — Cuna Inteligente" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
+      <div class="hero-visual reveal delay-2">
+        <div class="hero-cloud hero-cloud-1"></div>
+        <div class="hero-cloud hero-cloud-2"></div>
+        <img src="dreamcradle.webp" alt="DreamCradle cuna inteligente para bebés" class="hero-img" loading="eager" fetchpriority="high" width="420" height="420">
+        <div class="hero-float-badge mint badge-1">✓ ASTM Certified</div>
+        <div class="hero-float-badge blue badge-2">🔇 Silent Motor &lt;30dB</div>
+        <div class="hero-float-badge lavender badge-3">📱 Smart App</div>
       </div>
-    </div>
-    <div class="scroll-indicator">
-      <span>Descubre más</span>
-      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
-  <section class="features" id="features">
+  <!-- ============ 02. STATS ============ -->
+  <section class="stats" id="stats">
     <div class="container">
-      <span class="section-num">02</span>
-      <span class="section-tag">Características</span>
-      <h2 class="section-title">Tecnología que acuna</h2>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h4>Movimiento Automático</h4>
-          <p>Balanceo suave y natural con velocidad ajustable. Imita el mecer de los brazos de mamá.</p>
+      <div class="stats-header reveal">
+        <span class="section-tag">Tecnología que acuna</span>
+        <h2 class="section-title">Números que hablan</h2>
+        <p class="section-sub">Cada detail está diseñado para el máximo confort y seguridad de tu bebé.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-card-icon">🔄</div>
+          <div class="stat-card-num violet" data-count="15" data-suffix=" RPM">0 RPM</div>
+          <div class="stat-card-title">Movimiento Automático</div>
+          <p class="stat-card-desc">Balanceo suave y natural con velocidad ajustable. Imita el mecer de los brazos de mamá.</p>
         </div>
-        <div class="feature-card reveal delay-1">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          </div>
-          <h4>Machine de Sonido</h4>
-          <p>20 melodías y sonidos de la naturaleza. Volumen ajustable y temporizador automático.</p>
+        <div class="stat-card reveal delay-1">
+          <div class="stat-card-icon">🎵</div>
+          <div class="stat-card-num pink" data-count="20">0</div>
+          <div class="stat-card-title">Machine de Sonido</div>
+          <p class="stat-card-desc">20 melodías y sonidos de la naturaleza. Volumen ajustable y temporizador automático.</p>
         </div>
-        <div class="feature-card reveal delay-2">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M5.5 8.5L9 12l-3.5 3.5L2 12l3.5-3.5z"/><path d="M12 2l3.5 3.5L12 9 8.5 5.5 12 2z"/><path d="M18.5 8.5L22 12l-3.5 3.5L15 12l3.5-3.5z"/><path d="M12 15l3.5 3.5L12 22l-3.5-3.5L12 15z"/></svg>
-          </div>
-          <h4>Vibración Suave</h4>
-          <p>Nivel de vibración que calma al bebé. Se activa automáticamente cuando detecta llanto.</p>
+        <div class="stat-card reveal delay-2">
+          <div class="stat-card-icon">🔋</div>
+          <div class="stat-card-num blue" data-count="8" data-suffix="h">0h</div>
+          <div class="stat-card-title">Batería Larga Duración</div>
+          <p class="stat-card-desc">5000mAh para noches completas. Carga USB-C rápida.</p>
         </div>
-        <div class="feature-card reveal delay-3">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          </div>
-          <h4>App de Seguimiento</h4>
-          <p>Registra horas de sueño, patrones y calidad. Notificaciones en tiempo real en tu celular.</p>
+        <div class="stat-card reveal delay-3">
+          <div class="stat-card-icon">⚖️</div>
+          <div class="stat-card-num mint" data-count="12" data-suffix="kg">0kg</div>
+          <div class="stat-card-title">Capacidad Certificada</div>
+          <p class="stat-card-desc">Hasta 12kg, de 0 a 18 meses. Seguridad ASTM + EN.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="showcase" id="specs">
+  <!-- ============ 03. PRODUCT CUTAWAY ============ -->
+  <section class="cutaway" id="features">
     <div class="container">
-      <div class="showcase-layout">
-        <div class="showcase-visual">
-          <img src="dreamcradle.webp" alt="DreamCradle en uso">
-          <div class="floating-spec floating-spec-1">0-15 RPM</div>
-          <div class="floating-spec floating-spec-2">8h Batería</div>
+      <div class="cutaway-layout">
+        <div class="cutaway-visual reveal">
+          <img src="dreamcradle.webp" alt="DreamCradle componentes internos">
         </div>
-        <div class="showcase-text">
-          <span class="section-num">03</span>
-          <span class="section-tag">Ingeniería</span>
+        <div class="reveal delay-1">
+          <span class="section-tag">Tecnología</span>
+          <h2 class="section-title">Diseñada con tecnología de punta</h2>
+          <p class="section-sub">Cada componente está calibrado para el bienestar de tu bebé.</p>
+          <div class="cutaway-features">
+            <div class="cutaway-feature">
+              <div class="cutaway-feature-icon lavender">🤖</div>
+              <div>
+                <h4>Movimiento Automático</h4>
+                <p>Balanceo suave y natural con velocidad ajustable. Imita perfectamente el mecer de los brazos de mamá.</p>
+                <span class="cutaway-badge">0-15 RPM ajustables</span>
+              </div>
+            </div>
+            <div class="cutaway-feature">
+              <div class="cutaway-feature-icon pink">🎵</div>
+              <div>
+                <h4>Machine de Sonido</h4>
+                <p>20 melodías y sonidos de la naturaleza: lluvia, viento, bosque, olas del mar, latido del corazón.</p>
+                <span class="cutaway-badge">Volumen ajustable</span>
+              </div>
+            </div>
+            <div class="cutaway-feature">
+              <div class="cutaway-feature-icon blue">📳</div>
+              <div>
+                <h4>Vibración Suave</h4>
+                <p>Nivel de vibración que calma al bebé. Se activa automáticamente cuando detecta llanto.</p>
+                <span class="cutaway-badge">Sensor inteligente</span>
+              </div>
+            </div>
+            <div class="cutaway-feature">
+              <div class="cutaway-feature-icon mint">📱</div>
+              <div>
+                <h4>App de Seguimiento</h4>
+                <p>Registra horas de sueño, patrones y calidad. Notificaciones en tiempo real en tu celular.</p>
+                <span class="cutaway-badge">iOS + Android</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04. SLEEP MODES (DARK) ============ -->
+  <section class="modes" id="modes">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="container">
+      <div class="modes-header reveal">
+        <span class="section-tag">Modos de Sueño</span>
+        <h2 class="section-title">Elige el modo de sueño</h2>
+        <p class="section-sub">Cada modo combina movimiento, sonido y vibración según la edad y necesidad de tu bebé.</p>
+      </div>
+      <div class="modes-grid">
+        <div class="mode-card lavender reveal">
+          <div class="mode-card-icon">🔄</div>
+          <h3>Balanceo Suave</h3>
+          <p>Movimiento rítmico que imita el mecer natural. Ideal para dormir al bebé después de la alimentación.</p>
+          <div class="mode-stats">
+            <div><div class="mode-stat-val">6 RPM</div><div class="mode-stat-label">Velocidad promedio</div></div>
+            <div><div class="mode-stat-val">Silencioso</div><div class="mode-stat-label">Sin sonido</div></div>
+          </div>
+        </div>
+        <div class="mode-card pink reveal delay-1">
+          <div class="mode-card-icon">📳</div>
+          <h3>Vibración Calmante</h3>
+          <p>Para calmar rápido al bebé. Vibración suave que relaja y tranquiliza.</p>
+          <div class="mode-stats">
+            <div><div class="mode-stat-val">Automática</div><div class="mode-stat-label">Detección de llanto</div></div>
+            <div><div class="mode-stat-val">3 Niveles</div><div class="mode-stat-label">Intensidad ajustable</div></div>
+          </div>
+        </div>
+        <div class="mode-card blue reveal delay-2">
+          <div class="mode-card-icon">🎵</div>
+          <h3>Sonidos de Naturaleza</h3>
+          <p>Lluvia, viento, bosque, olas del mar. Sonidos relajantes probados científicamente.</p>
+          <div class="mode-stats">
+            <div><div class="mode-stat-val">20 Sonidos</div><div class="mode-stat-label">Biblioteca completa</div></div>
+            <div><div class="mode-stat-val">35-50dB</div><div class="mode-stat-label">Volumen seguro</div></div>
+          </div>
+        </div>
+        <div class="mode-card mint reveal delay-3">
+          <div class="mode-card-icon">✨</div>
+          <h3>Modo Noche Completa</h3>
+          <p>Combinación perfecta de movimiento + sonido para noches tranquilas y sueño profundo.</p>
+          <div class="mode-stats">
+            <div><div class="mode-stat-val">Movimiento + Sonido</div><div class="mode-stat-label">Sincronizado</div></div>
+            <div><div class="mode-stat-val">8 Horas</div><div class="mode-stat-label">Duración batería</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05. SAFETY ============ -->
+  <section class="safety" id="safety">
+    <div class="container">
+      <div class="safety-layout">
+        <div class="reveal">
+          <span class="section-tag">Seguridad</span>
           <h2 class="section-title">Seguridad certificada</h2>
           <p class="section-sub">Diseñada con los más altos estándares de seguridad infantil.</p>
-          <div class="specs-list">
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Movimiento</span>
-                <span class="spec-value">0-15 RPM — balanceo suave</span>
+          <div class="safety-certs">
+            <div class="safety-cert">
+              <div class="safety-cert-icon mint">🛡️</div>
+              <div>
+                <h4>Certificación ASTM</h4>
+                <p>Cumple con los estándares internacionales de seguridad infantil más rigurosos.</p>
               </div>
             </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Sonidos</span>
-                <span class="spec-value">20 melodías + naturaleza</span>
+            <div class="safety-cert">
+              <div class="safety-cert-icon blue">✅</div>
+              <div>
+                <h4>Certificación EN</h4>
+                <p>Normas europeas de seguridad para productos infantiles.</p>
               </div>
             </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Batería</span>
-                <span class="spec-value">5000mAh — 8 horas</span>
-              </div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Capacidad</span>
-                <span class="spec-value">Hasta 12kg — 0-18 meses</span>
-              </div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">Seguridad</span>
-                <span class="spec-value">Certificación ASTM + EN</span>
-              </div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-icon">
-                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
-              <div class="spec-text">
-                <span class="spec-label">App</span>
-                <span class="spec-value">iOS 14+ / Android 10+ — gratis</span>
+            <div class="safety-cert">
+              <div class="safety-cert-icon pink">🌡️</div>
+              <div>
+                <h4>Sensor de Temperatura</h4>
+                <p>Monitorea la temperatura ambiente y ajusta el movimiento automáticamente.</p>
               </div>
             </div>
           </div>
+        </div>
+        <div class="safety-visual reveal delay-2">
+          <img src="dreamcradle.webp" alt="DreamCradle entorno nursery seguro">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurator" id="modos">
+  <!-- ============ 06. APP INTERFACE ============ -->
+  <section class="app-section" id="app">
     <div class="container">
-      <span class="section-num">04</span>
-      <span class="section-tag">Modos</span>
-      <h2 class="section-title">Elige el modo de sueño</h2>
-      <p class="section-sub">Cada modo combina movimiento, sonido y vibración según la edad y necesidad de tu bebé.</p>
-      <div class="config-grid">
-        <div class="mode-tabs">
-          <button class="mode-tab active" data-mode="balanceo">
-            <span class="mode-tab-dot" style="background: #c77dba"></span>
-            <span>Balanceo — suave y constante</span>
-          </button>
-          <button class="mode-tab" data-mode="vibracion">
-            <span class="mode-tab-dot" style="background: #8b5cf6"></span>
-            <span>Vibración — para calmar rápido</span>
-          </button>
-          <button class="mode-tab" data-mode="sonido">
-            <span class="mode-tab-dot" style="background: #06b6d4"></span>
-            <span>Sonido — lluvia y viento</span>
-          </button>
-          <button class="mode-tab" data-mode="combinado">
-            <span class="mode-tab-dot" style="background: #f59e0b"></span>
-            <span>Combinado — movimiento + sonido</span>
-          </button>
-        </div>
-        <div class="mode-visual">
-          <div class="mode-glow"></div>
-          <img src="dreamcradle.webp" alt="Previsualización de modo">
-          <div class="mode-info">
-            <h3 class="mode-name">Balanceo Suave</h3>
-            <p class="mode-desc">Movimiento rítmico que imita el mecer natural. Ideal para dormir al bebé después de la alimentación.</p>
-            <div class="mode-params">
-              <div class="mode-param">
-                <span class="mode-param-val mode-rpm">6 RPM</span>
-                <span class="mode-param-label">Velocidad</span>
+      <div class="app-layout">
+        <div class="reveal">
+          <span class="section-tag">Smart App</span>
+          <h2 class="section-title">Control total desde tu celular</h2>
+          <p class="section-sub">Monitorea y controla todo desde la app de DreamCradle.</p>
+          <div class="app-screens">
+            <div class="app-screen">
+              <div class="app-screen-icon">📊</div>
+              <div>
+                <h4>Seguimiento de Sueño</h4>
+                <p>Registra horas de sueño, patrones y calidad. Visualiza el progreso de tu bebé.</p>
               </div>
-              <div class="mode-param">
-                <span class="mode-param-val mode-sound">Silencioso</span>
-                <span class="mode-param-label">Sonido</span>
+            </div>
+            <div class="app-screen">
+              <div class="app-screen-icon">🔔</div>
+              <div>
+                <h4>Alertas en Tiempo Real</h4>
+                <p>Recibe notificaciones cuando el bebé llore, se despierte o necesite atención.</p>
+              </div>
+            </div>
+            <div class="app-screen">
+              <div class="app-screen-icon">🎛️</div>
+              <div>
+                <h4>Control Remoto</h4>
+                <p>Ajusta movimiento, sonido y vibración desde cualquier lugar de la casa.</p>
+              </div>
+            </div>
+            <div class="app-screen">
+              <div class="app-screen-icon">⏰</div>
+              <div>
+                <h4>Programación</h4>
+                <p>Configura horarios de sueño y rutinas personalizadas.</p>
               </div>
             </div>
           </div>
         </div>
+        <div class="app-mockup reveal delay-2">
+          <img src="dreamcradle.webp" alt="DreamCradle app interface" class="app-phone">
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="safety" id="seguridad">
+  <!-- ============ 07. NOISE COMPARISON ============ -->
+  <section class="noise" id="noise">
     <div class="container">
-      <span class="section-num">05</span>
-      <span class="section-tag">Seguridad</span>
-      <h2 class="section-title">Diseñada para la seguridad</h2>
-      <div class="safety-grid">
-        <div class="safety-card reveal">
-          <div class="safety-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="noise-header reveal">
+        <span class="section-tag">Confort</span>
+        <h2 class="section-title">Confort y silencio absoluto</h2>
+        <p class="section-sub">DreamCradle opera por debajo de 30dB, más silencioso que un susurro.</p>
+      </div>
+      <div class="noise-bars">
+        <div class="noise-bar reveal">
+          <span class="noise-bar-icon">🍼</span>
+          <div class="noise-bar-info">
+            <div class="noise-bar-name">DreamCradle</div>
+            <div class="noise-bar-desc">Motor silencioso</div>
           </div>
-          <h4>Certificación ASTM</h4>
-          <p>Cumple con los estándares internacionales de seguridad infantil.</p>
+          <div class="noise-bar-track"><div class="noise-bar-fill green" data-width="20%"></div></div>
+          <span class="noise-bar-db" style="color:#34D399">30dB</span>
         </div>
-        <div class="safety-card reveal delay-1">
-          <div class="safety-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <div class="noise-bar reveal delay-1">
+          <span class="noise-bar-icon">🗣️</span>
+          <div class="noise-bar-info">
+            <div class="noise-bar-name">Sonidos de naturaleza</div>
+            <div class="noise-bar-desc">Modo sonido DreamCradle</div>
           </div>
-          <h4>Sensor de Temperatura</h4>
-          <p>Monitorea la temperatura ambiente y ajusta el movimiento.</p>
+          <div class="noise-bar-track"><div class="noise-bar-fill blue" data-width="40%"></div></div>
+          <span class="noise-bar-db" style="color:#60A5FA">35-50dB</span>
         </div>
-        <div class="safety-card reveal delay-2">
-          <div class="safety-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <div class="noise-bar reveal delay-2">
+          <span class="noise-bar-icon">🌧️</span>
+          <div class="noise-bar-info">
+            <div class="noise-bar-name">Lluvia moderada</div>
+            <div class="noise-bar-desc">Referencia externa</div>
           </div>
-          <h4>Alerta de Llanto</h4>
-          <p>Notificación automática en tu celular cuando el bebé llora.</p>
+          <div class="noise-bar-track"><div class="noise-bar-fill yellow" data-width="60%"></div></div>
+          <span class="noise-bar-db" style="color:#FBBF24">50-60dB</span>
         </div>
-        <div class="safety-card reveal delay-3">
-          <div class="safety-icon">
-            <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+        <div class="noise-bar reveal delay-3">
+          <span class="noise-bar-icon">🏙️</span>
+          <div class="noise-bar-info">
+            <div class="noise-bar-name">Tráfico urbano</div>
+            <div class="noise-bar-desc">Referencia externa</div>
           </div>
-          <h4>Batería Segura</h4>
-          <p>Batería de larga duración con protección contra sobrecalentamiento.</p>
+          <div class="noise-bar-track"><div class="noise-bar-fill red" data-width="85%"></div></div>
+          <span class="noise-bar-db" style="color:#F87171">75-85dB</span>
         </div>
       </div>
+      <div class="noise-note reveal">💡 DreamCradle opera por debajo de 30dB — más silencioso que un susurro</div>
     </div>
   </section>
 
-  <section class="testimonials" id="testimonios">
-    <div class="container">
-      <span class="section-num">06</span>
-      <span class="section-tag">Testimonios</span>
-      <h2 class="section-title">Lo que dicen los papás</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">LM</div>
-            <div class="testimonial-info">
-              <h5>Laura Martínez</h5>
-              <p>Mamá primeriza</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"Mi bebé se duerme en 5 minutos con el modo balanceo. Las noches más tranquilas de mi vida."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
-        </div>
-        <div class="testimonial-card reveal delay-1">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">CR</div>
-            <div class="testimonial-info">
-              <h5>Carlos Rodríguez</h5>
-              <p>Papá de gemelos</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"La app es increíble. Puedo ver los patrones de sueño de mis gemelos desde mi celular."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
-        </div>
-        <div class="testimonial-card reveal delay-2">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">AP</div>
-            <div class="testimonial-info">
-              <h5>Andrea Pérez</h5>
-              <p>Mamá ocupada</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p class="testimonial-text">"La batería me dura toda la noche. No tengo que preocuparme por cargarla cada rato."</p>
-          <span class="testimonial-badge">Contenido demostrativo</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- ============ 08. UNBOXING ============ -->
   <section class="unboxing" id="unboxing">
-    <div class="container unboxing-layout">
-      <div class="unboxing-visual">
-        <img src="dreamcradle.webp" alt="DreamCradle packaging">
-      </div>
-      <div class="unboxing-text">
-        <span class="section-num">07</span>
-        <span class="section-tag">Unboxing</span>
+    <div class="container">
+      <div class="unboxing-header reveal">
+        <span class="section-tag">Contenido</span>
         <h2 class="section-title">Qué incluye la caja</h2>
         <p class="section-sub">Todo lo que necesitas para noches tranquilas.</p>
-        <ul class="unboxing-list">
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>DreamCradle</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Base con motor silencioso</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Cable USB-C de carga</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Manual de usuario</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Guía de modos de sueño</span>
-          </li>
-        </ul>
-        <span class="unboxing-badge">🚚 Envío gratis en Colombia</span>
       </div>
-    </div>
-  </section>
-
-  <section class="offer" id="oferta">
-    <div class="container offer-layout">
-      <div class="offer-info">
-        <span class="section-num">08</span>
-        <span class="offer-tag">Preventa limitada</span>
-        <h2 class="offer-title">Noches más tranquilas.</h2>
-        <div class="offer-price">
-          <span class="offer-old">$349.000</span>
-          <span class="offer-new">$279.000</span>
-          <span class="offer-save">Ahorras $70.000</span>
+      <div class="unboxing-grid">
+        <div class="unboxing-item reveal">
+          <div class="unboxing-item-icon">🛏️</div>
+          <h5>DreamCradle</h5>
+          <p>Cuna inteligente principal</p>
         </div>
-        <ul class="offer-benefits">
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Envío gratis a toda Colombia</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>1 año de garantía</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Certificación ASTM + EN</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Soporte técnico 24/7</span>
-          </li>
-        </ul>
+        <div class="unboxing-item reveal delay-1">
+          <div class="unboxing-item-icon">⚙️</div>
+          <h5>Base con Motor</h5>
+          <p>Motor silencioso integrado</p>
+        </div>
+        <div class="unboxing-item reveal delay-2">
+          <div class="unboxing-item-icon">🔌</div>
+          <h5>Cable USB-C</h5>
+          <p>Cable de carga rápida</p>
+        </div>
+        <div class="unboxing-item reveal delay-3">
+          <div class="unboxing-item-icon">📖</div>
+          <h5>Manual de Usuario</h5>
+          <p>Guía completa en español</p>
+        </div>
+        <div class="unboxing-item reveal delay-4">
+          <div class="unboxing-item-icon">🌙</div>
+          <h5>Guía de Modos</h5>
+          <p>Guía de modos de sueño</p>
+        </div>
       </div>
-      <div class="offer-cta-card">
-        <h3 class="offer-card-title">Reserva tu DreamCradle</h3>
-        <div class="offer-card-price">$279.000 COP</div>
-        <a href="#" class="btn btn-rose btn-block">Reservar ahora →</a>
-        <p class="offer-card-note">Reembolso completo si no estás satisfecho</p>
+      <div class="unboxing-badge reveal">
+        <span>🚚 Envío gratis a toda Colombia</span>
       </div>
     </div>
   </section>
 
-  <section class="countdown-section" id="countdown">
+  <!-- ============ 09. TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
     <div class="container">
-      <h3 class="countdown-heading">La preventa termina en</h3>
-      <div class="countdown-row" data-days="5">
-        <div class="countdown-unit">
-          <span class="countdown-num" id="dias">00</span>
-          <span class="countdown-label">Días</span>
+      <div class="testimonials-header reveal">
+        <span class="section-tag">Testimonios</span>
+        <h2 class="section-title">Lo que dicen los papás</h2>
+        <p class="section-sub">Experiencias reales de familias que ya usan DreamCradle.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"La mejor inversión. Mi bebé duerme toda la noche y yo puedo descansar también. ¡La app es increíble!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar v1">MF</div>
+            <div>
+              <div class="testimonial-name">María Fernanda</div>
+              <div class="testimonial-baby">Mamá de Sofía, 6 meses</div>
+            </div>
+          </div>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="horas">00</span>
-          <span class="countdown-label">Horas</span>
+        <div class="testimonial-card reveal delay-1">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"El modo de balanceo es perfecto. Se siente como si lo estuvieras meciendo tú misma. Totalmente recomendada."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar v2">CA</div>
+            <div>
+              <div class="testimonial-name">Carlos Andrés</div>
+              <div class="testimonial-baby">Papá de Mateo, 3 meses</div>
+            </div>
+          </div>
         </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="minutos">00</span>
-          <span class="countdown-label">Min</span>
-        </div>
-        <span class="countdown-sep">:</span>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="segundos">00</span>
-          <span class="countdown-label">Seg</span>
+        <div class="testimonial-card reveal delay-2">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-text">"Los sonidos de naturaleza son mágicos. La lluvia duerme a mi bebé en minutos. La batería dura muchísimo."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar v3">AL</div>
+            <div>
+              <div class="testimonial-name">Ana Lucía</div>
+              <div class="testimonial-baby">Mamá de Valentina, 9 meses</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ 10. PRICING ============ -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <span class="pricing-badge">⚡ PREVENTA LIMITADA — 20% OFF</span>
+      <h2 class="section-title">Noches más tranquilas te esperan</h2>
+      <div class="pricing-price reveal">
+        <span class="pricing-old">$349.000</span>
+        <span class="pricing-new">$279.000 COP</span>
+        <span class="pricing-save">Ahorras $70.000</span>
+      </div>
+      <div class="pricing-benefits reveal delay-1">
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Envío gratis a toda Colombia</span>
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>1 año de garantía total</span>
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Certificación ASTM + EN</span>
+        </div>
+        <div class="pricing-benefit">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Soporte técnico 24/7</span>
+        </div>
+      </div>
+      <div class="pricing-cta reveal delay-2">
+        <a href="#" class="btn btn-white" style="font-size:1.1rem;padding:20px 56px;border-radius:16px">Reservar ahora →</a>
+      </div>
+      <div class="trust-badges reveal delay-3">
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Reembolso completo
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Pago seguro encriptado
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Rastreo en tiempo real
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. FAQ ============ -->
   <section class="faq" id="faq">
     <div class="container">
-      <span class="section-num">09</span>
-      <span class="section-tag">Preguntas frecuentes</span>
-      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <div class="faq-header reveal">
+        <span class="section-tag">Preguntas</span>
+        <h2 class="section-title">Todo lo que necesitas saber</h2>
+      </div>
       <div class="faq-grid">
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Cuánto peso soporta?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">La DreamCradle soporta hasta 12kg, lo que cubre a la mayoría de bebés desde recién nacidos hasta 18 meses.</div>
-          </div>
+          <button class="faq-question">¿Cuánto peso soporta?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">La DreamCradle soporta hasta 12kg, lo que cubre a la mayoría de bebés desde recién nacidos hasta 18 meses.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Es segura para recién nacidos?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, cuenta con certificación ASTM + EN, los estándares internacionales más rigurosos de seguridad infantil.</div>
-          </div>
+          <button class="faq-question">¿Es segura para recién nacidos?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí, cuenta con certificación ASTM + EN, los estándares internacionales más rigurosos de seguridad infantil.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Cuánto dura la batería?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">La batería de 5000mAh ofrece hasta 8 horas de uso continuo. Con uso promedio, carga una vez cada 2-3 días.</div>
-          </div>
+          <button class="faq-question">¿Cuánto dura la batería?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">La batería de 5000mAh ofrece hasta 8 horas de uso continuo. Con uso promedio, carga una vez cada 2-3 días.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Qué sonidos tiene?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">20 melodías y sonidos: lluvia, viento, bosque, olas del mar, latido del corazón y 15 melodías suaves.</div>
-          </div>
+          <button class="faq-question">¿Qué sonidos tiene?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">20 melodías y sonidos: lluvia, viento, bosque, olas del mar, latido del corazón y 15 melodías suaves.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Qué tan ruidosa es?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">El motor es extremadamente silencioso (menos de 30dB). No despertará al bebé ni a los papás.</div>
-          </div>
+          <button class="faq-question">¿Qué tan ruidosa es?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">El motor es extremadamente silencioso (menos de 30dB). No despertará al bebé ni a los papás.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Funciona sin la app?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">Sí, todos los modos funcionan con los botones físicos. La app es opcional pero agrega seguimiento y control remoto.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Cuánto tarda en cargar?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">La carga completa por USB-C toma aproximadamente 3 horas. Puedes cargarla mientras el bebé duerme.</div>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>¿Qué garantía tiene?</span>
-            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">1 año de garantía contra defectos de fabricación. Además, 30 días de garantía de satisfacción completa con reembolso.</div>
-          </div>
+          <button class="faq-question">¿Funciona sin la app?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner">Sí, todos los modos funcionan con los botones físicos. La app es opcional pero agrega seguimiento y control remoto.</div></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container footer-inner">
       <div class="footer-brand">Dream<span>Cradle</span></div>
       <div class="footer-links">
         <a href="#features">Características</a>
-        <a href="#modos">Modos</a>
-        <a href="#specs">Especificaciones</a>
+        <a href="#modes">Modos</a>
+        <a href="#safety">Seguridad</a>
         <a href="#faq">FAQ</a>
+        <a href="#pricing">Reservar</a>
       </div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a></p>
     </div>
   </footer>
 
+  <!-- Mobile Sticky CTA -->
   <div class="mobile-sticky">
     <div class="mobile-sticky-inner">
       <div class="mobile-sticky-price">
         <span class="mobile-sticky-old">$349.000</span>
         <span class="mobile-sticky-new">$279.000 COP</span>
       </div>
-      <a href="#oferta" class="mobile-sticky-btn">Reservar →</a>
+      <a href="#pricing" class="mobile-sticky-btn">Reservar</a>
     </div>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>

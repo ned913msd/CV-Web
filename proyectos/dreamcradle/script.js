@@ -1,56 +1,170 @@
 /* ================================================================
-   DREAMCRADLE — Premium Smart Baby Cradle
-   Standalone luxury product JavaScript
-   Features: Mode Configurator, FAQ, Countdown, Scroll Progress, Reveal
+   DREAMCRADLE — Smart Baby Cradle Script
+   FAQ, Countdown, Scroll Reveal, Number Counters, Stars
 =============================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // ============ SCROLL PROGRESS ============
   const progressBar = document.querySelector('.scroll-progress');
-  const updateProgress = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-    if (progressBar) progressBar.style.width = progress + '%';
-  };
-  window.addEventListener('scroll', updateProgress, { passive: true });
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+    }, { passive: true });
+  }
 
   // ============ HEADER SCROLL ============
   const header = document.querySelector('header');
-  const handleHeaderScroll = () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  };
-  window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-  handleHeaderScroll();
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+  }
 
   // ============ MOBILE MENU ============
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
   const mobileClose = document.querySelector('.mobile-close');
-  const mobileLinks = document.querySelectorAll('.mobile-menu a');
-
   if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.add('abierto');
-      document.body.style.overflow = 'hidden';
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('abierto'));
+    if (mobileClose) mobileClose.addEventListener('click', () => mobileMenu.classList.remove('abierto'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('abierto'));
     });
-
-    const closeMenu = () => {
-      mobileMenu.classList.remove('abierto');
-      document.body.style.overflow = '';
-    };
-
-    mobileClose?.addEventListener('click', closeMenu);
-    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
   }
 
-  // ============ REVEAL ON SCROLL ============
-  const revealElements = document.querySelectorAll('.reveal');
+  // ============ SMOOTH SCROLL ============
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
 
+  // ============ GENERATE STARS ============
+  const starsContainers = document.querySelectorAll('.stars');
+  starsContainers.forEach(container => {
+    for (let i = 0; i < 50; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        width: ${1 + Math.random() * 3}px;
+        height: ${1 + Math.random() * 3}px;
+        animation-duration: ${2 + Math.random() * 4}s;
+        animation-delay: ${Math.random() * 5}s;
+      `;
+      container.appendChild(star);
+    }
+  });
+
+  // ============ NUMBER COUNTER ============
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const prefix = el.dataset.prefix || '';
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+
+        function animate(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = eased * target;
+          el.textContent = prefix + (isDecimal ? current.toFixed(0) : Math.floor(current)) + suffix;
+          if (progress < 1) requestAnimationFrame(animate);
+          else el.textContent = prefix + target + suffix;
+        }
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(el => counterObserver.observe(el));
+
+  // ============ NOISE BARS ANIMATION ============
+  const noiseBars = document.querySelectorAll('.noise-bar-fill');
+  const noiseObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const width = fill.dataset.width;
+        setTimeout(() => { fill.style.width = width; }, 200);
+        noiseObserver.unobserve(fill);
+      }
+    });
+  }, { threshold: 0.3 });
+  noiseBars.forEach(bar => {
+    bar.style.width = '0%';
+    noiseObserver.observe(bar);
+  });
+
+  // ============ COUNTDOWN ============
+  const countdownEl = document.getElementById('countdown');
+  if (countdownEl) {
+    const daysEl = document.getElementById('dias');
+    const hoursEl = document.getElementById('horas');
+    const minsEl = document.getElementById('minutos');
+    const secsEl = document.getElementById('segundos');
+    const days = parseInt(countdownEl.dataset.days) || 6;
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + days);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+      if (diff <= 0) {
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minsEl.textContent = '00';
+        secsEl.textContent = '00';
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      daysEl.textContent = String(d).padStart(2, '0');
+      hoursEl.textContent = String(h).padStart(2, '0');
+      minsEl.textContent = String(m).padStart(2, '0');
+      secsEl.textContent = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  // ============ FAQ ============
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('active');
+      document.querySelectorAll('.faq-item.active').forEach(openItem => {
+        openItem.classList.remove('active');
+        openItem.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // ============ REVEAL ON SCROLL ============
+  const reveals = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -58,157 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // ============ MODE CONFIGURATOR ============
-  const modeTabs = document.querySelectorAll('.mode-tab');
-  const modeName = document.querySelector('.mode-name');
-  const modeDesc = document.querySelector('.mode-desc');
-  const modeRpm = document.querySelector('.mode-rpm');
-  const modeSound = document.querySelector('.mode-sound');
-  const modeGlow = document.querySelector('.mode-glow');
-
-  const modesData = {
-    balanceo: {
-      name: 'Balanceo Suave',
-      desc: 'Movimiento rítmico que imita el mecer natural. Ideal para dormir al bebé después de la alimentación.',
-      rpm: '6 RPM',
-      sound: 'Silencioso',
-      glowColor: 'rgba(199, 125, 186, 0.15)'
-    },
-    vibracion: {
-      name: 'Vibración Calmante',
-      desc: 'Vibración suave que calma al bebé. Se activa automáticamente cuando detecta llanto.',
-      rpm: 'Suave',
-      sound: '10 melodías',
-      glowColor: 'rgba(139, 92, 246, 0.15)'
-    },
-    sonido: {
-      name: 'Sonido Naturaleza',
-      desc: 'Lluvia, viento y sonidos del bosque. Volumen ajustable con temporizador automático.',
-      rpm: 'Estático',
-      sound: '20 sonidos',
-      glowColor: 'rgba(6, 182, 212, 0.15)'
-    },
-    combinado: {
-      name: 'Modo Completo',
-      desc: 'Combina movimiento, vibración y sonido para el máximo confort. El bebé se duerme en minutos.',
-      rpm: '8 RPM',
-      sound: '20 sonidos',
-      glowColor: 'rgba(245, 158, 11, 0.15)'
-    }
-  };
-
-  modeTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      modeTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const mode = tab.dataset.mode;
-      const data = modesData[mode];
-
-      if (data && modeName && modeDesc && modeRpm && modeSound) {
-        modeName.textContent = data.name;
-        modeDesc.textContent = data.desc;
-        modeRpm.textContent = data.rpm;
-        modeSound.textContent = data.sound;
-      }
-
-      if (modeGlow) {
-        modeGlow.style.background = `radial-gradient(circle, ${data.glowColor}, transparent 70%)`;
-      }
-    });
-  });
-
-  // ============ FAQ ACCORDION ============
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-
-      faqItems.forEach(fi => {
-        fi.classList.remove('active');
-        fi.querySelector('.faq-answer').style.maxHeight = '0';
-      });
-
-      if (!isActive) {
-        item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
-    });
-  });
-
-  // ============ COUNTDOWN TIMER ============
-  const countdownEl = document.querySelector('.countdown-row');
-  if (countdownEl) {
-    const days = parseInt(countdownEl.dataset.days) || 5;
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + days);
-
-    const updateCountdown = () => {
-      const now = new Date();
-      const diff = endDate - now;
-
-      if (diff <= 0) {
-        document.getElementById('dias').textContent = '00';
-        document.getElementById('horas').textContent = '00';
-        document.getElementById('minutos').textContent = '00';
-        document.getElementById('segundos').textContent = '00';
-        return;
-      }
-
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('dias').textContent = d.toString().padStart(2, '0');
-      document.getElementById('horas').textContent = h.toString().padStart(2, '0');
-      document.getElementById('minutos').textContent = m.toString().padStart(2, '0');
-      document.getElementById('segundos').textContent = s.toString().padStart(2, '0');
-    };
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  }
-
-  // ============ SMOOTH SCROLL ============
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => revealObserver.observe(el));
 
   // ============ MOBILE STICKY CTA ============
-  const mobileSticky = document.querySelector('.mobile-sticky');
-  if (mobileSticky) {
+  const sticky = document.querySelector('.mobile-sticky');
+  if (sticky) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        mobileSticky.style.transform = 'translateY(0)';
-      } else {
-        mobileSticky.style.transform = 'translateY(100%)';
-      }
+      sticky.style.transform = window.scrollY > 600 ? 'translateY(0)' : 'translateY(100%)';
     }, { passive: true });
   }
 
-  // ============ HERO GLOW MOUSE TRACKING ============
-  const heroGlow = document.querySelector('.hero-glow');
-  if (heroGlow) {
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX / window.innerWidth;
-      const y = e.clientY / window.innerHeight;
-      heroGlow.style.left = (60 + (x - 0.5) * 20) + '%';
-      heroGlow.style.top = (40 + (y - 0.5) * 20) + '%';
-    });
-  }
 });
