@@ -3,166 +3,576 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrewMaster AI — Cafetera Portátil con Control de Temperatura por IA</title>
-  <meta name="description" content="Café perfecto en cualquier lugar. Control IA de temperatura, 5 métodos de extracción y batería de 12 horas.">
+  <title>BrewMaster AI — El Café Perfecto, En Cualquier Lugar</title>
+  <meta name="description" content="Cafetera portátil con inteligencia artificial. Control IA de temperatura, 5 métodos de extracción y batería de 12 horas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared/base.css">
-  <style>
-    :root { --accent:#a16207; --accent-glow:#ca8a04; --accent-soft:rgba(161,98,7,0.12); --lamp-color:#a16207; --lamp-glow:rgba(161,98,7,0.25); }
-    .hero { background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(161,98,7,0.08), transparent), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(120,53,15,0.06), transparent); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scroll-progress"></div>
+
   <header>
-    <div class="container nav">
+    <div class="container header-inner">
       <a href="/" class="logo">Brew<span>Master</span></a>
       <nav class="nav-links">
         <a href="#features">Características</a>
-        <a href="#configurador">Métodos</a>
+        <a href="#metodos">Métodos</a>
         <a href="#specs">Especificaciones</a>
-        <a href="#preventa" class="btn-nav">Reservar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#oferta" class="btn-header">Comprar</a>
       </nav>
+      <button class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <div class="mobile-menu">
+    <button class="mobile-close" aria-label="Cerrar menú">✕</button>
+    <a href="#features">Características</a>
+    <a href="#metodos">Métodos</a>
+    <a href="#specs">Especificaciones</a>
+    <a href="#faq">FAQ</a>
+    <a href="#oferta" class="btn-header">Comprar</a>
+  </div>
+
   <section class="hero">
-    <div class="hero-glow" id="heroGlow"></div>
+    <div class="hero-glow"></div>
     <div class="container hero-grid">
-      <div class="hero-texto">
-        <span class="badge-preventa">Preventa — 20% de descuento</span>
+      <div class="hero-text">
+        <span class="hero-label">Preventa — 20% de descuento</span>
         <h1>Brew<span>Master</span> AI</h1>
         <p class="hero-sub">El café perfecto, en cualquier lugar.</p>
-        <p class="hero-desc">
-          Cafetera portátil con inteligencia artificial que ajusta la temperatura y el tiempo de extracción
-          automáticamente. 5 métodos de café, batería de 12 horas y tamaño compacto para llevar a donde vayas.
-        </p>
-        <div class="hero-botones">
-          <a href="#preventa" class="btn btn-primario">Reservar con preventa —20%</a>
-          <a href="#configurador" class="btn btn-secundario">Ver métodos</a>
+        <div class="hero-cta">
+          <a href="#oferta" class="btn btn-copper">Reservar con preventa —20%</a>
+          <a href="#metodos" class="btn btn-outline">Ver métodos</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat-mini"><span class="stat-valor">5</span><span class="stat-label">Métodos</span></div>
-          <div class="stat-mini"><span class="stat-valor">12h</span><span class="stat-label">Batería</span></div>
-          <div class="stat-mini"><span class="stat-valor">350ml</span><span class="stat-label">Capacidad</span></div>
+        <div class="hero-badges">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>5 Métodos</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>12h Batería</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>350ml</span>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="lamp-glow" id="lampGlow"></div>
-        <img src="brewmaster-ai.webp" alt="BrewMaster AI — Cafetera Portátil con IA" class="hero-img" loading="eager" fetchpriority="high" width="400" height="400">
-        <div class="app-badge"><div class="app-badge-icon">🤖</div><span>Control por IA</span></div>
+        <img src="brewmaster-ai.webp" alt="BrewMaster AI — Cafetera Portátil con IA" class="hero-img" loading="eager" fetchpriority="high" width="420" height="420">
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubre más</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
   <section class="features" id="features">
     <div class="container">
+      <span class="section-num">02</span>
       <span class="section-tag">Características</span>
       <h2 class="section-title">Café de barista, sin barista</h2>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icono">🤖</div>
-          <h3>Control IA de Temperatura</h3>
-          <p>La inteligencia artificial ajusta automáticamente la temperatura ideal para cada tipo de café y método.</p>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+          </div>
+          <h4>Control IA de Temperatura</h4>
+          <p>La inteligencia artificial ajusta automáticamente la temperatura ideal para cada tipo de café y método de extracción.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">☕</div>
-          <h3>5 Métodos de Extracción</h3>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h4>5 Métodos de Extracción</h4>
           <p>Espresso, Americano, Cold Brew, Pour Over y French Press. Un solo dispositivo, infinitas opciones.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🔋</div>
-          <h3>Batería 12 horas</h3>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+          </div>
+          <h4>Batería 12 horas</h4>
           <p>Carga completa por USB-C en 2 horas. Suficiente para todo el día sin enchufarse.</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icono">🧳</div>
-          <h3>Diseño Compacto</h3>
-          <p>Tamaño de una botella de agua. Caben en mochila, maleta o biking. Café en oficina, camping o viaje.</p>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h4>Diseño Compacto</h4>
+          <p>Tamaño de una botella de agua. Caben en mochila, maleta o bicicleta. Café en oficina, camping o viaje.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="configurador" id="configurador">
+  <section class="showcase" id="specs">
     <div class="container">
-      <span class="section-tag">Configurador</span>
+      <div class="showcase-layout">
+        <div class="showcase-visual">
+          <img src="brewmaster-ai.webp" alt="BrewMaster AI en uso">
+          <div class="floating-spec floating-spec-1">350ml</div>
+          <div class="floating-spec floating-spec-2">450g</div>
+        </div>
+        <div class="showcase-text">
+          <span class="section-num">03</span>
+          <span class="section-tag">Ingeniería</span>
+          <h2 class="section-title">Ingeniería de café de precisión</h2>
+          <div class="specs-list">
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Temperatura</span>
+                <span class="spec-value">85-96°C — control IA</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="10" x2="23" y2="14"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Batería</span>
+                <span class="spec-value">5000mAh — 12 horas</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Carga</span>
+                <span class="spec-value">USB-C — 2h carga completa</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Capacidad</span>
+                <span class="spec-value">350ml — 2 tazas</span>
+              </div>
+            </div>
+            <div class="spec-row">
+              <div class="spec-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="spec-text">
+                <span class="spec-label">Tamaño</span>
+                <span class="spec-value">22cm × 8cm — 450g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="methods" id="metodos">
+    <div class="container">
+      <span class="section-num">04</span>
+      <span class="section-tag">Métodos</span>
       <h2 class="section-title">Elige tu método</h2>
       <p class="section-sub">Cada método tiene su propia curva de temperatura y tiempo optimizada por IA.</p>
-      <div class="config-grid">
-        <div class="escenas">
-          <button class="escena-btn activa" data-color="#a16207" data-glow="#ca8a04" data-nombre="Espresso — 93°C / 25s"><span class="escena-color" style="background:#a16207"></span><span>Espresso — denso y aromático</span></button>
-          <button class="escena-btn" data-color="#78350f" data-glow="#a16207" data-nombre="Americano — 92°C / 30s"><span class="escena-color" style="background:#78350f"></span><span>Americano — suave y equilibrado</span></button>
-          <button class="escena-btn" data-color="#06b6d4" data-glow="#22d3ee" data-nombre="Cold Brew — 4°C / 12h"><span class="escena-color" style="background:#06b6d4"></span><span>Cold Brew — frío y suave</span></button>
-          <button class="escena-btn" data-color="#f97316" data-glow="#fb923c" data-nombre="Pour Over — 94°C / 3min"><span class="escena-color" style="background:#f97316"></span><span>Pour Over — limpio y floral</span></button>
-          <button class="escena-btn" data-color="#7c3aed" data-glow="#a78bfa" data-nombre="French Press — 96°C / 4min"><span class="escena-color" style="background:#7c3aed"></span><span>French Press — full body</span></button>
+      <div class="methods-tabs">
+        <button class="method-tab active" data-method="espresso">
+          <span class="method-tab-dot"></span>
+          <span>Espresso</span>
+        </button>
+        <button class="method-tab" data-method="americano">
+          <span class="method-tab-dot"></span>
+          <span>Americano</span>
+        </button>
+        <button class="method-tab" data-method="coldbrew">
+          <span class="method-tab-dot"></span>
+          <span>Cold Brew</span>
+        </button>
+        <button class="method-tab" data-method="pourover">
+          <span class="method-tab-dot"></span>
+          <span>Pour Over</span>
+        </button>
+        <button class="method-tab" data-method="frenchpress">
+          <span class="method-tab-dot"></span>
+          <span>French Press</span>
+        </button>
+      </div>
+      <div class="method-content">
+        <div class="method-visual">
+          <img src="brewmaster-ai.webp" alt="Método de extracción">
         </div>
-        <div class="config-preview">
-          <div class="preview-glow" id="previewGlow"></div>
-          <img src="brewmaster-ai.webp" alt="Previsualización de método" class="preview-img" id="previewImg">
-          <div class="escena-nombre" id="escenaNombre">Espresso — 93°C / 25s</div>
+        <div class="method-info">
+          <h3 class="method-title">Espresso</h3>
+          <p class="method-desc">Extracción bajo presión que concentra los aceites esenciales del café. Denso, aromático y con una capa de crema perfecta.</p>
+          <div class="method-params">
+            <div class="method-param">
+              <span class="method-param-val method-temp">93°C</span>
+              <span class="method-param-label">Temperatura</span>
+            </div>
+            <div class="method-param">
+              <span class="method-param-val method-time">25s</span>
+              <span class="method-param-label">Tiempo</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="specs" id="specs">
+  <section class="ai-process" id="proceso">
     <div class="container">
-      <div class="specs-grid">
-        <div class="specs-texto">
-          <span class="section-tag">Especificaciones</span>
-          <h2 class="section-title">Ingeniería de café</h2>
-          <p class="section-sub">Cada detalle está calibrado para extraer el máximo sabor de cada grano.</p>
+      <span class="section-num">05</span>
+      <span class="section-tag">Proceso IA</span>
+      <h2 class="section-title">Cómo funciona la inteligencia artificial</h2>
+      <p class="section-sub">Desde el grano hasta la taza, la IA se encarga de cada paso.</p>
+      <div class="process-timeline">
+        <div class="process-step reveal">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h4>Detección</h4>
+          <p>La IA analiza el tipo de grano y sus características.</p>
         </div>
-        <div class="specs-lista">
-          <div class="spec-item"><span class="spec-icono">🌡️</span><div><span class="spec-label">Temperatura</span><span class="spec-valor">85-96°C — control IA</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🔋</span><div><span class="spec-label">Batería</span><span class="spec-valor">5000mAh — 12 horas</span></div></div>
-          <div class="spec-item"><span class="spec-icono">⚡</span><div><span class="spec-label">Carga</span><span class="spec-valor">USB-C — 2h carga completa</span></div></div>
-          <div class="spec-item"><span class="spec-icono">🫗</span><div><span class="spec-label">Capacidad</span><span class="spec-valor">350ml — 2 tazas</span></div></div>
-          <div class="spec-item"><span class="spec-icono">📏</span><div><span class="spec-label">Tamaño</span><span class="spec-valor">22cm × 8cm — 450g</span></div></div>
-          <div class="spec-item"><span class="spec-icono">📱</span><div><span class="spec-label">App</span><span class="spec-valor">Recetas guardadas + historial</span></div></div>
+        <div class="process-step reveal delay-1">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h4>Ajuste</h4>
+          <p>Calcula la temperatura y tiempo ideal para cada método.</p>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+          </div>
+          <h4>Extracción</h4>
+          <p>Ejecuta la extracción con precisión milimétrica.</p>
+        </div>
+        <div class="process-step reveal delay-3">
+          <div class="process-num">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Resultado</h4>
+          <p>Café perfecto, cada vez, sin esfuerzo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="preventa" id="preventa">
-    <div class="container preventa-grid">
-      <div class="preventa-info">
-        <span class="section-tag">Oferta de preventa</span>
-        <h2 class="section-title">Tu barista personal</h2>
-        <p class="section-sub">Preventa con 20% de descuento. Envío gratis, 30 días de garantía y app incluida.</p>
-        <div class="precios">
-          <span class="precio-antes">$169.000</span>
-          <span class="precio-ahora">$135.000</span>
-          <span class="precio-ahorra">Ahorras $34.000</span>
+  <section class="comparison" id="comparacion">
+    <div class="container">
+      <span class="section-num">06</span>
+      <span class="section-tag">Comparativa</span>
+      <h2 class="section-title">Cafetera tradicional vs BrewMaster AI</h2>
+      <div class="comparison-table">
+        <div class="comp-row header">
+          <div class="comp-cell feature">Característica</div>
+          <div class="comp-cell check">BrewMaster AI</div>
+          <div class="comp-cell cross">Tradicional</div>
         </div>
-        <div class="beneficios">
-          <div class="beneficio"><span class="beneficio-icon">🚚</span><span>Envío gratis a toda Colombia</span></div>
-          <div class="beneficio"><span class="beneficio-icon">🛡️</span><span>30 días de garantía</span></div>
-          <div class="beneficio"><span class="beneficio-icon">☕</span><span>Kit de limpieza incluido</span></div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Portátil</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Control IA</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">5 métodos</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">1</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">App connectivity</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">Batería 12h</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">✗</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell feature">USB-C</div>
+          <div class="comp-cell check">✓</div>
+          <div class="comp-cell cross">Depende</div>
         </div>
       </div>
-      <div class="preventa-cta">
-        <div class="countdown" id="countdown" data-days="3">
-          <div class="countdown-item"><span class="countdown-num" id="dias">00</span><span class="countdown-label">Días</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="horas">00</span><span class="countdown-label">Horas</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="minutos">00</span><span class="countdown-label">Min</span></div>
-          <div class="countdown-item"><span class="countdown-num" id="segundos">00</span><span class="countdown-label">Seg</span></div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <span class="section-num">07</span>
+      <span class="section-tag">Testimonios</span>
+      <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">CM</div>
+            <div class="testimonial-info">
+              <h5>Carlos Mendoza</h5>
+              <p>Barista profesional</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"La precisión de temperatura es impresionante. Cada taza sale perfecta, sin importar el método que elijas."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
         </div>
-        <a href="#" class="btn btn-preventa">Reservar ahora →</a>
-        <p class="preventa-nota">Sin riesgo — reembolso completo si no estás satisfecho</p>
+        <div class="testimonial-card reveal delay-1">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">LR</div>
+            <div class="testimonial-info">
+              <h5>Laura Rodríguez</h5>
+              <p>Amante del café</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"La llevo a la oficina todos los días. El Cold Brew que prepara es mejor que el de mi cafetería favorita."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
+        </div>
+        <div class="testimonial-card reveal delay-2">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">AP</div>
+            <div class="testimonial-info">
+              <h5>Andrés Pérez</h5>
+              <p>CEO, Startup</p>
+            </div>
+          </div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"La batería me dura toda la semana de viaje. Es la mejor inversión que he hecho en café."</p>
+          <span class="testimonial-badge">Contenido demostrativo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="unboxing" id="unboxing">
+    <div class="container unboxing-layout">
+      <div class="unboxing-visual">
+        <img src="brewmaster-ai.webp" alt="BrewMaster AI packaging">
+      </div>
+      <div class="unboxing-text">
+        <span class="section-num">08</span>
+        <span class="section-tag">Unboxing</span>
+        <h2 class="section-title">Qué incluye la caja</h2>
+        <p class="section-sub">Todo lo que necesitas para empezar a preparar café perfecto.</p>
+        <ul class="unboxing-list">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>BrewMaster AI</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Cable USB-C de carga</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kit de limpieza completo</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Manual de usuario</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Guía de métodos de extracción</span>
+          </li>
+        </ul>
+        <span class="unboxing-badge">🚚 Envío gratis en Colombia</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer" id="oferta">
+    <div class="container offer-layout">
+      <div class="offer-info">
+        <span class="section-num">09</span>
+        <span class="offer-tag">Preventa limitada</span>
+        <h2 class="offer-title">Tu barista personal.</h2>
+        <div class="offer-price">
+          <span class="offer-old">$169.000</span>
+          <span class="offer-new">$135.000</span>
+          <span class="offer-save">Ahorras $34.000</span>
+        </div>
+        <ul class="offer-benefits">
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Envío gratis a toda Colombia</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>30 días de garantía</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Kit de limpieza incluido</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Soporte técnico 24/7</span>
+          </li>
+        </ul>
+      </div>
+      <div class="offer-cta-card">
+        <h3 class="offer-card-title">Reserva tu BrewMaster AI</h3>
+        <div class="offer-card-price">$135.000 COP</div>
+        <a href="#" class="btn btn-copper btn-block">Reservar ahora →</a>
+        <p class="offer-card-note">Reembolso completo si no estás satisfecho</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <h3 class="countdown-heading">La preventa termina en</h3>
+      <div class="countdown-row" data-days="3">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="dias">00</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="horas">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="minutos">00</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="segundos">00</span>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <span class="section-num">10</span>
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Todo lo que necesitas saber</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tiempo dura la batería?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">La batería de 5000mAh ofrece hasta 12 horas de uso continuo. Con un uso promedio de 3-4 tazas al día, carga la BrewMaster aproximadamente una vez por semana.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cómo funciona el control de temperatura por IA?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">La IA analiza el tipo de café seleccionado y ajusta automáticamente la temperatura (85-96°C) y el tiempo de extracción para obtener el mejor sabor posible.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué métodos de café puedo preparar?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">5 métodos: Espresso (93°C/25s), Americano (90°C/3min), Cold Brew (20°C/12h), Pour Over (92°C/4min) y French Press (94°C/4min). Cada uno optimizado por IA.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Es realmente portátil?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Sí, mide 22cm × 8cm y pesa solo 450g. El tamaño es similar a una botella de agua. Caben perfectamente en una mochila o maleta de mano.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tiempo tarda en cargar?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">La carga completa por USB-C toma aproximadamente 2 horas. Puedes cargarla con cualquier cargador de celular o puerto USB.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Necesito café molido o funciona con granos?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Funciona con café molido. Para mejores resultados, recomendamos molienda media para French Press y Americano, y molienda fina para Espresso.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuál es la capacidad?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">La capacidad es de 350ml, suficiente para preparar aproximadamente 2 tazas estándar de café en una sola carga.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué garantía tiene?</span>
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Ofrecemos 30 días de garantía de satisfacción completa. Si no estás satisfecho, devolvemos tu dinero sin preguntas. Además, tienes 1 año de garantía contra defectos de fabricación.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footer-content">
+    <div class="container footer-inner">
       <div class="footer-brand">Brew<span>Master</span></div>
-      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión 🚀</p>
+      <div class="footer-links">
+        <a href="#features">Características</a>
+        <a href="#metodos">Métodos</a>
+        <a href="#specs">Especificaciones</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p class="footer-copy">Diseñado por <a href="https://ned913msd.github.io/CV-Web/">David Ned Bustamante</a> — Landing page de alta conversión</p>
     </div>
   </footer>
-  <script src="../shared/app.js" defer></script>
+
+  <div class="mobile-sticky">
+    <div class="mobile-sticky-inner">
+      <div class="mobile-sticky-price">
+        <span class="mobile-sticky-old">$169.000</span>
+        <span class="mobile-sticky-new">$135.000 COP</span>
+      </div>
+      <a href="#oferta" class="mobile-sticky-btn">Reservar →</a>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
