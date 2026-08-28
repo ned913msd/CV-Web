@@ -1,6 +1,6 @@
 /* ================================================================
-   NED — CHECKOUT MERCADO PAGO
-   Integración Wallet Widget + Validación + Preferencias
+   NED — CHECKOUT MODO MANUAL (Lead Capture)
+   Sin Mercado Pago — captura lead y redirige a gracias con status=pending_manual
 ================================================================ */
 
 (function () {
@@ -8,21 +8,17 @@
 
   /* ---------- CONFIG ---------- */
   var CONFIG = {
-    // ⚠️ REEMPLAZA CON TU PUBLIC KEY REAL DE MERCADO PAGO
-    // La obtienes en: https://www.mercadopago.com.co/developers/panel/applications
-    MP_PUBLIC_KEY: 'TEST-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', // Sandbox
-    // MP_PUBLIC_KEY: 'APP_USR-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', // Producción
+    // ⚠️ REEMPLAZA CON TU PUBLIC KEY REAL DE MERCADO PAGO CUANDO LO ACTIVES
+    // MP_PUBLIC_KEY: 'TEST-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX',
+    // PREFERENCE_ENDPOINT: '/api/create-preference',
+    // SUCCESS_URL: 'gracias.html?status=approved',
+    // FAILURE_URL: 'checkout.html?error=failed',
+    // PENDING_URL: 'gracias.html?status=pending',
 
-    // Endpoint para crear preferencia (DEBE SER BACKEND/SERVERLESS)
-    // Ejemplo: Netlify Function, Vercel API, Cloudflare Worker, tu propio backend
-    PREFERENCE_ENDPOINT: '/api/create-preference', // O '/.netlify/functions/create-preference'
+    // Modo actual: MANUAL
+    PAYMENT_MODE: 'manual', // 'mercadopago' | 'manual'
+    MANUAL_SUCCESS_URL: 'gracias.html?status=pending_manual',
 
-    // URLs de retorno
-    SUCCESS_URL: 'gracias.html?status=approved',
-    FAILURE_URL: 'checkout.html?error=failed',
-    PENDING_URL: 'gracias.html?status=pending',
-
-    // Planes
     PLANS: {
       starter:    { name: 'Plan Starter',    priceUSD: 147, priceCOP: 600000,  details: 'Landing 1 sección + Copy + Formulario' },
       professional: { name: 'Plan Professional', priceUSD: 357, priceCOP: 1450000, details: 'Landing 8 secciones + Copy + Email + SEO' },
@@ -65,12 +61,10 @@
     pais: 'CO',
     nit: '',
     newsletter: true,
-    paymentMethod: 'card' // card, pse, cash
+    paymentMethod: 'transfer' // 'transfer' | 'paypal' | 'crypto'
   };
 
-  var mp = null;
-  var wallet = null;
-  var preferenceId = null;
+  var selectedMethod = 'transfer';
 
   /* ---------- PLAN LOADING ---------- */
   function loadPlanFromURL() {
@@ -85,7 +79,6 @@
       state.planDetails = p.details;
       return true;
     }
-    // Fallback localStorage
     try {
       var saved = JSON.parse(localStorage.getItem(CONFIG.LS_PLAN) || 'null');
       if (saved && saved.id && CONFIG.PLANS[saved.id]) {
@@ -145,8 +138,6 @@
 
     var bumpPrice = isCOP ? fmtCOP(CONFIG.UPSELL.priceCOP) : fmtUSD(CONFIG.UPSELL.priceUSD);
     $('#bump-price').textContent = bumpPrice;
-
-    $('#plan-price').textContent = priceMain; // if exists elsewhere
     renderTotals();
   }
 
@@ -156,12 +147,26 @@
     var bump = state.bump ? (isCOP ? CONFIG.UPSELL.priceCOP : CONFIG.UPSELL.priceUSD) : 0;
     var total = sub + bump;
 
+    // Aplicar descuento crypto si ese método está seleccionado
+    if (selectedMethod === 'crypto') {
+      total = Math.round(total * 0.95); // 5% descuento
+    }
+
     var fmt = isCOP ? fmtCOP : fmtUSD;
     $('#t-subtotal').textContent = fmt(sub);
     $('#t-bump').textContent = fmt(bump);
     $('#t-total').textContent = fmt(total);
     $('#summary-toggle-total').textContent = fmt(total);
     $('#mobile-total').textContent = fmt(total);
+
+    // Actualizar monto crypto si aplica
+    var cryptoAmountEl = $('#crypto-amount');
+    if (cryptoAmountEl) {
+      var cryptoTotal = isCOP ? Math.round(state.planPriceCOP / 4100) : state.planPriceUSD; // aprox USD
+      if (state.bump) cryptoTotal += (isCOP ? Math.round(CONFIG.UPSELL.priceCOP / 4100) : CONFIG.UPSELL.priceUSD);
+      if (selectedMethod === 'crypto') cryptoTotal = Math.round(cryptoTotal * 0.95);
+      cryptoAmountEl.textContent = '$' + cryptoTotal.toFixed(2);
+    }
 
     var rowBump = $('#row-bump');
     if (bump > 0) rowBump.classList.remove('hidden'); else rowBump.classList.add('hidden');
@@ -202,162 +207,48 @@
     var pais = $('#pais').value;
     state.pais = pais || 'CO';
     renderPlan();
-    // Re-inicializar widget si ya cargó (para que cambie moneda/métodos)
-    if (wallet) initMercadoPagoWidget();
   }
 
-  /* ---------- MERCADO PAGO INTEGRATION ---------- */
-  function initMercadoPago() {
-    if (typeof MercadoPago === 'undefined') {
-      console.error('MercadoPago SDK no cargado');
-      showMPError('SDK de Mercado Pago no disponible');
-      return;
-    }
+  /* ---------- MANUAL PAYMENT METHOD SELECTION ---------- */
+  function initManualPayment() {
+    $$('.manual-option-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        $$('.manual-option-card').forEach(function(c) { c.classList.remove('active'); });
+        card.classList.add('active');
+        selectedMethod = card.dataset.method;
 
-    // Validar Public Key
-    if (!CONFIG.MP_PUBLIC_KEY || CONFIG.MP_PUBLIC_KEY.includes('XXXXXXXX')) {
-      console.warn('MP_PUBLIC_KEY no configurada. Usando modo demo.');
-      showMPError('Configura tu MP_PUBLIC_KEY en checkout.js');
-      return;
-    }
+        // Mostrar/ocultar detalles según método
+        $$('.manual-payment-details').forEach(function(d) { d.classList.add('hidden'); });
+        var detailId = card.dataset.method + '-details';
+        var detailEl = $('#' + detailId);
+        if (detailEl) detailEl.classList.remove('hidden');
 
-    mp = new MercadoPago(CONFIG.MP_PUBLIC_KEY, { locale: 'es-CO' });
-
-    // Renderizar wallet
-    initMercadoPagoWidget();
-  }
-
-  function initMercadoPagoWidget() {
-    if (!mp) return;
-
-    var container = $('#wallet_container');
-    var loading = $('#mp-loading');
-    var errorEl = $('#mp-error');
-
-    // Limpiar contenedor previo
-    container.innerHTML = '';
-    loading.classList.remove('hidden');
-    errorEl.classList.add('hidden');
-
-    // Crear preferencia ANTES de renderizar
-    createPreference()
-      .then(function(prefId) {
-        preferenceId = prefId;
-        wallet = mp.wallet({
-          container: '#wallet_container',
-          preferenceId: prefId,
-          autoReturn: 'approved',
-          theme: {
-            elementsColor: '#F97316', // Naranja NED
-            headerColor: '#0A0A0A'
-          }
-        });
-
-        loading.classList.add('hidden');
-
-        // Wallet events
-        wallet.on('ready', function() { console.log('MP Wallet ready'); });
-        wallet.on('error', function(err) { console.error('MP Wallet error:', err); showMPError('Error cargando métodos de pago'); });
-      })
-      .catch(function(err) {
-        console.error('Error creando preferencia:', err);
-        loading.classList.add('hidden');
-        showMPError('Error creando orden de pago. ' + (err.message || 'Intenta de nuevo.'));
+        state.paymentMethod = card.dataset.method;
+        renderTotals(); // recalcular por descuento crypto
       });
-  }
+    });
 
-  function createPreference() {
-    var items = [{
-        id: state.planId,
-        title: state.planName,
-        description: state.planDetails,
-        quantity: 1,
-        unit_price: state.pais === 'CO' ? state.planPriceCOP : state.planPriceUSD,
-        currency_id: state.pais === 'CO' ? 'COP' : 'USD'
-      }];
-
-      if (state.bump) {
-        items.push({
-          id: 'upsell_analytics',
-          title: CONFIG.UPSELL.name,
-          description: 'GA4 + Pixel FB + A/B Testing inicial',
-          quantity: 1,
-          unit_price: state.pais === 'CO' ? CONFIG.UPSELL.priceCOP : CONFIG.UPSELL.priceUSD,
-          currency_id: state.pais === 'CO' ? 'COP' : 'USD'
-        });
-      }
-
-      var payer = {
-        email: state.email,
-        name: state.nombre,
-        surname: state.apellido,
-        phone: { area_code: '', number: state.telefono.replace(/\D/g, '') },
-        identification: state.nit ? { type: state.nit.length > 10 ? 'NIT' : 'CC', number: state.nit } : undefined
-      };
-
-      var preferenceData = {
-        items: items,
-        payer: payer,
-        back_urls: {
-          success: CONFIG.SUCCESS_URL,
-          failure: CONFIG.FAILURE_URL,
-          pending: CONFIG.PENDING_URL
-        },
-        auto_return: 'approved',
-        binary_mode: true,
-        statement_descriptor: 'NED Landing Pages',
-        external_reference: 'ned_' + Date.now(),
-        notification_url: getParam('webhook') || '' // Opcional: URL de tu webhook
-      };
-
-      // ⚠️ AQUÍ DEBES LLAMAR TU BACKEND PARA CREAR LA PREFERENCIA
-      // El Access Token NO debe exponerse en frontend
-      // Ejemplo con fetch a serverless function:
-      return fetch(CONFIG.PREFERENCE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(preferenceData)
-      })
-      .then(function(res) {
-        if (!res.ok) throw new Error('Error servidor: ' + res.status);
-        return res.json();
-      })
-      .then(function(data) {
-        if (!data.id) throw new Error('Respuesta inválida del servidor');
-        return data.id; // preference_id
-      })
-      .catch(function(err) {
-        // MODO DEMO: si falla el backend, crear preferencia mock para testing visual
-        // ⚠️ SOLO PARA DESARROLLO - EN PRODUCCIÓN DEBE FALLAR
-        if (CONFIG.MP_PUBLIC_KEY.includes('TEST') || CONFIG.MP_PUBLIC_KEY.includes('XXXX')) {
-          console.warn('⚠️ MODO DEMO: Backend no disponible, usando preferencia simulada');
-          // En modo demo, no podemos crear preferencia real sin backend
-          // El widget no funcionará completamente sin preference_id real
-          // Mostramos estado visual pero botón de pago no funcionará
-          enablePayButtonDemo();
-          return 'demo-preference-id';
+    // Copy buttons
+    $$('.copy-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetSel = this.getAttribute('data-copy');
+        var target = $(targetSel);
+        if (target) {
+          var text = target.textContent.trim();
+          navigator.clipboard.writeText(text).then(function() {
+            var original = this.textContent;
+            this.textContent = '✓ Copiado';
+            this.style.background = 'var(--primary)';
+            this.style.color = '#fff';
+            var self = this;
+            setTimeout(function() { self.textContent = original; self.style.background = ''; self.style.color = ''; }, 1500);
+          }.bind(this));
         }
-        throw err;
       });
+    });
   }
 
-  function enablePayButtonDemo() {
-    var btns = $$('.btn-pay');
-    btns.forEach(function(b) { b.disabled = false; });
-    $('#mp-loading').classList.add('hidden');
-    // Mensaje visual de demo
-    var container = $('#wallet_container');
-    container.innerHTML = '<div style="padding:40px;text-align:center;color:#9CA3AF;"><p>🔧 <strong>Modo Demo</strong></p><p>Configura tu <code>MP_PUBLIC_KEY</code> y endpoint <code>/api/create-preference</code> para activar Mercado Pago real.</p><p style="margin-top:16px;font-size:13px;">Tarjetas test: 4509 9535 6623 3704 (Visa) / 5031 7557 3453 0604 (MC)</p></div>';
-  }
-
-  function showMPError(msg) {
-    $('#mp-loading').classList.add('hidden');
-    var err = $('#mp-error');
-    err.querySelector('p').innerHTML = msg + ' <button type="button" id="mp-retry">Reintentar</button>';
-    err.classList.remove('hidden');
-  }
-
-  /* ---------- PAY BUTTON ---------- */
+  /* ---------- PAY BUTTON (MANUAL) ---------- */
   function setPayLoading(loading) {
     $$('.btn-pay').forEach(function(btn) {
       btn.disabled = loading;
@@ -386,23 +277,44 @@
     state.newsletter = $('#newsletter').checked;
 
     // Guardar orden local
-    try { localStorage.setItem(CONFIG.LS_ORDER, JSON.stringify({ plan: state.planId, bump: state.bump, total: state.pais === 'CO' ? state.planPriceCOP + (state.bump ? CONFIG.UPSELL.priceCOP : 0) : state.planPriceUSD + (state.bump ? CONFIG.UPSELL.priceUSD : 0), currency: state.pais === 'CO' ? 'COP' : 'USD', ts: Date.now() })); } catch (e) {}
+    var isCOP = state.pais === 'CO';
+    var sub = isCOP ? state.planPriceCOP : state.planPriceUSD;
+    var bump = state.bump ? (isCOP ? CONFIG.UPSELL.priceCOP : CONFIG.UPSELL.priceUSD) : 0;
+    var total = sub + bump;
+    if (selectedMethod === 'crypto') total = Math.round(total * 0.95);
+
+    try {
+      localStorage.setItem(CONFIG.LS_ORDER, JSON.stringify({
+        plan: state.planId,
+        bump: state.bump,
+        paymentMethod: selectedMethod,
+        total: total,
+        currency: isCOP ? 'COP' : 'USD',
+        status: 'pending_manual',
+        ts: Date.now()
+      }));
+    } catch (e) {}
+
+    // Simular envío de lead (en producción: fetch a tu backend/email service)
+    console.log('📋 LEAD CAPTURADO:', {
+      plan: state.planId,
+      total: total,
+      currency: isCOP ? 'COP' : 'USD',
+      method: selectedMethod,
+      client: { email: state.email, nombre: state.nombre, apellido: state.apellido, telefono: state.telefono, ciudad: state.ciudad, pais: state.pais, nit: state.nit }
+    });
 
     setPayLoading(true);
 
-    // Si hay wallet real, el usuario paga en el widget y MP redirige automáticamente
-    // Si es demo, simulamos
-    if (preferenceId && preferenceId !== 'demo-preference-id' && wallet) {
-      // El usuario completa el pago en el widget, MP redirige a success_url
-      // Aquí solo mostramos feedback
-      setTimeout(function() { setPayLoading(false); }, 3000);
-    } else {
-      // Modo demo: simular redirección
-      setTimeout(function() {
-        setPayLoading(false);
-        window.location.href = CONFIG.SUCCESS_URL + '&payment_id=demo_' + Date.now() + '&demo=true';
-      }, 1500);
-    }
+    // Redirigir a página de gracias con estado pending_manual
+    setTimeout(function() {
+      setPayLoading(false);
+      window.location.href = CONFIG.MANUAL_SUCCESS_URL +
+        '&plan=' + encodeURIComponent(state.planId) +
+        '&method=' + encodeURIComponent(selectedMethod) +
+        '&total=' + total +
+        '&currency=' + (isCOP ? 'COP' : 'USD');
+    }, 1000);
   }
 
   /* ---------- INIT ---------- */
@@ -422,20 +334,11 @@
     $('#pais').addEventListener('change', onPaisChange);
     $('#bump-check').addEventListener('change', function() { state.bump = this.checked; renderTotals(); });
 
-    // Method selector visual (solo UI, MP maneja métodos reales)
-    $$('.mp-method-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        $$('.mp-method-card').forEach(function(c) { c.classList.remove('active'); });
-        card.classList.add('active');
-        state.paymentMethod = card.dataset.method;
-      });
-    });
+    // Manual payment init
+    initManualPayment();
 
     // Pay buttons
     $$('.btn-pay').forEach(function(btn) { btn.addEventListener('click', onPayClick); });
-
-    // MP retry
-    $('#mp-retry').addEventListener('click', initMercadoPagoWidget);
 
     // Resumen toggle mobile
     $('#summary-toggle').addEventListener('click', function() {
@@ -444,9 +347,9 @@
       this.setAttribute('aria-expanded', !card.classList.contains('collapsed'));
     });
 
-    // Inicializar Mercado Pago
-    initMercadoPago();
     attachFormListeners();
+    // Habilitar botón de pago (modo manual no requiere widget)
+    $$('.btn-pay').forEach(function(b) { b.disabled = false; });
   }
 
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }

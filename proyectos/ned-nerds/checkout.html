@@ -200,22 +200,82 @@
                         </article>
                     </div>
 
-                    <!-- WIDGET MERCADO PAGO -->
-                    <div class="mp-widget-wrapper" id="mp-widget-wrapper">
-                        <div class="mp-widget-loading" id="mp-loading">
-                            <div class="spinner"></div>
-                            <p>Cargando métodos de pago seguros...</p>
+                    <!-- PAGO MANUAL / TRANSFERENCIA (Modo temporal hasta activar Mercado Pago) -->
+                    <div class="manual-payment-section" id="manual-payment-section">
+                        <div class="manual-payment-notice">
+                            <span class="notice-icon">⏳</span>
+                            <div>
+                                <strong>Mercado Pago en configuración</strong>
+                                <p>Estamos activando el pago automático con tarjeta, PSE, Nequi y efectivo. Por ahora, procesamos tu pedido <strong>manualmente</strong> para que no pierdas tu cupo.</p>
+                            </div>
                         </div>
-                        <div id="wallet_container"></div>
-                        <div class="mp-widget-error hidden" id="mp-error">
-                            <span class="error-icon">⚠️</span>
-                            <p>No se pudieron cargar los métodos de pago. <button type="button" id="mp-retry">Reintentar</button></p>
-                        </div>
-                    </div>
 
-                    <div class="mp-security-note">
-                        <span class="security-icon">🔒</span>
-                        <span>Pago procesado de forma segura por Mercado Pago. Tus datos están encriptados con SSL 256-bit.</span>
+                        <div class="manual-payment-options">
+                            <article class="manual-option-card active" data-method="transfer">
+                                <div class="manual-option-icon">🏦</div>
+                                <div class="manual-option-info">
+                                    <strong>Transferencia Bancaria / Nequi / Daviplata</strong>
+                                    <span class="manual-option-sub">Recibes datos de cuenta al confirmar. Confirmación manual en < 2h hábiles.</span>
+                                </div>
+                                <span class="manual-option-radio"></span>
+                            </article>
+                            <article class="manual-option-card" data-method="paypal">
+                                <div class="manual-option-icon">🅿️</div>
+                                <div class="manual-option-info">
+                                    <strong>PayPal (Manual)</strong>
+                                    <span class="manual-option-sub">Te enviamos link de pago a tu email. Comisión 4.5% + $0.30 USD.</span>
+                                </div>
+                                <span class="manual-option-radio"></span>
+                            </article>
+                            <article class="manual-option-card" data-method="crypto">
+                                <div class="manual-option-icon">₿</div>
+                                <div class="manual-option-info">
+                                    <strong>USDT / USDC (Polygon / TRC20)</strong>
+                                    <span class="manual-option-sub">Pago instantáneo, sin comisiones. 5% descuento aplicado automáticamente.</span>
+                                </div>
+                                <span class="manual-option-radio"></span>
+                            </article>
+                        </div>
+
+                        <div class="manual-payment-details hidden" id="transfer-details">
+                            <h4>Datos para Transferencia / Nequi / Daviplata</h4>
+                            <div class="bank-details">
+                                <div class="bank-row"><strong>Banco:</strong> <span>Bancolombia</span></div>
+                                <div class="bank-row"><strong>Tipo:</strong> <span>Cuenta de Ahorros</span></div>
+                                <div class="bank-row"><strong>Número:</strong> <span id="account-number">**** **** **** 1234</span> <button type="button" class="copy-btn" data-copy="#account-number" title="Copiar">📋</button></div>
+                                <div class="bank-row"><strong>Titular:</strong> <span>NED - David Bustamante</span></div>
+                                <div class="bank-row"><strong>CC/NIT:</strong> <span>1.XXX.XXX.XXX</span></div>
+                                <div class="bank-row"><strong>Nequi / Daviplata:</strong> <span id="phone-number">+57 300 349 1413</span> <button type="button" class="copy-btn" data-copy="#phone-number" title="Copiar">📋</button></div>
+                                <div class="bank-row"><strong>Concepto:</strong> <span>NED-[PLAN]-[TU NOMBRE]</span></div>
+                            </div>
+                            <p class="bank-note">⚠️ <strong>Importante:</strong> Envía comprobante a <a href="mailto:pagos@ned-landingpages.com">pagos@ned-landingpages.com</a> o WhatsApp <a href="https://wa.me/573003491413" target="_blank" rel="noopener">+57 300 349 1413</a> con asunto "Pago NED - [Tu Nombre]". Tu proyecto inicia tras confirmación (máx 2h hábiles).</p>
+                        </div>
+
+                        <div class="manual-payment-details hidden" id="paypal-details">
+                            <h4>Pago via PayPal</h4>
+                            <p>Al confirmar, te enviaremos un <strong>link de pago PayPal</strong> a tu email registrado.</p>
+                            <ul>
+                                <li>Incluye comisión: <strong>4.5% + $0.30 USD</strong></li>
+                                <li>Recibes link en < 1h hábil</li>
+                                <li>Pago con tarjeta o saldo PayPal</li>
+                            </ul>
+                        </div>
+
+                        <div class="manual-payment-details hidden" id="crypto-details">
+                            <h4>Pago con USDT / USDC</h4>
+                            <p><strong>5% de descuento aplicado</strong> al total (incluye upsell si lo marcaste).</p>
+                            <div class="bank-details">
+                                <div class="bank-row"><strong>Red:</strong> <span>Polygon (MATIC) / TRC20 (Tron)</span></div>
+                                <div class="bank-row"><strong>Wallet:</strong> <span id="crypto-address">0x**** **** **** 1a2b</span> <button type="button" class="copy-btn" data-copy="#crypto-address" title="Copiar">📋</button></div>
+                                <div class="bank-row"><strong>Monto exacto (USD):</strong> <span id="crypto-amount">$0.00</span></div>
+                            </div>
+                            <p class="bank-note">Envía el monto exacto y notifícanos por email/WhatsApp con el hash de transacción.</p>
+                        </div>
+
+                        <div class="manual-security-note">
+                            <span class="security-icon">🔒</span>
+                            <span>Tu información está encriptada (SSL 256-bit). Procesamos pagos manuales con la misma seguridad. Recibes confirmación por email y WhatsApp.</span>
+                        </div>
                     </div>
                 </section>
 
