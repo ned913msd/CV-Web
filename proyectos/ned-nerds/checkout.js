@@ -1,513 +1,453 @@
 /* ================================================================
-   NED — CHECKOUT PAGE
-   Lógica: URL Parameters → producto → totales → validación → pago
+   NED — CHECKOUT MERCADO PAGO
+   Integración Wallet Widget + Validación + Preferencias
 ================================================================ */
 
 (function () {
   'use strict';
 
-/* ---------- CONFIG ---------- */
+  /* ---------- CONFIG ---------- */
   var CONFIG = {
-    LS_PRODUCT: 'ned_checkout_product',
-    LS_FORM: 'ned_checkout_form',
+    // ⚠️ REEMPLAZA CON TU PUBLIC KEY REAL DE MERCADO PAGO
+    // La obtienes en: https://www.mercadopago.com.co/developers/panel/applications
+    MP_PUBLIC_KEY: 'TEST-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', // Sandbox
+    // MP_PUBLIC_KEY: 'APP_USR-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', // Producción
+
+    // Endpoint para crear preferencia (DEBE SER BACKEND/SERVERLESS)
+    // Ejemplo: Netlify Function, Vercel API, Cloudflare Worker, tu propio backend
+    PREFERENCE_ENDPOINT: '/api/create-preference', // O '/.netlify/functions/create-preference'
+
+    // URLs de retorno
+    SUCCESS_URL: 'gracias.html?status=approved',
+    FAILURE_URL: 'checkout.html?error=failed',
+    PENDING_URL: 'gracias.html?status=pending',
+
+    // Planes
+    PLANS: {
+      starter:    { name: 'Plan Starter',    priceUSD: 147, priceCOP: 600000,  details: 'Landing 1 sección + Copy + Formulario' },
+      professional: { name: 'Plan Professional', priceUSD: 357, priceCOP: 1450000, details: 'Landing 8 secciones + Copy + Email + SEO' },
+      enterprise: { name: 'Plan Enterprise', priceUSD: 635, priceCOP: 2600000, details: '3 Landings + A/B Testing + Dashboard + Consultoría' }
+    },
+
+    UPSELL: { priceUSD: 49, priceCOP: 200000, name: 'Setup Analytics + Pixel' },
+
     LS_PLAN: 'ned_checkout_plan',
-    GRACIAS_URL: 'gracias.html',
-    EXPRESS_FEE: 15000,
-    BUMP_PERCENT: 0.12,
-    COUPONS: { 'NED10': 0.10 },
-    LANDING_URL: 'index.html',
-    CURRENCY: 'COP',
-    LOCALE: 'es-CO'
+    LS_FORM: 'ned_checkout_form',
+    LS_ORDER: 'ned_checkout_order',
+
+    LANDING_URL: 'index.html'
   };
 
-  var currencyFormatter = new Intl.NumberFormat(CONFIG.LOCALE, {
-    style: 'currency',
-    currency: CONFIG.CURRENCY,
-    maximumFractionDigits: 0
-  });
+  var currencyUSDFmt = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var currencyCOPFmt = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 });
 
-  function formatMoney(n) {
-    return currencyFormatter.format(n);
-  }
+  function fmtUSD(n) { return currencyUSDFmt.format(n); }
+  function fmtCOP(n) { return currencyCOPFmt.format(n); }
 
   /* ---------- HELPERS ---------- */
-  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
-  function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
-  function esc(s) {
-    var div = document.createElement('div');
-    div.textContent = String(s);
-    return div.innerHTML;
-  }
-  function getParam(name) {
-    try {
-      return new URLSearchParams(window.location.search).get(name);
-    } catch (e) {
-      return null;
-    }
-  }
+  function $(sel) { return document.querySelector(sel); }
+  function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  function getParam(name) { try { return new URLSearchParams(window.location.search).get(name); } catch (e) { return null; } }
 
-  /* ---------- PRODUCT STATE ---------- */
+  /* ---------- STATE ---------- */
   var state = {
-    name: '',
-    price: 0,
-    color: '',
-    size: '',
-    image: '',
-    ship: 'std',
+    planId: '',
+    planName: '',
+    planPriceUSD: 0,
+    planPriceCOP: 0,
+    planDetails: '',
     bump: false,
-    discount: 0,
-    couponUsed: ''
+    email: '',
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    ciudad: '',
+    pais: 'CO',
+    nit: '',
+    newsletter: true,
+    paymentMethod: 'card' // card, pse, cash
   };
 
-  var orderToken = 0;
+  var mp = null;
+  var wallet = null;
+  var preferenceId = null;
 
-  function parseAndCheck() {
-    // 1) Detectar compra de plan de servicio NED (parámetro 'plan')
-    var planRaw = getParam('plan');
-    var priceRaw = getParam('price');
-    var price = parseFloat(priceRaw);
-    var planValid = planRaw && !!priceRaw && !isNaN(price) && price > 0;
-
-    if (planValid) {
-      // Guardar plan en localStorage para la página de gracias
-      try {
-        localStorage.setItem(CONFIG.LS_PLAN, JSON.stringify({
-          id: planRaw,
-          name: planRaw.charAt(0).toUpperCase() + planRaw.slice(1), // Starter/Professional/Enterprise
-          price: price,
-          ts: Date.now()
-        }));
-      } catch (e) {}
-      // Continuar como producto normal para el checkout
-      state.name = 'Plan ' + (planRaw.charAt(0).toUpperCase() + planRaw.slice(1));
-      state.price = price;
-      state.color = '';
-      state.size = '';
-      state.image = 'assets/producto.svg';
-      saveProduct();
+  /* ---------- PLAN LOADING ---------- */
+  function loadPlanFromURL() {
+    var plan = getParam('plan');
+    var price = parseFloat(getParam('price'));
+    if (plan && CONFIG.PLANS[plan] && !isNaN(price) && price > 0) {
+      var p = CONFIG.PLANS[plan];
+      state.planId = plan;
+      state.planName = p.name;
+      state.planPriceUSD = price;
+      state.planPriceCOP = p.priceCOP;
+      state.planDetails = p.details;
       return true;
     }
-
-    // 2) Flujo normal: producto con parámetro 'product'
-    var p = getParam('product');
-    priceRaw = getParam('price');
-    price = parseFloat(priceRaw);
-    var valid = p && !!priceRaw && !isNaN(price) && price > 0;
-
-    if (valid) {
-      state.name = decodeURIComponent(p);
-      state.price = price;
-      state.color = getParam('color') ? decodeURIComponent(getParam('color')) : 'Único';
-      state.size = getParam('size') ? decodeURIComponent(getParam('size')) : '';
-      state.image = getParam('image') || 'assets/producto.svg';
-      saveProduct();
-      return true;
-    }
-
-    // Fallback: respaldo en localStorage
-    var backup = loadProduct();
-    if (backup && backup.name && backup.price > 0) {
-      state.name = backup.name;
-      state.price = backup.price;
-      state.color = backup.color || 'Único';
-      state.size = backup.size || '';
-      state.image = backup.image || 'assets/producto.svg';
-      return true;
-    }
-
+    // Fallback localStorage
+    try {
+      var saved = JSON.parse(localStorage.getItem(CONFIG.LS_PLAN) || 'null');
+      if (saved && saved.id && CONFIG.PLANS[saved.id]) {
+        var p = CONFIG.PLANS[saved.id];
+        state.planId = saved.id;
+        state.planName = p.name;
+        state.planPriceUSD = p.priceUSD;
+        state.planPriceCOP = p.priceCOP;
+        state.planDetails = p.details;
+        return true;
+      }
+    } catch (e) {}
     return false;
   }
 
-  function saveProduct() {
-    try {
-      localStorage.setItem(CONFIG.LS_PRODUCT, JSON.stringify({
-        name: state.name, price: state.price, color: state.color,
-        size: state.size, image: state.image, ts: Date.now()
-      }));
-    } catch (e) { /* privado/sin espacio */ }
+  function savePlanToLS() {
+    try { localStorage.setItem(CONFIG.LS_PLAN, JSON.stringify({ id: state.planId, name: state.planName, priceUSD: state.planPriceUSD, priceCOP: state.planPriceCOP, details: state.planDetails, ts: Date.now() })); } catch (e) {}
   }
 
-  function loadProduct() {
-    try {
-      return JSON.parse(localStorage.getItem(CONFIG.LS_PRODUCT) || 'null');
-    } catch (e) { return null; }
+  function clearCheckoutLS() {
+    try { localStorage.removeItem('ned_checkout_product'); localStorage.removeItem('ned_checkout_form'); } catch (e) {}
   }
 
   /* ---------- FORM PERSISTENCE ---------- */
+  function persistForm() {
+    try {
+      localStorage.setItem(CONFIG.LS_FORM, JSON.stringify({
+        email: $('#email').value, nombre: $('#nombre').value, apellido: $('#apellido').value,
+        telefono: $('#telefono').value, ciudad: $('#ciudad').value, pais: $('#pais').value,
+        nit: $('#nit').value, newsletter: $('#newsletter').checked
+      }));
+    } catch (e) {}
+  }
+
   function restoreForm() {
     try {
       var data = JSON.parse(localStorage.getItem(CONFIG.LS_FORM) || 'null');
       if (!data) return;
-      var map = {
-        email: '#email', nombre: '#nombre', apellido: '#apellido',
-        telefono: '#telefono', direccion: '#direccion', ciudad: '#ciudad',
-        cp: '#cp', pais: '#pais'
-      };
-      Object.keys(map).forEach(function (k) {
-        if (data[k] !== undefined) {
-          var el = $(map[k]);
-          if (el && !getParam('reset')) el.value = data[k];
-        }
-      });
-      if (data.ship) toggleShip(data.ship);
-    } catch (e) { /* ignore */ }
+      var map = { email: '#email', nombre: '#nombre', apellido: '#apellido', telefono: '#telefono', ciudad: '#ciudad', pais: '#pais', nit: '#nit' };
+      Object.keys(map).forEach(function(k) { var el = $(map[k]); if (el && data[k] !== undefined) el.value = data[k]; });
+      if (data.newsletter !== undefined) $('#newsletter').checked = data.newsletter;
+    } catch (e) {}
   }
 
-  function persistForm() {
-    try {
-      var data = {
-        email: $('#email').value, nombre: $('#nombre').value,
-        apellido: $('#apellido').value, telefono: $('#telefono').value,
-        direccion: $('#direccion').value, ciudad: $('#ciudad').value,
-        cp: $('#cp').value, pais: $('#pais').value,
-        ship: state.ship
-      };
-      localStorage.setItem(CONFIG.LS_FORM, JSON.stringify(data));
-    } catch (e) { /* ignore */ }
-  }
+  /* ---------- RENDER ---------- */
+  function renderPlan() {
+    var isCOP = state.pais === 'CO';
+    var priceMain = isCOP ? fmtCOP(state.planPriceCOP) : fmtUSD(state.planPriceUSD);
 
-  /* ---------- RENDER PRODUCT ---------- */
-  function renderProduct() {
-    var box = $('#order-product');
-    var variant = 'Color: <b>' + esc(state.color) + '</b>';
-    if (state.size) variant += ' · Talla: <b>' + esc(state.size) + '</b>';
-    box.innerHTML =
-      '<div class="order-thumb"><img src="' + esc(state.image) + '" alt="' + esc(state.name) + '"></div>' +
+    $('#order-product').innerHTML =
+      '<div class="order-thumb">🚀</div>' +
       '<div class="order-info">' +
-      '  <span class="order-name">' + esc(state.name) + '</span>' +
-      '  <span class="order-variant">' + variant + '</span>' +
-      '  <span class="order-price">' + formatMoney(state.price) + '</span>' +
+      '  <span class="order-name">' + state.planName + '</span>' +
+      '  <span class="order-desc">' + state.planDetails + '</span>' +
+      '  <span class="order-qty">Cantidad: <strong>1</strong></span>' +
       '</div>';
-    document.title = 'Pago Seguro | ' + state.name;
-  }
 
-  /* ---------- ORDER BUMP ---------- */
+    var bumpPrice = isCOP ? fmtCOP(CONFIG.UPSELL.priceCOP) : fmtUSD(CONFIG.UPSELL.priceUSD);
+    $('#bump-price').textContent = bumpPrice;
 
-  /* ---------- TOTALS ---------- */
-  function calcTotals() {
-    var subtotal = state.price;
-    var bump = hasBump() ? Math.round(subtotal * CONFIG.BUMP_PERCENT) : 0;
-    var express = state.ship === 'exp' ? CONFIG.EXPRESS_FEE : 0;
-    var discount = state.discount > 0 ? Math.round(subtotal * state.discount) : 0;
-    var total = subtotal + bump + express - discount;
-    if (total < 0) total = 0;
-    return { subtotal: subtotal, bump: bump, express: express, discount: discount, total: total };
-  }
-
-  function renderTotals() {
-    var t = calcTotals();
-
-    $('#t-subtotal').textContent = formatMoney(t.subtotal);
-
-    // Bump row
-    var rowBump = $('#row-bump');
-    if (t.bump > 0) {
-      rowBump.classList.remove('hidden');
-      $('#t-bump').textContent = formatMoney(t.bump);
-    } else {
-      rowBump.classList.add('hidden');
-    }
-
-    // Envío
-    var shipEl = $('#t-ship');
-    if (t.express > 0) {
-      shipEl.textContent = formatMoney(t.express);
-      shipEl.classList.remove('free-ship');
-    } else {
-      shipEl.textContent = 'GRATIS';
-      shipEl.classList.add('free-ship');
-    }
-
-    // Descuento
-    var rowDisc = $('#row-discount');
-    if (t.discount > 0) {
-      rowDisc.classList.remove('hidden');
-      $('#t-discount').textContent = '−' + formatMoney(t.discount);
-    } else {
-      rowDisc.classList.add('hidden');
-    }
-
-    // Total
-    var totalStr = formatMoney(t.total);
-    $('#t-total').textContent = totalStr;
-    $('#summary-toggle-total').textContent = totalStr;
-    $('#mobile-total').textContent = totalStr;
-  }
-
-  /* ---------- SHIPPING TOGGLE ---------- */
-  function toggleShip(value) {
-    state.ship = value === 'exp' ? 'exp' : 'std';
-    $$('.ship-option').forEach(function (opt) {
-      var input = opt.querySelector('input');
-      opt.classList.toggle('selected', input.value === state.ship);
-      input.checked = input.value === state.ship;
-    });
+    $('#plan-price').textContent = priceMain; // if exists elsewhere
     renderTotals();
   }
 
-  /* ---------- DISCOUNT ---------- */
-  function applyDiscount() {
-    var input = $('#discount-input');
-    var msg = $('#discount-msg');
-    var code = input.value.trim().toUpperCase();
-    if (!code) { return; }
+  function renderTotals() {
+    var isCOP = state.pais === 'CO';
+    var sub = isCOP ? state.planPriceCOP : state.planPriceUSD;
+    var bump = state.bump ? (isCOP ? CONFIG.UPSELL.priceCOP : CONFIG.UPSELL.priceUSD) : 0;
+    var total = sub + bump;
 
-    if (CONFIG.COUPONS[code] !== undefined) {
-      state.discount = CONFIG.COUPONS[code];
-      state.couponUsed = code;
-      msg.textContent = '¡Cupón ' + code + ' aplicado!';
-      msg.className = 'discount-msg ok';
-      input.disabled = true;
-      $('#discount-btn').disabled = true;
-      renderTotals();
-    } else {
-      msg.textContent = 'Código inválido. Verifica e intenta de nuevo.';
-      msg.className = 'discount-msg err';
-    }
+    var fmt = isCOP ? fmtCOP : fmtUSD;
+    $('#t-subtotal').textContent = fmt(sub);
+    $('#t-bump').textContent = fmt(bump);
+    $('#t-total').textContent = fmt(total);
+    $('#summary-toggle-total').textContent = fmt(total);
+    $('#mobile-total').textContent = fmt(total);
+
+    var rowBump = $('#row-bump');
+    if (bump > 0) rowBump.classList.remove('hidden'); else rowBump.classList.add('hidden');
   }
 
-  /* ---------- CARD MASKS + BRAND ---------- */
-  function detectBrand(number) {
-    var n = number.replace(/\D/g, '');
-    if (/^4/.test(n)) return 'visa';
-    if (/^3[47]/.test(n)) return 'amex';
-    if (/^(5[1-5]|222[1-9]|22[3-9]\d|2[3-6]\d{2}|27[01]\d|2720)/.test(n)) return 'mc';
-    return '';
-  }
-
-  function updateBrand(input) {
-    var brand = detectBrand(input.value);
-    $$('.brand-icon').forEach(function (icon) {
-      icon.classList.toggle('active', icon.getAttribute('data-brand') === brand);
-    });
-  }
-
-  function maskCardNumber(input) {
-    var digits = input.value.replace(/\D/g, '').slice(0, 16);
-    input.value = digits.replace(/(\d{4})(?=\d)/g, '$1 ').trim();
-    updateBrand(input);
-  }
-
-  function maskExpiry(input) {
-    var digits = input.value.replace(/\D/g, '').slice(0, 4);
-    if (digits.length >= 3) {
-      input.value = digits.slice(0, 2) + '/' + digits.slice(2);
-    } else {
-      input.value = digits;
-    }
-  }
-
-  function maskCVV(input) {
-    input.value = input.value.replace(/\D/g, '').slice(0, 4);
-  }
-
-  /* ================================================================
-     VALIDACIÓN
-  ================================================================ */
+  /* ---------- VALIDATION ---------- */
   var validators = {
-    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
-    tel: function (v) { return v.replace(/\D/g, '').length >= 7; },
-    cp: function (v) { return v.trim().length >= 3; },
-    ccNumber: function (v) { return v.replace(/\D/g, '').length >= 15; },
-    ccExp: function (v) { return /^\d{2}\/\d{2}$/.test(v.trim()); },
-    ccCvv: function (v) { return /^\d{3,4}$/.test(v.trim()); },
-    ccName: function (v) { return v.trim().length >= 3; },
-    required: function (v) { return v.trim().length > 0; }
+    email: function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    tel: function(v) { return v.replace(/\D/g, '').length >= 7; },
+    required: function(v) { return v.trim().length > 0; }
   };
 
   function validateField(field) {
     var input = field.querySelector('input, select');
-    var errEl = field.querySelector('.field-error');
     if (!input) return true;
-
     var valid = true;
-    var label = field.querySelector('label');
-    var nameLabel = label ? label.textContent.trim().replace(/:\s*$/, '') : 'Campo';
-
     if (input.type === 'email') valid = validators.email(input.value);
     else if (input.id === 'telefono') valid = validators.tel(input.value);
-    else if (input.id === 'cp') valid = validators.cp(input.value);
-    else if (input.id === 'cc-number') valid = validators.ccNumber(input.value);
-    else if (input.id === 'cc-exp') valid = validators.ccExp(input.value);
-    else if (input.id === 'cc-cvv') valid = validators.ccCvv(input.value);
-    else if (input.id === 'cc-name') valid = validators.ccName(input.value);
     else valid = validators.required(input.value);
-
     field.classList.toggle('invalid', !valid);
-    if (errEl) {
-      errEl.textContent = valid
-        ? ''
-        : (input.value.trim() === '' ? 'Este campo es obligatorio.' : 'Dato no válido. Revisa e intenta de nuevo.');
-    }
     return valid;
   }
 
-  function fieldsFor(scope) {
-    return $$('.field', scope || document);
-  }
-
-  function attachFieldListeners() {
-    if (window.localStorage) {
-      $$('input, select').forEach(function (el) {
-        el.addEventListener('input', function () { persistForm(); });
-      });
-    }
-  }
-
   function validateAll() {
-    var all = fieldsFor();
+    var all = $$('.form-section .field');
     var firstInvalid = null;
-    all.forEach(function (field) {
-      if (!validateField(field) && !firstInvalid) firstInvalid = field;
-    });
+    all.forEach(function(f) { if (!validateField(f) && !firstInvalid) firstInvalid = f; });
     return { ok: !firstInvalid, first: firstInvalid };
   }
 
-  /* ================================================================
-     PAGO (simulado)
-  ================================================================ */
-  function setLoading(loading) {
-    $$('.btn-buy').forEach(function (btn) {
-      btn.disabled = loading;
-      var text = btn.querySelector('.btn-buy-text');
-      var spin = btn.querySelector('.btn-buy-loading');
-      if (loading) { text.classList.add('hidden'); spin.classList.remove('hidden'); }
-      else { text.classList.remove('hidden'); spin.classList.add('hidden'); }
-    });
+  function attachFormListeners() {
+    $$('input, select').forEach(function(el) { el.addEventListener('input', persistForm); el.addEventListener('change', persistForm); });
+    $$('.form-section .field').forEach(function(f) { var i = f.querySelector('input, select'); if (i) i.addEventListener('blur', function() { validateField(f); }); });
   }
 
-  function purchase() {
-    var v = validateAll();
-    if (!v.ok) {
-      if (v.first) {
-        v.first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        var input = v.first.querySelector('input, select');
-        if (input) input.focus();
-      }
+  /* ---------- PAIS / MONEDA ---------- */
+  function onPaisChange() {
+    var pais = $('#pais').value;
+    state.pais = pais || 'CO';
+    renderPlan();
+    // Re-inicializar widget si ya cargó (para que cambie moneda/métodos)
+    if (wallet) initMercadoPagoWidget();
+  }
+
+  /* ---------- MERCADO PAGO INTEGRATION ---------- */
+  function initMercadoPago() {
+    if (typeof MercadoPago === 'undefined') {
+      console.error('MercadoPago SDK no cargado');
+      showMPError('SDK de Mercado Pago no disponible');
       return;
     }
 
-    setLoading(true);
-    setTimeout(function () {
-      setLoading(false);
+    // Validar Public Key
+    if (!CONFIG.MP_PUBLIC_KEY || CONFIG.MP_PUBLIC_KEY.includes('XXXXXXXX')) {
+      console.warn('MP_PUBLIC_KEY no configurada. Usando modo demo.');
+      showMPError('Configura tu MP_PUBLIC_KEY en checkout.js');
+      return;
+    }
 
-      // Si es compra de plan NED → redirigir a página de gracias
-      var isPlanPurchase = false;
-      try { isPlanPurchase = !!localStorage.getItem(CONFIG.LS_PLAN); } catch (e) {}
+    mp = new MercadoPago(CONFIG.MP_PUBLIC_KEY, { locale: 'es-CO' });
 
-      if (isPlanPurchase) {
-        window.location.href = CONFIG.GRACIAS_URL;
-        return;
-      }
-
-      // Flujo normal: modal de éxito
-      orderToken = Math.floor(100000 + Math.random() * 900000);
-      $('#modal-order-num').textContent = '#' + orderToken;
-      $('#success-modal').classList.remove('hidden');
-      try {
-        localStorage.removeItem(CONFIG.LS_FORM);
-        localStorage.removeItem(CONFIG.LS_PRODUCT);
-      } catch (e) { /* ignore */ }
-    }, 2000);
+    // Renderizar wallet
+    initMercadoPagoWidget();
   }
 
-  /* ================================================================
-     INIT
-  ================================================================ */
+  function initMercadoPagoWidget() {
+    if (!mp) return;
+
+    var container = $('#wallet_container');
+    var loading = $('#mp-loading');
+    var errorEl = $('#mp-error');
+
+    // Limpiar contenedor previo
+    container.innerHTML = '';
+    loading.classList.remove('hidden');
+    errorEl.classList.add('hidden');
+
+    // Crear preferencia ANTES de renderizar
+    createPreference()
+      .then(function(prefId) {
+        preferenceId = prefId;
+        wallet = mp.wallet({
+          container: '#wallet_container',
+          preferenceId: prefId,
+          autoReturn: 'approved',
+          theme: {
+            elementsColor: '#F97316', // Naranja NED
+            headerColor: '#0A0A0A'
+          }
+        });
+
+        loading.classList.add('hidden');
+
+        // Wallet events
+        wallet.on('ready', function() { console.log('MP Wallet ready'); });
+        wallet.on('error', function(err) { console.error('MP Wallet error:', err); showMPError('Error cargando métodos de pago'); });
+      })
+      .catch(function(err) {
+        console.error('Error creando preferencia:', err);
+        loading.classList.add('hidden');
+        showMPError('Error creando orden de pago. ' + (err.message || 'Intenta de nuevo.'));
+      });
+  }
+
+  function createPreference() {
+    var items = [{
+        id: state.planId,
+        title: state.planName,
+        description: state.planDetails,
+        quantity: 1,
+        unit_price: state.pais === 'CO' ? state.planPriceCOP : state.planPriceUSD,
+        currency_id: state.pais === 'CO' ? 'COP' : 'USD'
+      }];
+
+      if (state.bump) {
+        items.push({
+          id: 'upsell_analytics',
+          title: CONFIG.UPSELL.name,
+          description: 'GA4 + Pixel FB + A/B Testing inicial',
+          quantity: 1,
+          unit_price: state.pais === 'CO' ? CONFIG.UPSELL.priceCOP : CONFIG.UPSELL.priceUSD,
+          currency_id: state.pais === 'CO' ? 'COP' : 'USD'
+        });
+      }
+
+      var payer = {
+        email: state.email,
+        name: state.nombre,
+        surname: state.apellido,
+        phone: { area_code: '', number: state.telefono.replace(/\D/g, '') },
+        identification: state.nit ? { type: state.nit.length > 10 ? 'NIT' : 'CC', number: state.nit } : undefined
+      };
+
+      var preferenceData = {
+        items: items,
+        payer: payer,
+        back_urls: {
+          success: CONFIG.SUCCESS_URL,
+          failure: CONFIG.FAILURE_URL,
+          pending: CONFIG.PENDING_URL
+        },
+        auto_return: 'approved',
+        binary_mode: true,
+        statement_descriptor: 'NED Landing Pages',
+        external_reference: 'ned_' + Date.now(),
+        notification_url: getParam('webhook') || '' // Opcional: URL de tu webhook
+      };
+
+      // ⚠️ AQUÍ DEBES LLAMAR TU BACKEND PARA CREAR LA PREFERENCIA
+      // El Access Token NO debe exponerse en frontend
+      // Ejemplo con fetch a serverless function:
+      return fetch(CONFIG.PREFERENCE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(preferenceData)
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Error servidor: ' + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (!data.id) throw new Error('Respuesta inválida del servidor');
+        return data.id; // preference_id
+      })
+      .catch(function(err) {
+        // MODO DEMO: si falla el backend, crear preferencia mock para testing visual
+        // ⚠️ SOLO PARA DESARROLLO - EN PRODUCCIÓN DEBE FALLAR
+        if (CONFIG.MP_PUBLIC_KEY.includes('TEST') || CONFIG.MP_PUBLIC_KEY.includes('XXXX')) {
+          console.warn('⚠️ MODO DEMO: Backend no disponible, usando preferencia simulada');
+          // En modo demo, no podemos crear preferencia real sin backend
+          // El widget no funcionará completamente sin preference_id real
+          // Mostramos estado visual pero botón de pago no funcionará
+          enablePayButtonDemo();
+          return 'demo-preference-id';
+        }
+        throw err;
+      });
+  }
+
+  function enablePayButtonDemo() {
+    var btns = $$('.btn-pay');
+    btns.forEach(function(b) { b.disabled = false; });
+    $('#mp-loading').classList.add('hidden');
+    // Mensaje visual de demo
+    var container = $('#wallet_container');
+    container.innerHTML = '<div style="padding:40px;text-align:center;color:#9CA3AF;"><p>🔧 <strong>Modo Demo</strong></p><p>Configura tu <code>MP_PUBLIC_KEY</code> y endpoint <code>/api/create-preference</code> para activar Mercado Pago real.</p><p style="margin-top:16px;font-size:13px;">Tarjetas test: 4509 9535 6623 3704 (Visa) / 5031 7557 3453 0604 (MC)</p></div>';
+  }
+
+  function showMPError(msg) {
+    $('#mp-loading').classList.add('hidden');
+    var err = $('#mp-error');
+    err.querySelector('p').innerHTML = msg + ' <button type="button" id="mp-retry">Reintentar</button>';
+    err.classList.remove('hidden');
+  }
+
+  /* ---------- PAY BUTTON ---------- */
+  function setPayLoading(loading) {
+    $$('.btn-pay').forEach(function(btn) {
+      btn.disabled = loading;
+      var t = btn.querySelector('.btn-pay-text');
+      var l = btn.querySelector('.btn-pay-loading');
+      if (loading) { t.classList.add('hidden'); l.classList.remove('hidden'); }
+      else { t.classList.remove('hidden'); l.classList.add('hidden'); }
+    });
+  }
+
+  function onPayClick() {
+    var v = validateAll();
+    if (!v.ok) {
+      if (v.first) { v.first.scrollIntoView({ behavior: 'smooth', block: 'center' }); var i = v.first.querySelector('input, select'); if (i) i.focus(); }
+      return;
+    }
+
+    // Guardar datos finales
+    state.email = $('#email').value;
+    state.nombre = $('#nombre').value;
+    state.apellido = $('#apellido').value;
+    state.telefono = $('#telefono').value;
+    state.ciudad = $('#ciudad').value;
+    state.pais = $('#pais').value;
+    state.nit = $('#nit').value;
+    state.newsletter = $('#newsletter').checked;
+
+    // Guardar orden local
+    try { localStorage.setItem(CONFIG.LS_ORDER, JSON.stringify({ plan: state.planId, bump: state.bump, total: state.pais === 'CO' ? state.planPriceCOP + (state.bump ? CONFIG.UPSELL.priceCOP : 0) : state.planPriceUSD + (state.bump ? CONFIG.UPSELL.priceUSD : 0), currency: state.pais === 'CO' ? 'COP' : 'USD', ts: Date.now() })); } catch (e) {}
+
+    setPayLoading(true);
+
+    // Si hay wallet real, el usuario paga en el widget y MP redirige automáticamente
+    // Si es demo, simulamos
+    if (preferenceId && preferenceId !== 'demo-preference-id' && wallet) {
+      // El usuario completa el pago en el widget, MP redirige a success_url
+      // Aquí solo mostramos feedback
+      setTimeout(function() { setPayLoading(false); }, 3000);
+    } else {
+      // Modo demo: simular redirección
+      setTimeout(function() {
+        setPayLoading(false);
+        window.location.href = CONFIG.SUCCESS_URL + '&payment_id=demo_' + Date.now() + '&demo=true';
+      }, 1500);
+    }
+  }
+
+  /* ---------- INIT ---------- */
   function init() {
-    if (!parseAndCheck()) {
-      // Sin producto válido → redirigir a la landing
+    clearCheckoutLS();
+
+    if (!loadPlanFromURL()) {
       window.location.replace(CONFIG.LANDING_URL);
       return;
     }
-    var el = $('.summary-card');
-    if (el) el.classList.remove('collapsed');
 
-    // Producto + bump price
-    renderProduct();
-    $('#bump-price').textContent = formatMoney(Math.round(state.price * CONFIG.BUMP_PERCENT));
-
-    // Envío (default estándar)
-    toggleShip('std');
-
-    // Restaurar formulario persistido (solo si el usuario recarga la misma página)
+    savePlanToLS();
     restoreForm();
+    renderPlan();
 
-    // Envío
-    $$('.ship-option').forEach(function (opt) {
-      opt.addEventListener('click', function () {
-        toggleShip(opt.querySelector('input').value);
+    // Eventos
+    $('#pais').addEventListener('change', onPaisChange);
+    $('#bump-check').addEventListener('change', function() { state.bump = this.checked; renderTotals(); });
+
+    // Method selector visual (solo UI, MP maneja métodos reales)
+    $$('.mp-method-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        $$('.mp-method-card').forEach(function(c) { c.classList.remove('active'); });
+        card.classList.add('active');
+        state.paymentMethod = card.dataset.method;
       });
     });
 
-    // Order bump
-    var bumpCheck = $('#bump-check');
-    if (bumpCheck) {
-      bumpCheck.addEventListener('change', function () {
-        state.bump = bumpCheck.checked;
-        renderTotals();
-      });
-    }
+    // Pay buttons
+    $$('.btn-pay').forEach(function(btn) { btn.addEventListener('click', onPayClick); });
 
-    // Descuento
-    $('#discount-btn').addEventListener('click', applyDiscount);
-    $('#discount-input').addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); applyDiscount(); }
-    });
+    // MP retry
+    $('#mp-retry').addEventListener('click', initMercadoPagoWidget);
 
-    // Máscaras + brand
-    var ccNumber = $('#cc-number');
-    var ccExp = $('#cc-exp');
-    var ccCvv = $('#cc-cvv');
-    ccNumber.addEventListener('input', function () { maskCardNumber(ccNumber); });
-    ccExp.addEventListener('input', function () { maskExpiry(ccExp); });
-    ccCvv.addEventListener('input', function () { maskCVV(ccCvv); });
-
-    // Validación en blur
-    fieldsFor().forEach(function (field) {
-      var input = field.querySelector('input, select');
-      if (input) input.addEventListener('blur', function () { validateField(field); });
-    });
-
-    // Tabs de pago
-    $$('.pay-tab').forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        $$('.pay-tab').forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
-        $$('.pay-panel').forEach(function (p) { p.classList.add('hidden'); });
-        $('#panel-' + tab.getAttribute('data-tab')).classList.remove('hidden');
-      });
-    });
-
-    // Summary toggle (mobile)
-    var toggle = $('#summary-toggle');
-    toggle.addEventListener('click', function () {
+    // Resumen toggle mobile
+    $('#summary-toggle').addEventListener('click', function() {
       var card = $('.summary-card');
       card.classList.toggle('collapsed');
-      var isCollapsed = card.classList.contains('collapsed');
-      toggle.setAttribute('aria-expanded', String(!isCollapsed));
+      this.setAttribute('aria-expanded', !card.classList.contains('collapsed'));
     });
 
-    // Comprar
-    $$('.btn-buy').forEach(function (btn) {
-      if (btn.id === 'buy-btn' || btn.id === 'buy-sticky') {
-        btn.addEventListener('click', purchase);
-      }
-    });
-
-    // Modal
-    $('#modal-close').addEventListener('click', function () {
-      window.location.href = CONFIG.LANDING_URL;
-    });
-
-    persistForm();
-    renderTotals();
-    attachFieldListeners();
+    // Inicializar Mercado Pago
+    initMercadoPago();
+    attachFormListeners();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();
