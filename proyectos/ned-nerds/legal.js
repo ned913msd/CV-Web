@@ -1,5 +1,5 @@
 /* ================================================================
-   NED — PÁGINAS LEGALES JS
+   ALFA & OMEGA — PÁGINAS LEGALES JS
    TOC highlight, smooth scroll, back-to-top, mobile TOC toggle
 ================================================================ */
 

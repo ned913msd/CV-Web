@@ -1,27 +1,29 @@
 /* ================================================================
-   NED — THANK YOU PAGE
-   Sistema GROWTH DARK | confirmación + One-Click Upsell
-   Space Grotesk (títulos) + Inter (cuerpo) + JetBrains Mono (números)
+   ALFA & OMEGA — THANK YOU PAGE
+   Paleta ALFA & OMEGA | confirmación + One-Click Upsell
 ================================================================ */
 
 :root {
-  --bg: #0A0A0A;
-  --bg-2: #1A1A1A;
-  --bg-3: #262626;
-  --primary: #10B981;
-  --primary-light: #34D399;
-  --accent: #F97316;
-  --accent-hover: #EA580C;
-  --text: #FFFFFF;
-  --text-2: #9CA3AF;
-  --text-3: #6B7280;
-  --border: #374151;
-  --error: #EF4444;
+  --bg: #0A0A0F;           /* Vacío */
+  --bg-2: #12121A;
+  --bg-3: #1A1A24;
+  --primary: #00FF66;      /* Runa Verde */
+  --primary-dark: #00CC52;
+  --primary-light: #33FF85;
+  --accent: #00F0FF;       /* Alfa Cian */
+  --accent-hover: #00CCDD;
+  --text: #FFFFFF;         /* Código Blanco */
+  --text-2: #A0A0AA;       /* Comentario Gray */
+  --text-3: #70707A;
+  --border: #2A2A3A;
+  --error: #FF3366;
+  --success: #00FF66;
+  --warning: #FFCC00;
   --radius: 10px;
   --radius-lg: 16px;
   --shadow: 0 10px 40px rgba(0,0,0,0.5);
-  --glow-green: 0 0 0 3px rgba(16,185,129,0.2);
-  --glow-orange: 0 0 30px rgba(249,115,22,0.4);
+  --glow-primary: 0 0 0 3px rgba(0,255,102,0.3);
+  --glow-accent: 0 0 30px rgba(0,240,255,0.4);
   --font-head: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -150,7 +152,7 @@ a { text-decoration: none; color: inherit; }
   border: 2px solid var(--accent);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(249,115,22,0.12);
+  box-shadow: 0 0 40px rgba(0,240,255,0.15);
   opacity: 0; transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease, max-height 0.6s ease;
   max-height: 2000px;
@@ -161,7 +163,7 @@ a { text-decoration: none; color: inherit; }
 
 .upsell-badge {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  background: linear-gradient(90deg, #7C2D12, var(--accent));
+  background: linear-gradient(90deg, #005233, var(--primary));
   color: #fff;
   padding: 12px 18px;
   font-family: var(--font-head); font-size: 13px; font-weight: 700;
@@ -203,12 +205,12 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font-mono);
 }
 .upsell-special {
-  font-family: var(--font-mono); font-size: 34px; font-weight: 700; color: var(--accent);
-  text-shadow: 0 0 20px rgba(249,115,22,0.4);
+  font-family: var(--font-mono); font-size: 34px; font-weight: 700; color: var(--primary);
+  text-shadow: 0 0 20px rgba(0,255,102,0.4);
 }
 .upsell-save {
   font-size: 11px; font-weight: 700; color: var(--text);
-  background: rgba(249,115,22,0.15); border: 1px solid var(--accent);
+  background: rgba(0,255,102,0.15); border: 1px solid var(--primary);
   padding: 4px 10px; border-radius: 20px; letter-spacing: 1px;
 }
 
@@ -216,18 +218,18 @@ a { text-decoration: none; color: inherit; }
   position: relative;
   display: flex; align-items: center; justify-content: center;
   width: 100%; min-height: 56px;
-  background: linear-gradient(180deg, #FA7A2B, var(--accent));
+  background: linear-gradient(180deg, var(--primary-light), var(--primary));
   border-radius: var(--radius);
-  font-family: var(--font-head); font-weight: 700; font-size: 17px; color: #fff;
-  box-shadow: var(--glow-orange);
+  font-family: var(--font-head); font-weight: 700; font-size: 17px; color: var(--bg);
+  box-shadow: var(--glow-primary);
   animation: btnPulse 2.4s ease-in-out infinite;
   transition: transform 0.15s, opacity 0.2s;
 }
-.btn-upsell:hover:not(:disabled) { background: linear-gradient(180deg, var(--accent), var(--accent-hover)); transform: translateY(-1px); }
+.btn-upsell:hover:not(:disabled) { background: linear-gradient(180deg, var(--primary), var(--primary-dark)); transform: translateY(-1px); box-shadow: var(--glow-primary-strong); }
 .btn-upsell:disabled { animation: none; opacity: 0.75; cursor: not-allowed; }
 @keyframes btnPulse {
-  0%,100% { box-shadow: 0 0 0 rgba(249,115,22,0.4); }
-  50% { box-shadow: 0 0 26px rgba(249,115,22,0.8); }
+  0%,100% { box-shadow: 0 0 0 rgba(0,255,102,0.4); }
+  50% { box-shadow: 0 0 26px rgba(0,255,102,0.8); }
 }
 .btn-loading { display: inline-flex; align-items: center; gap: 10px; }
 .spinner {
@@ -240,7 +242,7 @@ a { text-decoration: none; color: inherit; }
 
 .upsell-added {
   display: flex; align-items: center; gap: 14px;
-  background: rgba(16,185,129,0.1); border: 1px solid var(--primary);
+  background: rgba(0,255,102,0.1); border: 1px solid var(--primary);
   border-radius: var(--radius); padding: 16px;
   margin-top: 16px;
   animation: fadeIn 0.4s ease;
@@ -300,7 +302,7 @@ a { text-decoration: none; color: inherit; }
   background: rgba(16,185,129,0.12);
   border-color: var(--primary);
   color: var(--primary);
-  box-shadow: var(--glow-green);
+  box-shadow: var(--glow-primary);
   font-weight: 700;
 }
 .timeline-body h3 { font-family: var(--font-head); font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
@@ -355,7 +357,7 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-download:hover { background: rgba(16,185,129,0.08); }
 .btn-calendly { border-color: var(--accent); color: var(--accent); }
-.btn-calendly:hover { background: rgba(249,115,22,0.08); }
+.btn-calendly:hover { background: rgba(0,240,255,0.08); }
 
 /* ============ SECCIÓN 6: SOPORTE ============ */
 .support { position: relative; z-index: 1; padding: 56px 0 24px; }

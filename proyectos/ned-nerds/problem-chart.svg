@@ -4,7 +4,7 @@
   <defs>
     <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
       <stop offset='0' stop-color='#1A1A1A'/>
-      <stop offset='1' stop-color='#0A0A0A'/>
+      <stop offset='1' stop-color='#0A0A0F'/>
     </linearGradient>
     <linearGradient id='lineStroke' x1='0' y1='0' x2='0' y2='1'>
       <stop offset='0' stop-color='#EF4444'/>
@@ -23,7 +23,7 @@
   <path d='M40 80 C120 120 200 180 280 260 C320 300 380 340 440 420' fill='none' stroke='url(#lineStroke)' stroke-width='4' stroke-linecap='round'/>
   <!-- down arrow -->
   <path d='M420 320 L440 420 L340 402' fill='none' stroke='#EF4444' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/>
-  <circle cx='40' cy='80' r='6' fill='#10B981'/>
+  <circle cx='40' cy='80' r='6' fill='#00FF66'/>
   <!-- labels -->
   <text x='48' y='70' fill='#6B7280' font-family='JetBrains Mono, monospace' font-size='14'>Ventas antes</text>
   <text x='48' y='430' fill='#EF4444' font-family='JetBrains Mono, monospace' font-size='16' font-weight='bold'>✕ Sin ventas</text>

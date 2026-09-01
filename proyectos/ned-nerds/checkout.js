@@ -1,5 +1,5 @@
 /* ================================================================
-   NED — CHECKOUT MODO MANUAL (Lead Capture)
+   ALFA & OMEGA — CHECKOUT MODO MANUAL (Lead Capture)
    Sin Mercado Pago — captura lead y redirige a gracias con status=pending_manual
 ================================================================ */
 

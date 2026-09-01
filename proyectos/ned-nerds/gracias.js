@@ -1,5 +1,5 @@
 /* ================================================================
-   NED — THANK YOU PAGE (con soporte para pago manual pendiente)
+   ALFA & OMEGA — THANK YOU PAGE (con soporte para pago manual pendiente)
 ================================================================ */
 
 (function () {
@@ -174,7 +174,7 @@
         <div style="background:#1A1A1A;border:1px solid #374151;border-radius:10px;padding:16px;text-align:center;">
           <div style="font-size:28px;margin-bottom:8px;">🏦</div>
           <strong style="color:#FFF;">Transferencia / Nequi / Daviplata</strong>
-          <p style="font-size:12px;color:#9CA3AF;margin:8px 0 0;">Bancolombia • Ahorros • ****1234<br>Titular: NED - David Bustamante</p>
+          <p style="font-size:12px;color:#9CA3AF;margin:8px 0 0;">Bancolombia • Ahorros • ****1234<br>Titular: Alfa & Omega - David Bustamante</p>
           <button class="btn-download" style="margin-top:12px;padding:8px 16px;font-size:12px;" onclick="copyAccount()">📋 Copiar datos</p>
         </div>
         <div style="background:#1A1A1A;border:1px solid #374151;border-radius:10px;padding:16px;text-align:center;">
@@ -193,7 +193,7 @@
         <ol style="margin:12px 0 0;padding-left:20px;color:#9CA3AF;font-size:14px;line-height:1.8;">
           <li>Realiza el pago por tu medio preferido</li>
           <li>Envía comprobante a <a href="mailto:pagos@ned-landingpages.com" style="color:#10B981;">pagos@ned-landingpages.com</a> o WhatsApp <a href="https://wa.me/573003491413" target="_blank" style="color:#10B981;">+57 300 349 1413</a></li>
-          <li>Asunto: <code>Pago NED - [Tu Nombre]</code></li>
+          <li>Asunto: <code>Pago Alfa & Omega - [Tu Nombre]</code></li>
           <li>Confirmamos en <strong>2h hábiles</strong> y empieza tu proyecto</li>
         </ol>
       </div>
@@ -227,12 +227,12 @@
       'Programa horarios de mayor actividad','Configura el remarketing desde el día 1',
       'Mide, analiza y escala lo que funciona'
     ];
-    var lines = ['CHECKLIST DE CAMPAÑAS DE ADS - NED','-----------------------------------'];
+    var lines = ['CHECKLIST DE CAMPAÑAS DE ADS - ALFA & OMEGA','-------------------------------------------'];
     items.forEach(function (item, i) { lines.push((i + 1) + '. [ ] ' + item); });
-    lines.push('','NED - Landing Pages de Alta Conversión');
+    lines.push('','Alfa & Omega - Landing Pages de Alta Conversión');
     var blob = new Blob([lines.join('\r\n')], { type: 'text/plain' });
     var url = URL.createObjectURL(blob);
-    var a = document.createElement('a'); a.href = url; a.download = 'checklist-campanas-ads-NED.txt';
+    var a = document.createElement('a'); a.href = url; a.download = 'checklist-campanas-ads-AlfaOmega.txt';
     document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
   }
 
@@ -299,11 +299,11 @@
 
   function generateChecklistPDF() {
     var items = ['Define tu oferta irresistible','Segmenta tu audiencia ideal','Crea 3 variantes de creativo','Escribe hooks que enganchen en 2 segundos','Optimiza tu URL para conversión','Configura tu pixel de conversión','Establece tu presupuesto diario inicial','Programa horarios de mayor actividad','Configura el remarketing desde el día 1','Mide, analiza y escala lo que funciona'];
-    var lines = ['CHECKLIST DE CAMPAÑAS DE ADS - NED','-----------------------------------'];
+    var lines = ['CHECKLIST DE CAMPAÑAS DE ADS - ALFA & OMEGA','-----------------------------------'];
     items.forEach(function (item, i) { lines.push((i + 1) + '. [ ] ' + item); });
-    lines.push('','NED - Landing Pages de Alta Conversión');
+    lines.push('','Alfa & Omega - Landing Pages de Alta Conversión');
     var blob = new Blob([lines.join('\r\n')], { type: 'text/plain' });
-    var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = 'checklist-campanas-ads-NED.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    var url = URL.createObjectURL(blob); var a = document.createElement('a'); a.href = url; a.download = 'checklist-campanas-ads-alfa-omega.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
   }
 
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }

@@ -1,5 +1,5 @@
 /* ================================================================
-   PORTAFOLIO DAVID NED — LÓGICA DE INTERACCIÓN
+   PORTAFOLIO DAVID BUSTAMANTE — LÓGICA DE INTERACCIÓN
 ================================================================ */
 
 /* ============ 1. HEADER AL HACER SCROLL ============ */

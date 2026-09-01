@@ -1,5 +1,5 @@
 /* ================================================================
-   NED — Landing Pages de Alta Conversión
+   ALFA & OMEGA — Landing Pages de Alta Conversión
    JS: reveal, contadores, FAQ, particles, menú móvil, nav sticky
 ================================================================ */
 
@@ -121,7 +121,7 @@
     p.style.animationDuration = (6 + Math.random() * 8) + 's';
     p.style.animationDelay = (Math.random() * 8) + 's';
     p.style.background =
-      Math.random() > 0.7 ? 'rgba(249,115,22,0.6)' : 'rgba(16,185,129,0.6)';
+      Math.random() > 0.7 ? 'rgba(0,240,255,0.6)' : 'rgba(0,255,102,0.6)';
     field.appendChild(p);
   }
 })();
