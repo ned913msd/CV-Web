@@ -1,6 +1,7 @@
 /* ================================================================
    ALFA & OMEGA — Landing Pages de Alta Conversión
-   JS: reveal, contadores, FAQ, particles, menú móvil, nav sticky
+   JS v2.0: reveal, counters, FAQ, particles, sticky header,
+   activity widget, exit-intent popup, mobile menu
 ================================================================ */
 
 /* ---------- MOBILE MENU ---------- */
@@ -93,7 +94,7 @@
   counters.forEach(function (el) { observer.observe(el); });
 })();
 
-/* ---------- FAQ ACCORDION (one open at a time) ---------- */
+/* ---------- FAQ ACCORDION ---------- */
 (function () {
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
@@ -107,7 +108,7 @@
   });
 })();
 
-/* ---------- PARTICLE FIELD (hero) ---------- */
+/* ---------- PARTICLE FIELD ---------- */
 (function () {
   var field = document.querySelector('.particle-field');
   if (!field) return;
@@ -126,17 +127,141 @@
   }
 })();
 
-/* ---------- STICKY NAV "SCROLLED" STATE ---------- */
+/* ---------- STICKY HEADER (appears after hero) ---------- */
 (function () {
-  var nav = document.querySelector('.nav-bar');
-  if (!nav) return;
+  var sticky = document.getElementById('sticky-header');
+  var hero = document.querySelector('.hero');
+  if (!sticky || !hero) return;
+
   function onScroll() {
-    if (window.scrollY > 10) {
-      nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+    var heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom - 80) {
+      sticky.classList.add('visible');
     } else {
-      nav.style.boxShadow = 'none';
+      sticky.classList.remove('visible');
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+/* ---------- NAV SHADOW ON SCROLL ---------- */
+(function () {
+  var nav = document.querySelector('.nav-bar');
+  if (!nav) return;
+  function onScroll() {
+    nav.style.boxShadow = window.scrollY > 10 ? '0 10px 30px rgba(0,0,0,0.5)' : 'none';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- ACTIVITY NOTIFICATIONS WIDGET ---------- */
+(function () {
+  var widget = document.getElementById('activity-widget');
+  if (!widget) return;
+
+  var notifications = [
+    { icon: '🔥', name: 'Juan de Bogotá', action: 'solicitó su auditoría gratis', time: 'hace 3 min' },
+    { icon: '⭐', name: 'María de Medellín', action: 'aumentó sus ventas 280%', time: 'hace 15 min' },
+    { icon: '🔥', name: 'Carlos de Cali', action: 'activó su plan Professional', time: 'hace 22 min' },
+    { icon: '📈', name: 'Laura de Barranquilla', action: 'triplicó su conversión', time: 'hace 1 hora' },
+    { icon: '⭐', name: 'Andrés de Bucaramanga', action: 'dejó reseña 5 estrellas', time: 'hace 2 horas' },
+  ];
+
+  var current = 0;
+  var textEl = widget.querySelector('.activity-text');
+  var iconEl = widget.querySelector('.activity-icon');
+  var timeEl = widget.querySelector('.activity-time');
+
+  function showNotification(n) {
+    widget.classList.remove('hidden');
+    if (iconEl) iconEl.textContent = n.icon;
+    if (textEl) textEl.innerHTML = '<strong>' + n.name + '</strong> ' + n.action;
+    if (timeEl) timeEl.textContent = n.time;
+  }
+
+  setInterval(function () {
+    widget.classList.add('hidden');
+    setTimeout(function () {
+      current = (current + 1) % notifications.length;
+      showNotification(notifications[current]);
+    }, 400);
+  }, 6000);
+
+  showNotification(notifications[0]);
+})();
+
+/* ---------- EXIT-INTENT POPUP ---------- */
+(function () {
+  var popup = document.getElementById('exit-popup');
+  if (!popup) return;
+
+  var overlay = popup.querySelector('.exit-popup-overlay');
+  var closeBtn = popup.querySelector('.exit-popup-close');
+  var form = document.getElementById('exit-popup-form');
+  var shown = false;
+
+  function showPopup() {
+    if (shown) return;
+    shown = true;
+    popup.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hidePopup() {
+    popup.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('mouseout', function (e) {
+    if (e.clientY < 5 && !shown) {
+      setTimeout(showPopup, 500);
+    }
+  });
+
+  if (overlay) overlay.addEventListener('click', hidePopup);
+  if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && shown) hidePopup();
+  });
+
+  if (form) {
+    form.addEventListener('submit', function () {
+      setTimeout(hidePopup, 500);
+    });
+  }
+})();
+
+/* ---------- HERO FORM SUBMISSION ---------- */
+(function () {
+  var heroForm = document.getElementById('hero-form');
+  if (!heroForm) return;
+
+  heroForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = heroForm.querySelector('.hero-form-btn');
+    var originalText = btn.textContent;
+    btn.textContent = '✓ ¡Enviado! Revisa tu email';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    var formData = new FormData(heroForm);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    }).then(function () {
+      setTimeout(function () {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        heroForm.reset();
+      }, 3000);
+    }).catch(function () {
+      btn.textContent = originalText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    });
+  });
 })();
