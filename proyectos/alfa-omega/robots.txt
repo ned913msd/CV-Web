@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ned913msd.github.io/CV-Web/proyectos/alfa-omega/sitemap.xml
