@@ -45,13 +45,19 @@
   }
 })();
 
-/* ---------- REVEAL ON SCROLL ---------- */
+/* ---------- REVEAL ON SCROLL (AOS-like via IntersectionObserver) ---------- */
 (function () {
-  var revealEls = document.querySelectorAll('.reveal, [class*="delay-"]');
+  /* New system: [data-animate] elements */
+  var animatedEls = document.querySelectorAll('[data-animate]');
+  /* Legacy: .reveal elements */
+  var revealEls = document.querySelectorAll('.reveal');
+
   if (!('IntersectionObserver' in window)) {
+    animatedEls.forEach(function (el) { el.classList.add('visible'); });
     revealEls.forEach(function (el) { el.classList.add('visible'); });
     return;
   }
+
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -59,11 +65,51 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  animatedEls.forEach(function (el) { observer.observe(el); });
   revealEls.forEach(function (el) { observer.observe(el); });
 })();
 
-/* ---------- ANIMATED COUNTERS ---------- */
+/* ---------- VS SECTION COUNTERS ---------- */
+(function () {
+  var counters = document.querySelectorAll('.vs-counter');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    var target = parseFloat(el.getAttribute('data-target'));
+    var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    var duration = 1200;
+    var start = null;
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (target * eased).toFixed(decimals);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(animateCounter);
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function (el) { observer.observe(el); });
+})();
+
+/* ---------- ANIMATED COUNTERS (stats + case metrics) ---------- */
 (function () {
   var counters = document.querySelectorAll('.stat-number[data-count], .metric-value[data-count]');
   if (!counters.length) return;
