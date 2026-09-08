@@ -259,17 +259,22 @@
 
 /* ---------- EXIT-INTENT POPUP ---------- */
 (function () {
+  var KEY = 'ao_exit_shown';
+  if (sessionStorage.getItem(KEY)) return;
+
   var popup = document.getElementById('exit-popup');
   if (!popup) return;
 
   var overlay = popup.querySelector('.exit-popup-overlay');
   var closeBtn = popup.querySelector('.exit-popup-close');
+  var dismissBtn = document.getElementById('exit-dismiss');
   var form = document.getElementById('exit-popup-form');
   var shown = false;
 
   function showPopup() {
     if (shown) return;
     shown = true;
+    sessionStorage.setItem(KEY, '1');
     popup.classList.add('visible');
     document.body.style.overflow = 'hidden';
   }
@@ -279,25 +284,99 @@
     document.body.style.overflow = '';
   }
 
-  document.addEventListener('mouseout', function (e) {
-    if (e.clientY < 5 && !shown) {
-      setTimeout(showPopup, 500);
-    }
-  });
+  /* Desktop: exit intent (mouse leaves top) */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mouseout', function (e) {
+      if (e.clientY < 5 && !shown) {
+        setTimeout(showPopup, 500);
+      }
+    });
+  }
+
+  /* Mobile: scroll depth >= 70% */
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    var fired = false;
+    window.addEventListener('scroll', function () {
+      if (fired) return;
+      var scrolled = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrolled >= 0.7) {
+        fired = true;
+        setTimeout(showPopup, 600);
+      }
+    }, { passive: true });
+  }
 
   if (overlay) overlay.addEventListener('click', hidePopup);
   if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+  if (dismissBtn) dismissBtn.addEventListener('click', hidePopup);
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && shown) hidePopup();
   });
 
   if (form) {
-    form.addEventListener('submit', function () {
-      setTimeout(hidePopup, 500);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var emailInput = document.getElementById('exit-email');
+      var msgEl = document.getElementById('exit-email-msg');
+      if (!validateEmailField(emailInput, msgEl)) return;
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = '✓ ¡Listo! Revisa tu correo.';
+      btn.style.opacity = '0.7';
+      var fd = new FormData(form);
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+        .then(function () {
+          msgEl.textContent = '¡Listo! Revisa tu correo en los próximos 5 minutos.';
+          msgEl.className = 'form-msg success';
+          setTimeout(hidePopup, 2500);
+        })
+        .catch(function () {
+          btn.disabled = false;
+          btn.textContent = 'ENVIARMELO AHORA →';
+          btn.style.opacity = '1';
+          msgEl.textContent = 'Error de red. Intenta de nuevo.';
+          msgEl.className = 'form-msg error';
+        });
     });
   }
 })();
+
+/* ---------- FORM VALIDATION ENGINE ---------- */
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateEmailField(input, msgEl) {
+  var val = input.value.trim();
+  if (!val) {
+    input.setAttribute('data-valid', 'false');
+    if (msgEl) { msgEl.textContent = 'Ingresa tu email para continuar.'; msgEl.className = 'form-msg error'; }
+    return false;
+  }
+  if (!EMAIL_RE.test(val)) {
+    input.setAttribute('data-valid', 'false');
+    if (msgEl) { msgEl.textContent = 'El email no es válido. Ejemplo: nombre@correo.com'; msgEl.className = 'form-msg error'; }
+    return false;
+  }
+  input.setAttribute('data-valid', 'true');
+  if (msgEl) { msgEl.textContent = ''; msgEl.className = 'form-msg'; }
+  return true;
+}
+
+/* Real-time validation on blur + input */
+document.querySelectorAll('input[type="email"]').forEach(function (input) {
+  var msgId = input.getAttribute('aria-describedby');
+  var msgEl = msgId ? document.getElementById(msgId) : null;
+
+  input.addEventListener('blur', function () {
+    if (input.value.trim()) validateEmailField(input, msgEl);
+  });
+
+  input.addEventListener('input', function () {
+    if (input.getAttribute('data-valid') === 'false' && input.value.trim()) {
+      validateEmailField(input, msgEl);
+    }
+  });
+});
 
 /* ---------- HERO FORM SUBMISSION ---------- */
 (function () {
@@ -306,11 +385,17 @@
 
   heroForm.addEventListener('submit', function (e) {
     e.preventDefault();
+    var emailInput = document.getElementById('hero-email');
+    var msgEl = document.getElementById('hero-email-msg');
+    if (!validateEmailField(emailInput, msgEl)) return;
+
     var btn = heroForm.querySelector('.hero-form-btn');
     var originalText = btn.textContent;
     btn.textContent = '✓ ¡Enviado! Revisa tu email';
     btn.disabled = true;
     btn.style.opacity = '0.7';
+    msgEl.textContent = '¡Listo! Revisa tu correo en los próximos 5 minutos.';
+    msgEl.className = 'form-msg success';
 
     var formData = new FormData(heroForm);
     fetch('https://api.web3forms.com/submit', {
@@ -322,11 +407,16 @@
         btn.disabled = false;
         btn.style.opacity = '1';
         heroForm.reset();
-      }, 3000);
+        emailInput.removeAttribute('data-valid');
+        msgEl.textContent = '';
+        msgEl.className = 'form-msg';
+      }, 4000);
     }).catch(function () {
       btn.textContent = originalText;
       btn.disabled = false;
       btn.style.opacity = '1';
+      msgEl.textContent = 'Error de red. Intenta de nuevo.';
+      msgEl.className = 'form-msg error';
     });
   });
 })();

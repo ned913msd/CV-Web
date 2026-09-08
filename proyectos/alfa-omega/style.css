@@ -610,6 +610,7 @@ body.has-urgency-bar { padding-top: 44px; }
   padding: 20px; margin-bottom: 24px; text-align: left;
 }
 .exit-popup-checklist { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+.exit-popup-offer-title { font-size: 15px; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
 .exit-popup-benefits { list-style: none; }
 .exit-popup-benefits li { font-size: 14px; color: var(--primary); margin-bottom: 6px; }
 .exit-popup-form-row { display: flex; gap: 0; border-radius: var(--radius); overflow: hidden; border: 2px solid var(--border); }
@@ -621,6 +622,24 @@ body.has-urgency-bar { padding-top: 44px; }
 .exit-popup-form-row input[type="email"]::placeholder { color: var(--text-3); }
 .exit-popup-form-row .btn { border-radius: 0; padding: 14px 20px; font-size: 14px; white-space: nowrap; }
 .exit-popup-note { font-size: 12px; color: var(--text-3); margin-top: 12px; }
+
+/* Form validation messages */
+.form-msg { font-size: 13px; margin-top: 8px; min-height: 20px; transition: color 0.2s; }
+.form-msg.error { color: #EF4444; }
+.form-msg.success { color: #00FF66; }
+.form-msg.loading { color: var(--text-3); }
+
+/* Exit popup dismiss link */
+.exit-popup-dismiss {
+  display: block; margin-top: 14px; font-size: 13px; color: var(--text-3);
+  background: none; border: none; cursor: pointer; text-decoration: underline;
+  transition: color 0.2s; font-family: var(--font-body);
+}
+.exit-popup-dismiss:hover { color: var(--text-2); }
+
+/* Input validation states */
+input[data-valid="true"] { border-color: #00FF66 !important; }
+input[data-valid="false"] { border-color: #EF4444 !important; }
 
 /* ============ MOBILE MENU ============ */
 @media (max-width: 768px) {
