@@ -91,6 +91,15 @@
 </head>
 <body>
 
+<!-- ============ URGENCY BAR (Sticky Top) ============ -->
+<div class="urgency-bar" id="urgency-bar" role="alert" aria-label="Oferta limitada">
+    <div class="urgency-bar-inner">
+        <p class="urgency-bar-text">⚡ <strong>ATENCIÓN:</strong> Solo quedan 2 cupos de auditoría gratuita para esta semana.</p>
+        <a href="#contacto" class="btn btn-urgency" aria-label="Reservar ahora">Reservar Ahora</a>
+        <button class="urgency-bar-close" id="urgency-bar-close" aria-label="Cerrar banner de urgencia">&times;</button>
+    </div>
+</div>
+
 <!-- ============ STICKY HEADER (appears on scroll) ============ -->
 <div class="sticky-header" id="sticky-header">
     <div class="sticky-inner">
@@ -358,37 +367,37 @@
     </div>
     <div class="review-grid">
         <article class="review-card reveal delay-1">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
             <p class="review-text">"Al principio dudé, pero la landing page que Alfa &amp; Omega creó para mi tienda de dropshipping triplicó mi tasa de conversión en 2 semanas. El ROI fue increíble."</p>
             <div class="review-author">
-                <img src="avatar-carlos.svg" alt="Carlos M." class="review-avatar" loading="lazy" width="48" height="48">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Foto de Carlos M., dropshipper de tecnología" class="review-avatar" loading="lazy" width="48" height="48">
                 <div class="review-author-info">
-                    <span class="review-name">Carlos M. <span class="verified-badge">✓ Verificado</span></span>
-                    <span class="review-role">Dropshipper - Nicho Tecnología</span>
+                    <span class="review-name">Carlos M. <span class="verified-badge" aria-label="Cliente verificado">✓ Verificado</span></span>
+                    <span class="review-role">Nicho: Tecnología</span>
                     <span class="review-result">+250% en conversiones</span>
                 </div>
             </div>
         </article>
         <article class="review-card reveal delay-2">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">"Estaba gastando $2,000 al mes en publicidad sin resultados. Con la nueva landing, recuperé la inversión en menos de una semana. Alfa &amp; Omega entendió exactamente lo que necesitaba."</p>
+            <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="review-text">"Gastaba $2,000/mes en ads sin resultados. Con la nueva landing, recuperé la inversión en menos de una semana."</p>
             <div class="review-author">
-                <img src="avatar-valentina.svg" alt="Valentina P." class="review-avatar" loading="lazy" width="48" height="48">
+                <img src="https://i.pravatar.cc/150?img=5" alt="Foto de Valentina P., dropshipper de belleza" class="review-avatar" loading="lazy" width="48" height="48">
                 <div class="review-author-info">
-                    <span class="review-name">Valentina P. <span class="verified-badge">✓ Verificado</span></span>
-                    <span class="review-role">Dropshipper - Nicho Belleza</span>
+                    <span class="review-name">Valentina P. <span class="verified-badge" aria-label="Cliente verificado">✓ Verificado</span></span>
+                    <span class="review-role">Nicho: Belleza</span>
                     <span class="review-result">+320% en ventas</span>
                 </div>
             </div>
         </article>
         <article class="review-card reveal delay-3">
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-            <p class="review-text">"Lo que más me impresionó fue la velocidad. En 10 días tenía mi landing funcionando y las ventas empezaron a fluir. El soporte después de la entrega es excepcional."</p>
+            <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="review-text">"Lo que más me impresionó fue la velocidad. En 10 días tenía mi landing funcionando y las ventas empezaron a fluir."</p>
             <div class="review-author">
-                <img src="avatar-andres.svg" alt="Andrés R." class="review-avatar" loading="lazy" width="48" height="48">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Foto de Andrés R., dropshipper de fitness" class="review-avatar" loading="lazy" width="48" height="48">
                 <div class="review-author-info">
-                    <span class="review-name">Andrés R. <span class="verified-badge">✓ Verificado</span></span>
-                    <span class="review-role">Dropshipper - Nicho Fitness</span>
+                    <span class="review-name">Andrés R. <span class="verified-badge" aria-label="Cliente verificado">✓ Verificado</span></span>
+                    <span class="review-role">Nicho: Fitness</span>
                     <span class="review-result">+280% en conversiones</span>
                 </div>
             </div>
@@ -481,8 +490,8 @@
                 <li class="include">✓ 1 ronda de revisiones</li>
                 <li class="include">✓ 14 días de soporte post-entrega</li>
             </ul>
-            <div class="price-guarantee">🛡️ Garantía Cero Riesgo - 5 días</div>
-            <a href="checkout.html?plan=starter&price=147" class="btn btn-outline btn-block">SÍ, QUIERO VALIDAR MI PRODUCTO →</a>
+            <div class="price-guarantee">🛡️ Garantía Cero Riesgo: Si no vendes más en 5 días, no pagas.</div>
+            <a href="checkout.html?plan=starter&price=147" class="btn btn-outline btn-block">VALIDAR MI PRODUCTO POR $147 →</a>
         </article>
 
         <!-- PROFESSIONAL (featured) -->
@@ -505,8 +514,8 @@
                 <li class="include">✓ 30 días de soporte + optimización post-lanzamiento</li>
                 <li class="include">✓ Auditoría de tus ads actuales + recomendaciones</li>
             </ul>
-            <div class="price-guarantee">🛡️ Garantía Cero Riesgo - 5 días</div>
-            <a href="checkout.html?plan=professional&price=357" class="btn btn-primary btn-block btn-glow">QUIERO TRIPLICAR MIS VENTAS →</a>
+            <div class="price-guarantee">🛡️ Garantía Cero Riesgo: Si no vendes más en 5 días, no pagas.</div>
+            <a href="checkout.html?plan=professional&price=357" class="btn btn-primary btn-block btn-glow">TRIPLICAR MIS VENTAS POR $357 →</a>
         </article>
 
         <!-- ENTERPRISE -->
@@ -528,8 +537,8 @@
                 <li class="include">✓ Consultoría estratégica mensual (1h/mes)</li>
                 <li class="include">✓ Setup de remarketing dinámico + lookalikes</li>
             </ul>
-            <div class="price-guarantee">🛡️ Garantía Cero Riesgo - 5 días</div>
-            <a href="checkout.html?plan=enterprise&price=635" class="btn btn-outline btn-block">QUIERO DOMINAR MI NICHO →</a>
+            <div class="price-guarantee">🛡️ Garantía Cero Riesgo: Si no vendes más en 5 días, no pagas.</div>
+            <a href="checkout.html?plan=enterprise&price=635" class="btn btn-outline btn-block">DOMINAR MI NICHO POR $635 →</a>
         </article>
     </div>
 

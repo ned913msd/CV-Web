@@ -1,8 +1,27 @@
 /* ================================================================
    ALFA & OMEGA — Landing Pages de Alta Conversión
-   JS v2.0: reveal, counters, FAQ, particles, sticky header,
-   activity widget, exit-intent popup, mobile menu
+   JS v2.1: reveal, counters, FAQ, particles, sticky header,
+   urgency bar, activity widget, exit-intent popup, mobile menu
 ================================================================ */
+
+/* ---------- URGENCY BAR (close + localStorage) ---------- */
+(function () {
+  var bar = document.getElementById('urgency-bar');
+  var closeBtn = document.getElementById('urgency-bar-close');
+  if (!bar || !closeBtn) return;
+
+  try {
+    if (localStorage.getItem('ao_urgency_closed') === '1') {
+      bar.classList.add('hidden');
+      return;
+    }
+  } catch (e) {}
+
+  closeBtn.addEventListener('click', function () {
+    bar.classList.add('hidden');
+    try { localStorage.setItem('ao_urgency_closed', '1'); } catch (e) {}
+  });
+})();
 
 /* ---------- MOBILE MENU ---------- */
 (function () {

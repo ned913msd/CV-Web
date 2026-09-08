@@ -90,6 +90,40 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.15; mar
   50% { box-shadow: 0 0 50px rgba(0,255,102,0.6); }
 }
 
+/* ============ URGENCY BAR ============ */
+.urgency-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: #FEF2F2; border-bottom: 2px solid #FECACA;
+  padding: 10px 24px; transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.urgency-bar.hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.urgency-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.urgency-bar-text {
+  color: #991B1B; font-size: 14px; font-weight: 500; margin: 0; text-align: center;
+}
+.urgency-bar-text strong { font-weight: 700; }
+.btn-urgency {
+  background: #DC2626; color: #fff; font-size: 13px; font-weight: 700;
+  padding: 6px 14px; border-radius: 6px; white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-urgency:hover { background: #B91C1C; transform: scale(1.05); }
+.urgency-bar-close {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; font-size: 22px; color: #991B1B;
+  cursor: pointer; width: 32px; height: 32px; display: flex;
+  align-items: center; justify-content: center; border-radius: 50%;
+  transition: background 0.2s;
+}
+.urgency-bar-close:hover { background: rgba(153,27,27,0.1); }
+
+/* Body offset when urgency bar is visible */
+body.has-urgency-bar { padding-top: 44px; }
+
 /* ============ STICKY HEADER ============ */
 .sticky-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -590,6 +624,9 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.15; mar
 
 /* ============ MOBILE MENU ============ */
 @media (max-width: 768px) {
+  .urgency-bar-text { font-size: 12px; }
+  .btn-urgency { font-size: 12px; padding: 5px 10px; }
+  .urgency-bar-close { right: 8px; }
   .nav-links {
     position: fixed; top: 60px; left: 0; right: 0;
     background: var(--bg); border-bottom: 1px solid var(--border);
