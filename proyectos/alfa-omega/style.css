@@ -17,7 +17,7 @@
   --accent-hover: #00CCDD;
   --text: #FFFFFF;
   --text-2: #A0A0AA;
-  --text-3: #70707A;
+  --text-3: #8A8A94;
   --border: #2A2A3A;
   --success: #00FF66;
   --error: #FF3366;
@@ -139,9 +139,16 @@ body.has-urgency-bar { padding-top: 44px; }
 /* ============ NAVBAR ============ */
 .nav-bar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(55,65,81,0.5);
+  background: transparent;
+  border-bottom: 1px solid transparent;
   padding: 16px 24px;
+  transition: background 0.3s, border-color 0.3s, padding 0.3s, box-shadow 0.3s;
+}
+.nav-bar.scrolled {
+  background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 24px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
 }
 .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .logo { font-family: var(--font-head); font-weight: 700; font-size: 24px; color: var(--text); }
@@ -644,8 +651,8 @@ input[data-valid="false"] { border-color: #EF4444 !important; }
 /* ============ MOBILE MENU ============ */
 @media (max-width: 768px) {
   .urgency-bar-text { font-size: 12px; }
-  .btn-urgency { font-size: 12px; padding: 5px 10px; }
-  .urgency-bar-close { right: 8px; }
+  .btn-urgency { font-size: 12px; padding: 5px 10px; min-height: 44px; }
+  .urgency-bar-close { right: 8px; min-width: 44px; min-height: 44px; }
   .nav-links {
     position: fixed; top: 60px; left: 0; right: 0;
     background: var(--bg); border-bottom: 1px solid var(--border);
@@ -653,14 +660,14 @@ input[data-valid="false"] { border-color: #EF4444 !important; }
     transform: translateY(-150%); transition: transform 0.3s; z-index: 99;
   }
   .nav-links.open { transform: translateY(0); }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
   .nav-cta { display: none; }
-  .nav-wa { display: inline-flex; }
+  .nav-wa { display: inline-flex; min-height: 44px; }
   .hero { padding: 120px 16px 60px; }
   .hero h1 { font-size: 32px; }
   .hero-sub { font-size: 16px; }
   .hero-form-row { flex-direction: column; border-radius: var(--radius); }
-  .hero-form-btn { border-radius: 0 0 var(--radius-btn) var(--radius-btn); width: 100%; }
+  .hero-form-btn { border-radius: 0 0 var(--radius-btn) var(--radius-btn); width: 100%; min-height: 52px; font-size: 16px; }
   .hero-ctas-secondary { display: none; }
   .hero-trust { flex-direction: column; gap: 8px; font-size: 13px; }
   .hero-visual { display: none; }
@@ -682,10 +689,33 @@ input[data-valid="false"] { border-color: #EF4444 !important; }
   .sticky-header .btn { padding: 8px 12px; font-size: 12px; }
   .scarcity-box { flex-direction: column; text-align: center; }
   .roi-row { flex-direction: column; gap: 4px; text-align: center; }
+  /* VS component mobile */
+  .vs-container { grid-template-columns: 1fr; }
+  .vs-before { border-right: none; border-bottom: 1px solid var(--border); }
+  .vs-divider { display: none; }
+  .vs-divider-badge { display: none; }
+  .vs-side { padding: 28px 20px; }
+  /* Exit popup mobile */
+  .exit-popup-content { padding: 28px 20px; }
+  .exit-popup-form-row { flex-direction: column; }
+  .exit-popup-form-row .btn { border-radius: 0 0 var(--radius-btn) var(--radius-btn); min-height: 48px; }
+  /* Price cards mobile */
+  .price-card { padding: 28px 20px; }
+  .btn-xl { padding: 16px 28px; font-size: 18px; min-height: 52px; }
+  .btn-lg { padding: 14px 24px; font-size: 16px; min-height: 48px; }
+  /* All CTA buttons minimum touch target */
+  .btn { min-height: 44px; }
+  /* Text overflow prevention */
+  .hero h1, h2, h3, p, li, span, a { word-wrap: break-word; overflow-wrap: break-word; }
+  .price-card .price, .price-card .price-cop { font-size: 28px; }
 }
 @media (max-width: 1024px) {
   .benefit-grid { grid-template-columns: repeat(2, 1fr); }
   .review-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 769px) {
+  .nav-bar.scrolled .logo { font-size: 20px; }
+  .nav-bar.scrolled .nav-links a { font-size: 13px; }
 }
 
 /* ============ REVEAL ANIMATIONS (AOS-like via IntersectionObserver) ============ */

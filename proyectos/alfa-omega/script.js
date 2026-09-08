@@ -215,7 +215,11 @@
   var nav = document.querySelector('.nav-bar');
   if (!nav) return;
   function onScroll() {
-    nav.style.boxShadow = window.scrollY > 10 ? '0 10px 30px rgba(0,0,0,0.5)' : 'none';
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
