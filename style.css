@@ -413,11 +413,38 @@ header.scrolled {
   display: flex;
   flex-direction: column;
   color: var(--text);
+  position: relative;
 }
 .proyecto:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   border-color: rgba(59,130,246,0.45);
+}
+/* Proyecto estrella */
+.proyecto-estrella {
+  border-color: rgba(251,146,60,0.4);
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.proyecto-estrella:hover {
+  border-color: rgba(251,146,60,0.6);
+  box-shadow: 0 24px 60px rgba(251,146,60,0.15);
+}
+.proyecto-badge-estrella {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  z-index: 5;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(249,115,22,0.4);
 }
 .proyecto-thumb {
   height: 170px;
@@ -427,6 +454,7 @@ header.scrolled {
   position: relative;
   overflow: hidden;
 }
+.proyecto-estrella .proyecto-thumb { height: 100%; min-height: 280px; }
 .proyecto-thumb img {
   width: 100%;
   height: 100%;
@@ -452,17 +480,61 @@ header.scrolled {
 .proyecto-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .proyecto-body h3 { font-size: 1.1rem; }
 .proyecto-body p { font-size: 0.9rem; color: var(--muted); flex: 1; }
+/* Métricas grid */
+.metricas-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .metrica {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--accent-pale);
   background: var(--accent-soft);
   padding: 5px 12px;
   border-radius: 8px;
   width: fit-content;
+}
+/* Botones de proyecto */
+.proyecto-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.btn-demo, .btn-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+.btn-demo {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-demo:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.4);
+}
+.btn-github {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.btn-github:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span {
@@ -474,6 +546,68 @@ header.scrolled {
 }
 
 /* ============ 10. CONTACTO ============ */
+/* ============ RECONOCIMIENTOS ============ */
+.reconocimientos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-top: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reconocimiento-icono {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.reconocimientos p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.reconocimientos strong { color: var(--text); }
+
+/* ============ LANDING PAGES CTA ============ */
+#landing-cta { background: var(--bg-alt); }
+.landing-cta-box {
+  background: var(--card);
+  border: 1px solid rgba(251,146,60,0.3);
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.landing-cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(251,146,60,0.06), transparent 70%);
+  pointer-events: none;
+}
+.landing-cta-box .section-tag {
+  color: #f97316;
+  background: rgba(251,146,60,0.12);
+  border-color: rgba(251,146,60,0.3);
+}
+.landing-cta-box .section-title { margin-bottom: 16px; }
+.landing-cta-box p {
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.landing-cta-box strong { color: var(--text); }
+.landing-cta-box .btn { margin: 0 auto; }
+
+/* ============ 10. CONTACTO (original) ============ */
 #contacto { background: var(--bg-alt); }
 .contacto-grid {
   display: grid;
@@ -618,6 +752,8 @@ footer .corazon { color: var(--accent-light); }
   .hero-grid, .sobre-grid, .contacto-grid { grid-template-columns: 1fr; }
   .hero-visual { order: -1; max-width: 340px; margin: 0 auto; }
   .proyectos-grid { grid-template-columns: repeat(2, 1fr); }
+  .proyecto-estrella { grid-column: span 2; grid-template-columns: 1fr; }
+  .proyecto-estrella .proyecto-thumb { min-height: 200px; }
   .skills-grid { grid-template-columns: 1fr; }
   .nav-links, .nav .nav-cta { display: none; }
   .nav-links.abierto {
@@ -641,9 +777,13 @@ footer .corazon { color: var(--accent-light); }
 @media (max-width: 560px) {
   section { padding: 70px 0; }
   .proyectos-grid { grid-template-columns: 1fr; }
+  .proyecto-estrella { grid-column: span 1; }
+  .proyecto-estrella .proyecto-thumb { min-height: 180px; }
   .stats { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .hero-botones .btn { width: 100%; justify-content: center; }
+  .landing-cta-box { padding: 32px 20px; }
+  .reconocimientos { flex-direction: column; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
