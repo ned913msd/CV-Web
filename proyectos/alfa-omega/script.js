@@ -71,6 +71,25 @@
   revealEls.forEach(function (el) { observer.observe(el); });
 })();
 
+/* ---------- HERO ANIMATION TRIGGER ---------- */
+(function () {
+  var anim = document.getElementById('hero-anim');
+  if (!anim) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    anim.classList.add('playing');
+    return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('playing');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(anim);
+})();
+
 /* ---------- VS SECTION COUNTERS ---------- */
 (function () {
   var counters = document.querySelectorAll('.vs-counter');

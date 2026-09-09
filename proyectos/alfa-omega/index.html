@@ -201,22 +201,67 @@
     </div>
 
     <div class="hero-visual reveal delay-1" aria-hidden="true">
-        <div class="browser-mockup">
-            <div class="browser-bar"><span></span><span></span><span></span><div class="browser-url">tutienda.com</div></div>
-            <div class="browser-content">
-                <div class="mock-headline"></div>
-                <div class="mock-sub"></div>
-                <div class="mock-cta"></div>
-                <div class="mock-card-row">
-                    <div class="mock-card"></div>
-                    <div class="mock-card"></div>
-                    <div class="mock-card"></div>
+        <!-- ANIMATED BROWSER MOCKUP — 3 scenes -->
+        <div class="hero-anim" id="hero-anim">
+            <!-- Scene labels (floating text) -->
+            <div class="hero-scene hero-scene-1" id="scene1">
+                <span class="scene-text">¿Tu tienda tarda más de 3 segundos en cargar?</span>
+            </div>
+            <div class="hero-scene hero-scene-2" id="scene2">
+                <span class="scene-text">Cada segundo de delay = 7% menos ventas.</span>
+            </div>
+            <div class="hero-scene hero-scene-3" id="scene3">
+                <span class="scene-text">Optimizamos tu Landing para <strong>vender más</strong>, no solo para verse bien.</span>
+            </div>
+
+            <!-- Browser mockup -->
+            <div class="hero-browser">
+                <div class="browser-bar">
+                    <span></span><span></span><span></span>
+                    <div class="browser-url">tutienda.com</div>
+                </div>
+                <div class="browser-content">
+                    <!-- Scene 1: Slow loading -->
+                    <div class="mock-state mock-slow">
+                        <div class="mock-spinner" aria-hidden="true">
+                            <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" stroke="#FF3366" stroke-width="3" fill="none" stroke-dasharray="80" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="1.5s" repeatCount="indefinite"/></circle></svg>
+                        </div>
+                        <div class="mock-headline slow"></div>
+                        <div class="mock-sub slow"></div>
+                        <div class="mock-cta slow"></div>
+                    </div>
+                    <!-- Scene 2: Fast loading (code sweep) -->
+                    <div class="mock-state mock-fast">
+                        <div class="mock-check" aria-hidden="true">⚡</div>
+                        <div class="mock-headline"></div>
+                        <div class="mock-sub"></div>
+                        <div class="mock-cta"></div>
+                        <div class="mock-card-row">
+                            <div class="mock-card"></div>
+                            <div class="mock-card"></div>
+                            <div class="mock-card"></div>
+                        </div>
+                    </div>
+                    <!-- Code sweep overlay -->
+                    <div class="mock-sweep" aria-hidden="true"></div>
                 </div>
             </div>
-        </div>
-        <div class="float-badge">
-            <div class="float-stars">⭐ 4.9/5</div>
-            <div class="float-text">50+ Clientes Satisfechos</div>
+
+            <!-- Growth chart (Scene 3) -->
+            <div class="hero-chart" id="hero-chart">
+                <div class="chart-bar" style="--h: 20%"></div>
+                <div class="chart-bar" style="--h: 35%"></div>
+                <div class="chart-bar" style="--h: 50%"></div>
+                <div class="chart-bar" style="--h: 70%"></div>
+                <div class="chart-bar" style="--h: 95%"></div>
+                <div class="chart-label">+300% Conversiones</div>
+            </div>
+
+            <!-- Float badge -->
+            <div class="float-badge">
+                <div class="float-stars">⭐ 4.9/5</div>
+                <div class="float-text">50+ Clientes Satisfechos</div>
+            </div>
         </div>
         <div class="hero-glow" aria-hidden="true"></div>
     </div>
