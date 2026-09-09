@@ -145,7 +145,7 @@ form.addEventListener('submit', async (e) => {
       form.reset();
       mostrarToast('¡Mensaje enviado! Te responderé en menos de 24 horas 🚀');
     } else {
-      mostrarToast('No se pudo enviar. Escríbeme directo a ned913msd@gmail.com');
+      mostrarToast('No se pudo enviar. Escríbeme directo a contacto.nedbustamante@gmail.com');
     }
   } catch {
     mostrarToast('Sin conexión. Intenta de nuevo o escríbeme por WhatsApp 💬');

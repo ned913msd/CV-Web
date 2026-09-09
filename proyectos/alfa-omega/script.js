@@ -514,7 +514,7 @@ document.querySelectorAll('input[type="email"]').forEach(function (input) {
         btn.disabled = false;
         btn.textContent = originalText;
         btn.style.opacity = '1';
-        msgEl.textContent = 'Ups, algo salió mal. Intenta de nuevo o escríbenos a ned913msd@gmail.com';
+        msgEl.textContent = 'Ups, algo salió mal. Intenta de nuevo o escríbenos a contacto.nedbustamante@gmail.com';
         msgEl.className = 'form-msg error';
       });
   });
