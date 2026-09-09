@@ -867,6 +867,45 @@
     </div>
 </section>
 
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter section" id="newsletter">
+    <div class="newsletter-container" data-animate="zoom-in">
+        <div class="newsletter-badge">🎁 OFERTA EXCLUSIVA</div>
+        <h2>¿No estás listo para invertir hoy?<br>Llévate un 10% de descuento + Tips Semanales.</h2>
+        <p class="newsletter-sub">Suscríbete y recibe en tu correo:</p>
+        <ul class="newsletter-benefits">
+            <li>Un cupón de <strong>10% OFF</strong> aplicable a cualquier plan.</li>
+            <li>Cada semana: <strong>1 tip práctico</strong> para aumentar tus conversiones.</li>
+            <li>Acceso anticipado a nuestras <strong>guías y checklists gratuitas</strong>.</li>
+        </ul>
+        <p class="newsletter-note">Sin spam. Solo valor real para tu tienda.</p>
+
+        <form class="newsletter-form" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="cfdc5d74-d84b-4291-a14d-752287335dea">
+            <input type="hidden" name="subject" value="Suscripción Newsletter - Cupón 10% OFF">
+            <input type="hidden" name="from_name" value="Alfa & Omega Newsletter">
+            <input type="hidden" name="replyto" value="">
+            <input type="checkbox" name="botcheck" style="display:none">
+            <div class="newsletter-row">
+                <input type="text" name="name" placeholder="Tu nombre (opcional)" class="newsletter-input" aria-label="Nombre (opcional)">
+                <input type="email" name="email" id="newsletter-email" placeholder="tu@email.com" required class="newsletter-input" aria-describedby="newsletter-email-msg">
+                <button type="submit" class="btn btn-primary newsletter-btn">QUIERO MI 10% DE DESCUENTO →</button>
+            </div>
+            <div class="form-msg" id="newsletter-email-msg" aria-live="polite"></div>
+            <label class="newsletter-gdpr">
+                <input type="checkbox" name="gdpr" required>
+                <span>Acepto recibir emails con tips y ofertas. Puedo darme de baja cuando quiera. <a href="privacidad.html">Política de Privacidad</a>.</span>
+            </label>
+            <p class="newsletter-privacy">🔒 Respetamos tu privacidad. Puedes darte de baja en cualquier momento con un solo click.</p>
+        </form>
+
+        <div class="newsletter-success" id="newsletter-success" hidden>
+            <div class="newsletter-success-icon">✅</div>
+            <p><strong>¡Listo!</strong> Revisa tu bandeja de entrada (y spam, por si acaso). En los próximos 5 minutos recibirás tu cupón de 10% OFF y nuestro primer tip de conversión.</p>
+        </div>
+    </div>
+</section>
+
 <!-- ============ 12. FOOTER ============ -->
 <footer class="footer" id="footer">
     <div class="footer-grid">

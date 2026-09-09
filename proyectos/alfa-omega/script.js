@@ -447,3 +447,56 @@ document.querySelectorAll('input[type="email"]').forEach(function (input) {
     });
   });
 })();
+
+/* ---------- NEWSLETTER FORM ---------- */
+(function () {
+  var form = document.getElementById('newsletter-form');
+  var success = document.getElementById('newsletter-success');
+  if (!form || !success) return;
+
+  var emailInput = document.getElementById('newsletter-email');
+  var msgEl = document.getElementById('newsletter-email-msg');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!validateEmailField(emailInput, msgEl)) return;
+
+    var gdpr = form.querySelector('input[name="gdpr"]');
+    if (gdpr && !gdpr.checked) {
+      msgEl.textContent = 'Debes aceptar la política de privacidad.';
+      msgEl.className = 'form-msg error';
+      return;
+    }
+
+    var btn = form.querySelector('.newsletter-btn');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    btn.style.opacity = '0.7';
+    msgEl.textContent = '';
+    msgEl.className = 'form-msg';
+
+    var replyto = form.querySelector('input[name="replyto"]');
+    if (replyto) replyto.value = emailInput.value;
+
+    var fd = new FormData(form);
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          form.hidden = true;
+          success.hidden = false;
+        } else {
+          throw new Error('Submit failed');
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        btn.style.opacity = '1';
+        msgEl.textContent = 'Ups, algo salió mal. Intenta de nuevo o escríbenos a ned913msd@gmail.com';
+        msgEl.className = 'form-msg error';
+      });
+  });
+})();
