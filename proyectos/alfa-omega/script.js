@@ -163,12 +163,19 @@
 (function () {
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
-    var question = item.querySelector('.faq-question');
-    if (!question) return;
-    question.addEventListener('click', function () {
+    var btn = item.querySelector('.faq-question');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
       var isOpen = item.classList.contains('open');
-      faqItems.forEach(function (other) { other.classList.remove('open'); });
-      if (!isOpen) item.classList.add('open');
+      faqItems.forEach(function (other) {
+        other.classList.remove('open');
+        var otherBtn = other.querySelector('.faq-question');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 })();
