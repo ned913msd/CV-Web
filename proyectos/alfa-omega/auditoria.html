@@ -42,38 +42,42 @@
         <!-- COLUMNA DERECHA — El Formulario -->
         <div class="aud-form-card">
           <h2 class="aud-form-title">Solicita tu Auditoría Ahora</h2>
-          <form id="audForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-            <input type="hidden" name="access_key" value="cfdc5d74-d84b-4291-a14d-752287335dea">
-            <input type="hidden" name="subject" value="Nueva solicitud de Auditoría Gratis — Alfa & Omega">
-            <input type="hidden" name="from_name" value="Alfa & Omega - Auditoría">
-            <input type="hidden" name="redirect" value="gracias-auditoria.html">
-            <!-- Honeypot anti-spam -->
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
+          <!-- FORMULARIO DE AUDITORÍA CON FORMSPREE -->
+          <form action="https://formspree.io/f/xppzkkoj" method="POST" class="audit-form">
+            
+            <!-- Campo Honeypot (Anti-Spam invisible para humanos) -->
+            <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
 
-            <div class="aud-field">
-              <label for="aud-nombre">Nombre *</label>
-              <input type="text" id="aud-nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name">
-              <span class="aud-error">Por favor ingresa tu nombre</span>
+            <!-- Configuración de respuesta (opcional pero recomendado) -->
+            <input type="hidden" name="_subject" value="🚀 Nueva Solicitud de Auditoría - Alfa & Omega">
+            <input type="hidden" name="_next" value="https://ned913msd.github.io/CV-Web/proyectos/alfa-omega/gracias-auditoria.html">
+
+            <!-- Campo 1: Nombre -->
+            <div class="form-group">
+              <label for="nombre">Tu Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Rodríguez" required>
             </div>
 
-            <div class="aud-field">
-              <label for="aud-url">URL de tu Tienda *</label>
-              <input type="url" id="aud-url" name="url_tienda" placeholder="https://mitienda.com" required autocomplete="url" inputmode="url">
-              <span class="aud-error">Ingresa una URL válida (debe empezar con http o https)</span>
+            <!-- Campo 2: URL de la Tienda -->
+            <div class="form-group">
+              <label for="url_tienda">URL de tu Tienda</label>
+              <input type="url" id="url_tienda" name="url_tienda" placeholder="https://mitienda.com" required>
             </div>
 
-            <div class="aud-field">
-              <label for="aud-email">Correo Electrónico *</label>
-              <input type="email" id="aud-email" name="email" placeholder="tu@email.com" required autocomplete="email" inputmode="email">
-              <span class="aud-error">Ingresa un correo electrónico válido</span>
+            <!-- Campo 3: Email -->
+            <div class="form-group">
+              <label for="email">Tu Correo Electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
             </div>
 
-            <button type="submit" class="aud-btn-cta" id="audSubmit">
-              <span class="aud-btn-text">QUIERO MI VIDEO AUDITORÍA GRATIS →</span>
-              <span class="aud-btn-loading" style="display:none;">Enviando...</span>
+            <!-- Botón de Envío -->
+            <button type="submit" class="btn-cta-principal">
+              QUIERO MI VIDEO AUDITORÍA GRATIS →
             </button>
 
-            <p class="aud-trust">🔒 Tus datos están 100% seguros. Odiamos el spam tanto como tú.</p>
+            <!-- Micro-copy de confianza -->
+            <p class="form-trust">🔒 Tus datos están 100% seguros. Odiamos el spam tanto como tú.</p>
+
           </form>
         </div>
 

@@ -136,17 +136,17 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 24px;
   text-align: center;
 }
-.aud-field {
+.audit-form .form-group {
   margin-bottom: 18px;
 }
-.aud-field label {
+.audit-form .form-group label {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 6px;
 }
-.aud-field input {
+.audit-form .form-group input {
   width: 100%;
   height: 52px;
   padding: 14px 16px;
@@ -159,22 +159,22 @@ a { text-decoration: none; color: inherit; }
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
 }
-.aud-field input::placeholder { color: var(--text-3); }
-.aud-field input:focus {
+.audit-form .form-group input::placeholder { color: var(--text-3); }
+.audit-form .form-group input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(0,255,102,0.15);
 }
-.aud-field.invalido input { border-color: var(--error); }
+.audit-form .form-group.invalido input { border-color: var(--error); }
 .aud-error {
   display: none;
   font-size: 0.78rem;
   color: var(--error);
   margin-top: 6px;
 }
-.aud-field.invalido .aud-error { display: block; }
+.audit-form .form-group.invalido .aud-error { display: block; }
 
 /* CTA Button */
-.aud-btn-cta {
+.btn-cta-principal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,12 +193,12 @@ a { text-decoration: none; color: inherit; }
   margin-top: 8px;
   text-align: center;
 }
-.aud-btn-cta:hover {
+.btn-cta-principal:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 50px rgba(0,255,102,0.5);
 }
-.aud-btn-cta:active { transform: translateY(0); }
-.aud-trust {
+.btn-cta-principal:active { transform: translateY(0); }
+.form-trust {
   text-align: center;
   font-size: 0.8rem;
   color: var(--text-3);
