@@ -321,59 +321,165 @@ a { text-decoration: none; color: inherit; }
 /* ============ GRACIAS PAGE ============ */
 .gracias-page {
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.gracias-main {
+  flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 20px 60px;
 }
 .gracias-card {
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 48px 32px;
+  padding: 48px 28px;
   text-align: center;
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
+  animation: graciasFadeIn 0.6s ease-out;
 }
+@keyframes graciasFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Icono de éxito */
 .gracias-icono {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  background: rgba(0,255,102,0.12);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  animation: graciasPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
 }
-.gracias-card h1 {
+@keyframes graciasPop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+/* Headline */
+.gracias-h1 {
   font-family: var(--font-head);
   font-size: clamp(1.4rem, 4vw, 1.8rem);
   font-weight: 700;
   color: var(--text);
   margin-bottom: 16px;
+  animation: graciasFadeIn 0.5s ease-out 0.3s both;
 }
-.gracias-card p {
+
+/* Mensaje */
+.gracias-msg {
   font-size: 1rem;
   color: var(--text-2);
-  margin-bottom: 28px;
   line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: graciasFadeIn 0.5s ease-out 0.4s both;
 }
-.gracias-card strong { color: var(--text); }
-.gracias-acciones {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.gracias-msg strong { color: var(--text); }
+
+/* Tip */
+.gracias-tip {
+  background: rgba(0,240,255,0.06);
+  border: 1px solid rgba(0,240,255,0.2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+  animation: graciasFadeIn 0.5s ease-out 0.5s both;
 }
-.aud-btn-ghost {
-  display: flex;
+.gracias-tip p {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Valor inmediato */
+.gracias-valor {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  animation: graciasFadeIn 0.5s ease-out 0.6s both;
+}
+.gracias-valor h3 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.gracias-valor > p {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  margin-bottom: 18px;
+}
+.gracias-btn-checklist {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  background: transparent;
-  color: var(--text-2);
-  border: 1px solid var(--border);
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: var(--bg);
+  border: none;
   border-radius: var(--radius-btn);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 20px rgba(0,240,255,0.3);
+  text-align: center;
+  line-height: 1.3;
 }
-.aud-btn-ghost:hover {
-  color: var(--text);
-  border-color: var(--primary);
+.gracias-btn-checklist:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(0,240,255,0.5);
+}
+
+/* Contacto directo */
+.gracias-contacto {
+  animation: graciasFadeIn 0.5s ease-out 0.7s both;
+}
+.gracias-contacto p {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.gracias-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #25D366;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.gracias-wa:hover { opacity: 0.8; }
+
+/* Footer links */
+.gracias-footer-links {
+  margin-top: 8px;
+}
+.gracias-footer-sep {
+  color: var(--text-3);
+  margin: 0 8px;
+  font-size: 0.78rem;
 }
 
 /* ============ RESPONSIVE — Tablet+ ============ */
