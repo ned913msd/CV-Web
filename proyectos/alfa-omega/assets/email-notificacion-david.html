@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; line-height: 1.6; color: #1F2937; max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+    .content { background: #ffffff; padding: 30px; border: 1px solid #E5E7EB; border-top: none; }
+    .info-box { background: #F3F4F6; padding: 15px; border-radius: 6px; margin: 15px 0; }
+    .info-box strong { color: #0A0A0A; }
+    .cta-button { display: inline-block; background: #0A0A0A; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 10px 0; }
+    .urgent { background: #FEE2E2; border-left: 4px solid #EF4444; padding: 10px; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2 style="margin: 0;">🎯 Nueva Solicitud de Auditoría</h2>
+    <p style="margin: 5px 0 0 0;">Alfa & Omega - Lead Generado</p>
+  </div>
+  
+  <div class="content">
+    <p><strong>¡Hola David!</strong></p>
+    <p>Tienes una nueva solicitud de auditoría gratuita. Detalles:</p>
+    
+    <div class="info-box">
+      <p><strong>👤 Nombre:</strong> {{nombre}}</p>
+      <p><strong>🛍️ Tienda:</strong> <a href="{{url_tienda}}" target="_blank">{{url_tienda}}</a></p>
+      <p><strong>📧 Email:</strong> {{email}}</p>
+      <p><strong>⏰ Fecha:</strong> {{fecha}}</p>
+    </div>
+    
+    <div class="urgent">
+      <strong>⚡ ACCIÓN REQUERIDA:</strong> Grabar video de auditoría en menos de 24 horas
+    </div>
+    
+    <h3>📋 Checklist para la auditoría:</h3>
+    <ul>
+      <li>□ Revisar velocidad de carga (PageSpeed Insights)</li>
+      <li>□ Analizar UX mobile-first</li>
+      <li>□ Identificar 3 puntos de mejora críticos</li>
+      <li>□ Grabar Loom de 5 min máximo</li>
+      <li>□ Enviar con propuesta de valor</li>
+    </ul>
+    
+    <a href="https://loom.com" class="cta-button" target="_blank">🎥 Ir a Loom para Grabar</a>
+    <a href="https://wa.me/573003491413?text=Hola,%20recibí%20tu%20solicitud%20de%20auditoría%20para%20{{url_tienda}}" class="cta-button" style="background: #25D366;">💬 Contactar por WhatsApp</a>
+    
+    <p style="margin-top: 30px; font-size: 14px; color: #6B7280;">
+      <strong>Recordatorio:</strong> Este lead viene de tu funnel de auditoría. Responder en menos de 24h para mantener la tasa de conversión del 40-50%.
+    </p>
+  </div>
+</body>
+</html>
