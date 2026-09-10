@@ -47,4 +47,14 @@
       }
     });
   }
+
+  /* --- Auto-fill hidden date field on submit --- */
+  form.addEventListener('submit', function () {
+    var fechaField = document.getElementById('fecha_solicitud');
+    if (fechaField && !fechaField.value) {
+      var now = new Date();
+      var options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'America/Bogota' };
+      fechaField.value = now.toLocaleString('es-CO', options);
+    }
+  });
 })();
