@@ -1,0 +1,395 @@
+/* ================================================================
+   ALFA & OMEGA — AUDITORÍA GRATIS
+   Mobile-First | CRO-Optimized | Zero-Navigation
+   ================================================================ */
+
+:root {
+  --bg: #0A0A0F;
+  --bg-2: #12121A;
+  --bg-3: #1A1A24;
+  --primary: #00FF66;
+  --primary-dark: #00CC52;
+  --primary-light: #33FF85;
+  --accent: #00F0FF;
+  --accent-hover: #00CCDD;
+  --text: #FFFFFF;
+  --text-2: #A0A0AA;
+  --text-3: #8A8A94;
+  --border: #2A2A3A;
+  --error: #FF3366;
+  --radius: 12px;
+  --radius-btn: 8px;
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-2);
+  line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ============ CONTAINER ============ */
+.aud-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* ============ HEADER ============ */
+.aud-header {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.aud-logo {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text);
+}
+.aud-logo span { color: var(--primary); }
+
+/* ============ HERO — Mobile-First ============ */
+.aud-hero {
+  padding: 48px 0 60px;
+}
+.aud-hero-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Gancho (izquierda) */
+.aud-badge {
+  display: inline-block;
+  background: rgba(255,51,102,0.1);
+  border: 1px solid var(--error);
+  color: var(--error);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+.aud-gancho h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.aud-sub {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: var(--text-2);
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+.aud-checks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.aud-checks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(0,255,102,0.12);
+  color: var(--primary);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Formulario (derecha) */
+.aud-form-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+.aud-form-title {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.aud-field {
+  margin-bottom: 18px;
+}
+.aud-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.aud-field input {
+  width: 100%;
+  height: 52px;
+  padding: 14px 16px;
+  background: var(--bg-3);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-btn);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.aud-field input::placeholder { color: var(--text-3); }
+.aud-field input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0,255,102,0.15);
+}
+.aud-field.invalido input { border-color: var(--error); }
+.aud-error {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--error);
+  margin-top: 6px;
+}
+.aud-field.invalido .aud-error { display: block; }
+
+/* CTA Button */
+.aud-btn-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(0,255,102,0.3);
+  margin-top: 8px;
+  text-align: center;
+}
+.aud-btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(0,255,102,0.5);
+}
+.aud-btn-cta:active { transform: translateY(0); }
+.aud-trust {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-top: 14px;
+}
+
+/* ============ CÓMO FUNCIONA — 3 Pasos ============ */
+.aud-pasos {
+  padding: 60px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.aud-pasos-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.aud-pasos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.aud-paso {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+}
+.aud-paso-num {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.aud-paso-icono {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+.aud-paso h3 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.aud-paso p {
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+/* ============ AUTORIDAD ============ */
+.aud-autoridad {
+  padding: 60px 0;
+}
+.aud-autoridad-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.aud-foto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  flex-shrink: 0;
+}
+.aud-autoridad-texto p {
+  font-size: 0.92rem;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+.aud-autoridad-texto strong { color: var(--text); }
+
+/* ============ FOOTER ============ */
+.aud-footer {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.aud-footer p {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.aud-footer a {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.aud-footer a:hover { color: var(--primary); }
+
+/* ============ GRACIAS PAGE ============ */
+.gracias-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+.gracias-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 32px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+.gracias-icono {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.gracias-card h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.gracias-card p {
+  font-size: 1rem;
+  color: var(--text-2);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.gracias-card strong { color: var(--text); }
+.gracias-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.aud-btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.aud-btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+/* ============ RESPONSIVE — Tablet+ ============ */
+@media (min-width: 768px) {
+  .aud-hero { padding: 80px 0 80px; }
+  .aud-hero-grid {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+  }
+  .aud-gancho { flex: 1; padding-top: 12px; }
+  .aud-form-card { flex: 1; max-width: 440px; }
+  .aud-pasos-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+@media (min-width: 1024px) {
+  .aud-hero { padding: 100px 0; }
+  .aud-form-card { padding: 40px 36px; }
+}
