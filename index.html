@@ -527,8 +527,10 @@
           </div>
         </div>
 
-        <form id="formContacto" novalidate class="reveal">
+        <form id="formContacto" action="https://api.web3forms.com/submit" method="POST" novalidate class="reveal">
           <input type="hidden" name="access_key" value="cfdc5d74-d84b-4291-a14d-752287335dea">
+          <input type="hidden" name="subject" value="Nuevo mensaje de contacto - CV Web">
+          <input type="hidden" name="from_name" value="David Ned - CV Web">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1">
           <div class="form-row">
             <div class="form-group">
