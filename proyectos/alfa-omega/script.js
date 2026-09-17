@@ -368,14 +368,12 @@
       if (!validateEmailField(emailInput, msgEl)) return;
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true;
-      btn.textContent = '✓ ¡Listo! Revisa tu correo.';
+      btn.textContent = '✓ ¡Listo! Preparando tu descarga...';
       btn.style.opacity = '0.7';
       var fd = new FormData(form);
       fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
         .then(function () {
-          msgEl.textContent = '¡Listo! Revisa tu correo en los próximos 5 minutos.';
-          msgEl.className = 'form-msg success';
-          setTimeout(hidePopup, 2500);
+          form.innerHTML = '<div class="form-msg success" style="text-align:center;padding:20px 0;"><p style="font-size:1.1rem;font-weight:600;color:var(--primary);margin-bottom:16px;">✅ ¡Listo! Tu checklist está listo.</p><a href="https://drive.google.com/uc?export=download&id=104jKo4zJHsDKAwMSHzwbfHW6Fguv-EBN" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-block;padding:14px 28px;font-size:1rem;">📥 DESCARGAR CHECKLIST AHORA →</a><p style="font-size:0.85rem;color:var(--text-3);margin-top:12px;">También te enviamos una copia a tu correo.</p></div>';
         })
         .catch(function () {
           btn.disabled = false;
