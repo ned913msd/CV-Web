@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>DARK TATTOO ATELIER | Custom Tattoos Medellín</title>
+  <meta name="description" content="Tattoo Artist Medellín. Custom blackwork, realism, fine line. Book your session. Digital tattoo gallery.">
+  <meta name="theme-color" content="#080808">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ned913msd.github.io/CV-Web/proyectos/tattoo-atelier/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DARK TATTOO ATELIER | Custom Tattoos Medellín">
+  <meta property="og:description" content="Custom blackwork, realism, fine line. Book your session.">
+  <meta property="og:url" content="https://ned913msd.github.io/CV-Web/proyectos/tattoo-atelier/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooShop",
+    "name": "Dark Tattoo Atelier",
+    "description": "Custom tattoo studio in Medellín.",
+    "address": {"@type": "PostalAddress", "addressLocality": "Medellín", "addressCountry": "CO"},
+    "telephone": "+573003491413"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-label" id="cursor-label"></div>
+  </div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">INK</div>
+      <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+      <div class="loader-percent" id="loader-percent">000%</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">INK<span class="nav-dot">.</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#work" class="nav-link">WORK</a>
+        <a href="#styles" class="nav-link">STYLES</a>
+        <a href="#process" class="nav-link">PROCESS</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#book" class="nav-link nav-cta">BOOK</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="#work" class="mobile-link">WORK</a>
+      <a href="#styles" class="mobile-link">STYLES</a>
+      <a href="#process" class="mobile-link">PROCESS</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+      <a href="#book" class="mobile-link mobile-cta">BOOK YOUR SESSION</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1400&q=80" alt="Blackwork tattoo close-up" class="hero-img" loading="eager" fetchpriority="high" width="1400" height="900">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-meta hero-meta-top">
+        <span class="mono">TATTOO ARTIST</span>
+        <span class="mono">MEDELLÍN / COLOMBIA</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-line" data-reveal>INK</span>
+        <span class="hero-line" data-reveal>IS</span>
+        <span class="hero-line hero-accent" data-reveal>PERMANENT.</span>
+      </h1>
+      <p class="hero-sub" data-reveal>MAKE IT MEAN SOMETHING.</p>
+      <div class="hero-bottom">
+        <div class="hero-meta">
+          <span class="mono">EST. 2024</span>
+          <span class="mono">CUSTOM WORK</span>
+        </div>
+        <a href="#book" class="btn-book" data-cursor="BOOK">BOOK YOUR SESSION <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="mono">SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="section work-section" id="work">
+    <div class="section-header">
+      <span class="mono">01 / 06</span>
+      <h2 class="section-title">THE<br>WORK</h2>
+      <p class="mono">SELECTED PIECES / 2026</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Portfolio filters">
+      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL</button>
+      <button class="filter-btn" data-filter="blackwork" role="tab" aria-selected="false">BLACKWORK</button>
+      <button class="filter-btn" data-filter="realism" role="tab" aria-selected="false">REALISM</button>
+      <button class="filter-btn" data-filter="fineline" role="tab" aria-selected="false">FINE LINE</button>
+      <button class="filter-btn" data-filter="geometric" role="tab" aria-selected="false">GEOMETRIC</button>
+      <button class="filter-btn" data-filter="custom" role="tab" aria-selected="false">CUSTOM</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+      <!-- Portfolio items injected by JS -->
+    </div>
+  </section>
+
+  <!-- CHOOSE YOUR INK -->
+  <section class="section styles-section" id="styles">
+    <div class="section-header">
+      <span class="mono">02 / 06</span>
+      <h2 class="section-title">CHOOSE<br>YOUR<br>INK.</h2>
+    </div>
+    <div class="styles-grid">
+      <div class="style-card" data-cursor="EXPLORE">
+        <div class="style-img-wrap">
+          <img src="https://images.unsplash.com/photo-1590246814883-57f2a1e26767?w=600&q=80" alt="Blackwork tattoo style" loading="lazy" width="600" height="400">
+        </div>
+        <div class="style-info">
+          <h3 class="style-name">BLACKWORK</h3>
+          <p class="style-desc">High contrast.<br>Bold geometry.<br>Statement pieces.</p>
+          <a href="#work" class="style-link mono" data-filter-target="blackwork">VIEW PIECES <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="style-card" data-cursor="EXPLORE">
+        <div class="style-img-wrap">
+          <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=600&q=80" alt="Realism tattoo style" loading="lazy" width="600" height="400">
+        </div>
+        <div class="style-info">
+          <h3 class="style-name">REALISM</h3>
+          <p class="style-desc">Detail.<br>Depth.<br>Precision.</p>
+          <a href="#work" class="style-link mono" data-filter-target="realism">VIEW PIECES <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="style-card" data-cursor="EXPLORE">
+        <div class="style-img-wrap">
+          <img src="https://images.unsplash.com/photo-1612459284270-27f0ae3e tried?w=600&q=80" alt="Fine line tattoo style" loading="lazy" width="600" height="400">
+        </div>
+        <div class="style-info">
+          <h3 class="style-name">FINE LINE</h3>
+          <p class="style-desc">Minimal.<br>Delicate.<br>Precise.</p>
+          <a href="#work" class="style-link mono" data-filter-target="fineline">VIEW PIECES <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="style-card" data-cursor="EXPLORE">
+        <div class="style-img-wrap">
+          <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=600&q=80" alt="Geometric tattoo style" loading="lazy" width="600" height="400">
+        </div>
+        <div class="style-info">
+          <h3 class="style-name">GEOMETRIC</h3>
+          <p class="style-desc">Sacred.<br>Symmetry.<br>Mathematical.</p>
+          <a href="#work" class="style-link mono" data-filter-target="geometric">VIEW PIECES <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FROM IDEA TO INK -->
+  <section class="section process-section" id="process">
+    <div class="section-header">
+      <span class="mono">03 / 06</span>
+      <h2 class="section-title">FROM IDEA<br>→ INK</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step" data-reveal>
+        <div class="process-num">01</div>
+        <div class="process-line"></div>
+        <h3 class="process-name">IDEA</h3>
+        <p class="process-desc">Tell us what you have in mind.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">02</div>
+        <div class="process-line"></div>
+        <h3 class="process-name">DESIGN</h3>
+        <p class="process-desc">Turn the idea into a composition.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">03</div>
+        <div class="process-line"></div>
+        <h3 class="process-name">SESSION</h3>
+        <p class="process-desc">Bring the piece to life.</p>
+      </div>
+      <div class="process-step" data-reveal>
+        <div class="process-num">04</div>
+        <div class="process-line"></div>
+        <h3 class="process-name">HEALED</h3>
+        <p class="process-desc">A piece designed to stay with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TATTOO AS ART -->
+  <section class="section art-section">
+    <div class="art-image">
+      <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=1400&q=80" alt="Tattoo as art - skin canvas" loading="lazy" width="1400" height="800">
+      <div class="art-overlay">
+        <span class="mono art-label">PIECE 017</span>
+        <span class="mono art-label">CUSTOM BLACKWORK</span>
+        <span class="mono art-label">MEDELLÍN / COLOMBIA</span>
+      </div>
+    </div>
+    <div class="art-text" data-reveal>
+      <h2 class="art-title">YOUR SKIN<br>IS THE CANVAS.</h2>
+    </div>
+  </section>
+
+  <!-- CLIENT STORIES -->
+  <section class="section testimonials-section" id="testimonials">
+    <div class="section-header">
+      <span class="mono">04 / 06</span>
+      <h2 class="section-title">CLIENT<br>STORIES</h2>
+    </div>
+    <div class="testimonials-slider">
+      <div class="testimonial active">
+        <blockquote class="testimonial-quote">"The attention to detail was insane. Every line, every shadow — perfection."</blockquote>
+        <div class="testimonial-meta">
+          <span class="mono">CLIENT TESTIMONIAL PLACEHOLDER</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <blockquote class="testimonial-quote">"I showed him a rough idea and he turned it into something better than I imagined."</blockquote>
+        <div class="testimonial-meta">
+          <span class="mono">CLIENT TESTIMONIAL PLACEHOLDER</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <blockquote class="testimonial-quote">"Clean studio, professional process, and the result speaks for itself."</blockquote>
+        <div class="testimonial-meta">
+          <span class="mono">CLIENT TESTIMONIAL PLACEHOLDER</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-nav">
+      <button class="test-nav-btn" id="test-prev" aria-label="Previous testimonial">←</button>
+      <span class="mono" id="test-counter">01 / 03</span>
+      <button class="test-nav-btn" id="test-next" aria-label="Next testimonial">→</button>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="section-header">
+      <span class="mono">05 / 06</span>
+      <h2 class="section-title">BEFORE YOUR<br>SESSION</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How much does a tattoo cost?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Pricing depends on size, style, and complexity. Contact for a custom quote.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Can I bring my own design?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Yes. We work with your ideas and refine them into tattoo-ready compositions.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Do you do custom designs?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Every piece is custom. We don't use flash or pre-made designs.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How long is a session?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Sessions range from 2 to 6 hours depending on the piece.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>How does booking work?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Fill out the form below or message us on WhatsApp. We'll discuss your idea and schedule a session.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>What should I do before getting tattooed?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Stay hydrated, eat well, avoid alcohol 24h before, and get good sleep.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>Do you do cover-ups?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Yes. Send us a photo of the existing tattoo for an assessment.]</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false"><span>What payment methods do you accept?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>[PLACEHOLDER — Cash, transfer, and Nequi/Daviplata.]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section book-section" id="book">
+    <div class="section-header">
+      <span class="mono">06 / 06</span>
+      <h2 class="section-title">HAVE AN<br>IDEA?</h2>
+      <p class="book-sub">LET'S TURN IT INTO INK.</p>
+    </div>
+    <form class="book-form" id="book-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value="cfdc5d74-d84b-4291-a14d-752287335dea">
+      <input type="hidden" name="subject" value="Nueva solicitud de tatuaje - Dark Tattoo Atelier">
+      <input type="hidden" name="from_name" value="Dark Tattoo Atelier">
+      <input type="checkbox" name="botcheck" style="display:none">
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="book-name" class="form-label mono">NAME</label>
+          <input type="text" id="book-name" name="nombre" required class="form-input" placeholder="Your name">
+          <span class="form-error">Please enter your name</span>
+        </div>
+        <div class="form-group">
+          <label for="book-contact" class="form-label mono">EMAIL / WHATSAPP</label>
+          <input type="text" id="book-contact" name="contacto" required class="form-input" placeholder="your@email.com or +57...">
+          <span class="form-error">Please enter email or WhatsApp</span>
+        </div>
+        <div class="form-group form-full">
+          <label for="book-idea" class="form-label mono">WHAT DO YOU HAVE IN MIND?</label>
+          <textarea id="book-idea" name="idea" rows="4" class="form-input" placeholder="Describe your idea, references, meaning..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="book-placement" class="form-label mono">PLACEMENT</label>
+          <input type="text" id="book-placement" name="placement" class="form-input" placeholder="e.g. Forearm, back, ribs...">
+        </div>
+        <div class="form-group">
+          <label for="book-style" class="form-label mono">STYLE</label>
+          <select id="book-style" name="style" class="form-input form-select">
+            <option value="">Select a style</option>
+            <option value="blackwork">Blackwork</option>
+            <option value="realism">Realism</option>
+            <option value="fineline">Fine Line</option>
+            <option value="geometric">Geometric</option>
+            <option value="custom">Custom / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="book-size" class="form-label mono">APPROXIMATE SIZE</label>
+          <input type="text" id="book-size" name="size" class="form-input" placeholder="e.g. 10cm, half sleeve...">
+        </div>
+        <div class="form-group">
+          <label for="book-budget" class="form-label mono">BUDGET</label>
+          <input type="text" id="book-budget" name="budget" class="form-input" placeholder="e.g. $200-400 USD">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" id="book-submit">
+        <span class="btn-text">SEND REQUEST →</span>
+        <span class="btn-loading" style="display:none;">SENDING...</span>
+      </button>
+      <div class="form-msg" id="book-msg" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final-section">
+    <div class="final-bg">
+      <img src="https://images.unsplash.com/photo-1590246814883-57f2a1e26767?w=1400&q=80" alt="Tattoo art" loading="lazy" width="1400" height="800">
+      <div class="final-overlay"></div>
+    </div>
+    <div class="final-content" data-reveal>
+      <h2 class="final-title">YOUR SKIN.<br>YOUR STORY.<br>YOUR INK.</h2>
+      <a href="#book" class="btn-book btn-book-light">BOOK YOUR SESSION <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">INK<span class="nav-dot">.</span></span>
+        <p class="mono">TATTOO ARTIST<br>MEDELLÍN / COLOMBIA</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="footer-link mono">INSTAGRAM</a>
+        <a href="https://wa.me/573003491413?text=Hola,%20quiero%20consultar%20sobre%20una%20sesión%20de%20tatuaje" target="_blank" rel="noopener" class="footer-link mono">WHATSAPP</a>
+        <a href="mailto:contacto.nedbustamante@gmail.com" class="footer-link mono">EMAIL</a>
+      </div>
+      <a href="#book" class="footer-cta mono">BOOK A SESSION →</a>
+      <p class="footer-copy mono">© 2026 DARK TATTOO ATELIER</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/573003491413?text=Hola,%20quiero%20consultar%20sobre%20una%20sesión%20de%20tatuaje%20personalizada" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- PORTFOLIO MODAL -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Tattoo piece detail">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-wrap">
+          <img src="" alt="" id="modal-img" class="modal-img">
+        </div>
+        <div class="modal-info">
+          <span class="mono modal-id" id="modal-id"></span>
+          <h3 class="modal-title" id="modal-title"></h3>
+          <span class="mono modal-style" id="modal-style"></span>
+          <div class="modal-details">
+            <div class="modal-detail"><span class="mono">CONCEPT</span><span id="modal-concept"></span></div>
+            <div class="modal-detail"><span class="mono">PLACEMENT</span><span id="modal-placement"></span></div>
+            <div class="modal-detail"><span class="mono">SESSION</span><span id="modal-session"></span></div>
+            <div class="modal-detail"><span class="mono">STATUS</span><span id="modal-status"></span></div>
+          </div>
+          <p class="modal-desc" id="modal-desc"></p>
+          <a href="#book" class="btn-book modal-cta" id="modal-cta">REQUEST A SIMILAR PIECE <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="modal-prev" aria-label="Previous piece">← PREVIOUS</button>
+        <button class="modal-nav-btn" id="modal-next" aria-label="Next piece">NEXT →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
